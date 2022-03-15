@@ -1,0 +1,26 @@
+$d-play: (block, flex, inline-flex, none, grid) !default;
+$position: (
+    l: left,
+    r: right,
+    b: bottom,
+    t: top
+) !default;
+@each $var in $d-play {
+    .d-#{$var} {
+        display: $var;
+    }
+}
+
+@for $i from 1 to 100 {
+    @each $var, $p in $position {
+        .p#{$var}-#{$i} {
+            padding-#{$p}: #{$i}px;
+        }
+        .m#{$var}-#{$i} {
+            margin-#{$p}: #{$i}px;
+        }
+    }
+    .f-#{$i} {
+        font-size: #{$i}px;
+    }
+}
