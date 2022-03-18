@@ -1,0 +1,45 @@
+@for $var from 1 to 100 {
+  .f-#{$var} {
+    font-size: #{$var}px;
+  }
+}
+
+@mixin basic-desktop {
+  @media screen and (max-width: $desktop-mw) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: $tablet-mw) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $mobile-mw) {
+    @content;
+  }
+}
+
+@mixin sm-mobile {
+  @media screen and (max-width: $sm-mobile-mw) {
+    @content;
+  }
+}
+@mixin padding($paddingX, $paddingY) {
+  padding: #{$paddingX}px #{$paddingY}px;
+}
+
+@mixin margin($marginX, $marginY) {
+  margin: #{$marginX}px #{$marginY}px;
+}
+
+@mixin show-n-line($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line; /* number of lines to show */
+  line-clamp: $line;
+  -webkit-box-orient: vertical;
+}

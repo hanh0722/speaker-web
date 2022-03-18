@@ -1,4 +1,10 @@
 $d-play: (block, flex, inline-flex, none, grid) !default;
+$flex: (
+    start: flex-start,
+    end: flex-end,
+    center: center,
+    between: space-between
+) !default;
 $position: (
     l: left,
     r: right,
@@ -22,5 +28,30 @@ $position: (
     }
     .f-#{$i} {
         font-size: #{$i}px;
+    }
+    .gap-#{$i} {
+        gap: #{$i}px;
+    }
+}
+
+@for $i from 1 to 5 {
+    .grid-col-#{i} {
+        grid-template-columns: repeat($i, 1fr);
+    }
+}
+
+.flex-column {
+    flex-direction: column;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+@each $f, $value in $flex {
+    .justify-#{$f} {
+        justify-content: $value;
+    }
+    .align-#{$f} {
+        align-items: $value;
     }
 }

@@ -5,8 +5,17 @@ import { InputProps } from "../../../types/component";
 import { classList } from "../../../utils/string";
 
 const Input = (props: InputProps) => {
-  const { onChange, type, defaultValue, label, id, variant, className, error, hiddenLabel } =
-    props;
+  const {
+    onChange,
+    type,
+    defaultValue,
+    label,
+    id,
+    variant,
+    className,
+    error,
+    hiddenLabel,
+  } = props;
   const [value, setValue] = useState(defaultValue || "");
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -21,7 +30,7 @@ const Input = (props: InputProps) => {
   }, [defaultValue]);
   return (
     <div className={classList(styles["form-group"], className)}>
-      {label && !hiddenLabel &&  (
+      {label && !hiddenLabel && (
         <label className="d-block pb-10 f-14" htmlFor={id}>
           {label}
         </label>
@@ -35,7 +44,7 @@ const Input = (props: InputProps) => {
         type={type || "text"}
         onChange={onChangeHandler}
         error={error}
-        color="warning"
+        color="primary"
       />
     </div>
   );

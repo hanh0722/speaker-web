@@ -1,0 +1,20 @@
+$desktop-mw: 1500px;
+$tablet: 991px;
+$mobile-mw: 768px;
+$sm-mobile-mw: 576px;
+
+$color: (
+    black: #000000,
+    white: #fff,
+    gray: #f8f8f8,
+    red: red
+) !default;
+
+@each $c, $value in $color {
+    .color-#{$c} {
+        color: $c;
+    }
+    .bg-#{$c} {
+        background: $c;
+    }
+}

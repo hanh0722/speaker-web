@@ -1,0 +1,39 @@
+@import '/styles/module/mixin';
+.image {
+  width: 90px;
+  height: 35px;
+}
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  transition: all .5s ease-in-out;
+  ul {
+    list-style: none;
+    padding-left: 30px;
+    li {
+      @include padding(10, 12);
+    }
+  }
+  height: 64px;
+  .left {
+    height: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+
+    }
+  }
+}
+.hide {
+  transform: translateY(-100%);
+}
