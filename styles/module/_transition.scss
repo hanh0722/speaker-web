@@ -1,0 +1,55 @@
+@mixin opacity($value) {
+    opacity: $value;
+}
+@mixin translate($direction, $value) {
+    transform: translate#{$direction}($value);
+}
+
+@mixin fade-right-enter {
+    @include opacity(.65);
+    @include translate($direction-X, -100%);
+}
+@mixin fade-right-active {
+    opacity: 1;
+    @include translate($direction-X, 0);
+}
+
+@mixin fade-down-enter {
+    @include opacity(0);
+    @include translate($direction-Y, -100%);
+    @include tablet {
+        @include translate($direction-Y, 10%);
+    }
+}
+@mixin fade-down-active {
+    @include opacity(1);
+    @include translate($direction-Y, 0);
+}
+.fade-right-enter {
+    @include fade-right-enter();
+}
+.fade-right-enter-active {
+    @include fade-right-active();
+    transition: all .5s ease-in-out;
+}
+.fade-right-exit {
+    @include fade-right-active();
+}
+.fade-right-exit-active {
+    @include fade-right-enter();
+    transition: all .5s ease-in-out;
+}
+.fade-down-enter {
+    @include fade-down-enter();
+}
+.fade-down-enter-active {
+    @include fade-down-active();
+    transition: all .3s ease-in-out;
+}
+.fade-down-exit {
+    @include fade-down-active();
+}
+.fade-down-exit-active {
+    @include fade-down-enter();
+    transition: all .3s ease-in-out;
+}

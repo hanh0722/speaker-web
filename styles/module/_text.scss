@@ -1,0 +1,10 @@
+@each $var in $position {
+    .position-#{$var} {
+        position: $var;
+    }
+}
+@each $text in $text-transform {
+    .text-#{$text} {
+        text-transform: $text;
+    }
+}

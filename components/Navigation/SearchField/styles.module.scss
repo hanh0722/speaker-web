@@ -1,0 +1,41 @@
+.search {
+    min-height: 20vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    background: $white;
+    z-index: 20;
+    @include tablet {
+        min-height: 90vh;
+    }
+}
+.container {
+    height: 100% !important;
+    .title {
+        @include padding(16, 0);
+    }
+}
+.logo {
+    width: 95px;
+    height: 35px;
+}
+.search-field {
+    min-height: 20vh;
+    @include tablet {
+        min-height: auto;
+    }
+}
+.field {
+    max-width: 700px;
+    @include padding(0, 32);
+    width: 100%;
+    .input {
+        padding-bottom: 0;
+        width: 100%;
+    }
+    @include tablet {
+        padding: 0;
+        max-width: 100%;
+    }
+}

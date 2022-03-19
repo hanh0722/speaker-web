@@ -1,0 +1,15 @@
+.hamburger {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    div {
+        width: 25px;
+        height: 3px;
+        background: $black;
+        margin-bottom: 4px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        border-radius: 3px;
+    }
+}

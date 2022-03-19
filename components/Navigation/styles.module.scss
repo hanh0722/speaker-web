@@ -1,39 +1,137 @@
-@import '/styles/module/mixin';
+@mixin hover-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(5px);
+}
+
 .image {
   width: 90px;
   height: 35px;
 }
-.navigation {
-  position: fixed;
-  top: 0;
+.nav {
+  height: 64px;
   width: 100%;
+  position: fixed;
   z-index: 10;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.navigation {
+  height: 100%;
+  width: 100% !important;
+  transition: all 0.5s ease-in-out;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
   ul {
     list-style: none;
-    padding-left: 30px;
-    li {
-      @include padding(10, 12);
-    }
-  }
-  height: 64px;
-  .left {
-    height: 100%;
   }
   a {
     text-decoration: none;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: bold;
+    color: $black;
+  }
+  .left {
+    height: 100%;
+  }
+}
+.list {
+  padding-left: 32px;
+  li {
+    @include padding(8, 0);
     position: relative;
     &::before {
-      content: '';
+      content: "";
+      transition: all 0.3s ease-in-out;
+      background: $black;
+      width: 0;
+      height: 2px;
       position: absolute;
       bottom: 0;
-
+    }
+  }
+  a {
+    @include margin(0, 16);
+    text-transform: uppercase;
+    @extend .weight-500;
+    &:hover {
+      li:before {
+        width: 100%;
+      }
+    }
+    @include flex(center, center);
+    svg {
+      @extend .f-10;
+      margin-left: 10px;
+    }
+  }
+}
+.right {
+  li {
+    cursor: pointer;
+    @include flex(center, center);
+    position: relative;
+    &:hover {
+      &::before,
+      &::after {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    &::before {
+      content: attr(data-hover);
+      position: absolute;
+      bottom: -45px;
+      @extend .f-12;
+      @extend .bg-black;
+      @include padding(8, 8);
+      border-radius: 4px;
+      color: $white;
+      @include hover-tooltip();
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      bottom: -13px;
+      border-bottom: 6px solid $black;
+      @include hover-tooltip();
     }
   }
 }
 .hide {
   transform: translateY(-100%);
+}
+
+@media screen and (max-width: 991px) {
+  .list {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    flex-direction: column;
+    z-index: 100;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+    @include padding(20, 20);
+    background: $white;
+    box-shadow: 0px 2px 8px rgba($color: $black, $alpha: 0.15);
+    width: 50%;
+    gap: 20px;
+    a {
+      width: 100%;
+      justify-content: space-between;
+      margin: 0;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .list {
+    width: 90%;
+  }
 }

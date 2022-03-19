@@ -6,4 +6,16 @@
         display: flex !important;
     }
     padding-bottom: 20px;
+    position: relative;
+    .icon {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-40%);
+    }
+}
+.form-icon {
+    input {
+        padding-right: 45px;
+    }
 }

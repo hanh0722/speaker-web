@@ -1,12 +1,14 @@
-import "../styles/globals.scss";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { AppProps } from "next/app";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-import store from "../store";
 import persistStore from "redux-persist/lib/persistStore";
+import store from "../store";
 import Navigation from "../components/Navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
 import usePrevious from "../hook/usePrevious";
+import "../styles/globals.scss";
+import { HeadGeneral } from "../components/common";
+import WrapperOptions from "../components/helper/WrapperOptions";
 
 const persistor = persistStore(store);
 function MyApp({ Component, pageProps }: AppProps) {
@@ -19,10 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const onHandleScroll = useCallback(() => {
     requestAnimationFrame(onHandleCallback);
   }, []);
-  
+
   useEffect(() => {
     window.addEventListener("scroll", onHandleScroll);
-
     return () => {
       window.removeEventListener("scroll", onHandleScroll);
     };
@@ -35,14 +36,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     return true;
   }, [valueBefore, scroll]);
   return (
-    <div style={{ height: "5000vh" }}>
+    <>
+      <HeadGeneral />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Navigation isActive={isActive}/>
-          <Component {...pageProps} />
+          <WrapperOptions>
+            <Navigation isActive={isActive} />
+            <Component {...pageProps} />
+          </WrapperOptions>
         </PersistGate>
       </Provider>
-    </div>
+    </>
   );
 }
 

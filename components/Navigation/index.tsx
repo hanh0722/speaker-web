@@ -1,37 +1,137 @@
-import React, { FC } from "react";
-import { Link } from "../core";
-import Container from "../core/Container";
-import Image from "../core/Image";
+import React, { FC, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import ReactDOM from "react-dom";
+import { Link, Container, Image } from "../core";
+import { Cart } from "../container";
 import styles from "./styles.module.scss";
+import {
+  IconCaret,
+  IconCart,
+  IconPeople,
+  IconSearch,
+  IconStar,
+} from "../core/Icons";
+import {
+  BLOGS,
+  FEATURES,
+  HOME,
+  LOGIN,
+  PRODUCTS,
+  SHOP,
+  WISHLIST,
+} from "../../constants/path";
+import Hamburger from "../common/Hamburger";
+import { CSSTransition } from "react-transition-group";
+import useDropdown from "../../hook/useDropdown";
+import Modal from "../common/Modal";
+import SearchField from "./SearchField";
+import { RootState } from "../../store";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;
-  return (
-    <Container className={`bg-white ${styles.navigation} ${!isActive && styles.hide}`}>
-      <div className={`d-flex align-center ${styles.left}`}>
-        <Link href="/">
-          <Image alt="" className={styles.image} src="/logo.webp" />
+  const isMobile = useSelector<RootState>((state) => state.ui.isMobileScreen);
+  const [isOpenSearchField, setIsOpenSearchField] = useState(false);
+  const [isOpenCart, setIsOpenCart] = useState(false);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const { isToggle, onChangeToggle } = useDropdown(listRef);
+  const renderListItem = () => {
+    return (
+      <ul ref={listRef} className={`d-flex ${styles.list}`}>
+        <Link href={HOME}>
+          <li>Home</li>
+          <IconCaret variant="sm" />
         </Link>
-        <ul className="d-flex">
-          <Link href="/home">
-            <li>Home</li>
-          </Link>
-          <Link href="/shops">
-            <li>Shop</li>
-          </Link>
-          <Link href="/products">
-            <li>Products</li>
-          </Link>
-          <Link href="/blogs">
-            <li>Blogs</li>
-          </Link>
-          <Link href="/features">
-            <li>Features</li>
-          </Link>
-        </ul>
-      </div>
-      <div className={styles.right}></div>
-    </Container>
+        <Link href={SHOP}>
+          <li>Shop</li>
+          <IconCaret variant="sm" />
+        </Link>
+        <Link href={PRODUCTS}>
+          <li>Products</li>
+          <IconCaret variant="sm" />
+        </Link>
+        <Link href={BLOGS}>
+          <li>Blogs</li>
+          <IconCaret variant="sm" />
+        </Link>
+        <Link href={FEATURES}>
+          <li>Features</li>
+          <IconCaret variant="sm" />
+        </Link>
+      </ul>
+    );
+  };
+  const onOpenSearchField = () => {
+    setIsOpenSearchField((prevState) => !prevState);
+  };
+  return (
+    <>
+      <SearchField
+        onClick={onOpenSearchField}
+        isOpenSearchField={isOpenSearchField}
+      />
+      <Cart isActiveCart={isOpenCart}/>
+      <nav
+        className={`bg-white shadow-sm ${!isActive && styles.hide} ${
+          styles.nav
+        }`}
+      >
+        <Container className={styles.navigation}>
+          {isMobile && (
+            <Hamburger ref={targetRef} onClick={onChangeToggle} variant={3} />
+          )}
+          <div className={`d-flex align-center ${styles.left}`}>
+            <Link href={HOME}>
+              <Image alt="" className={styles.image} src="/logo.webp" />
+            </Link>
+            {!isMobile && renderListItem()}
+            {isMobile && (
+              <CSSTransition
+                timeout={500}
+                classNames="fade-right"
+                unmountOnExit
+                mountOnEnter
+                in={isToggle}
+              >
+                <>
+                  {ReactDOM.createPortal(
+                    <>
+                      {renderListItem()}
+                      <Modal />
+                    </>,
+                    document.getElementById("destination")!
+                  )}
+                </>
+              </CSSTransition>
+            )}
+          </div>
+          <div className={styles.right}>
+            <ul className="d-flex gap-24">
+              <li onClick={onOpenSearchField} data-hover="Search">
+                <IconSearch variant={isMobile ? "md" : "lg"} />
+              </li>
+              {!isMobile && (
+                <>
+                  <Link href={LOGIN}>
+                    <li data-hover="Account">
+                      <IconPeople variant={isMobile ? "md" : "lg"} />
+                    </li>
+                  </Link>
+                  <Link href={WISHLIST}>
+                    <li data-hover="Wishlist">
+                      <IconStar variant={isMobile ? "md" : "lg"} />
+                    </li>
+                  </Link>
+                </>
+              )}
+              <li data-hover="Cart">
+                <IconCart variant={isMobile ? "md" : "lg"} />
+              </li>
+            </ul>
+          </div>
+        </Container>
+      </nav>
+    </>
   );
 };
 

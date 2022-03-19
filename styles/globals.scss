@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
-
+@import 'module/base';
+@import 'module/font';
 @import 'module/variable';
 @import 'module/display';
 @import 'module/mixin';
-@import 'module/base';
+@import 'module/transition';
+@import 'module/text';
 
 * {
   padding: 0;
@@ -14,4 +16,16 @@ body,
 html {
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}
+
+body[data-active]{
+  overflow: hidden;
 }

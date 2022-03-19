@@ -1,5 +1,5 @@
 $desktop-mw: 1500px;
-$tablet: 991px;
+$tablet-mw: 991px;
 $mobile-mw: 768px;
 $sm-mobile-mw: 576px;
 
@@ -9,12 +9,49 @@ $color: (
     gray: #f8f8f8,
     red: red
 ) !default;
+$weight: (
+    300,
+    400,
+    500,
+    600,
+    700,
+    bold
+) !default;
 
+$black: #000000;
+$white: #fff;
+$gray: #f8f8f8;
+$direction-X: X;
+$direction-Y: Y;
+$direction-Z: Z;
+
+$position: (
+    relative,
+    absolute,
+    static,
+    fixed,
+    sticky,
+    unset
+) !default;
+
+$text-transform: (
+    uppercase,
+    lowercase,
+    capitalize,
+    unset,
+    inherit
+) !default;
 @each $c, $value in $color {
     .color-#{$c} {
         color: $c;
     }
     .bg-#{$c} {
         background: $c;
+    }
+}
+
+@each $var in $weight {
+    .weight-#{$var} {
+        font-weight: $var;
     }
 }

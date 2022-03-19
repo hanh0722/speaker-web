@@ -5,7 +5,7 @@ const Register = () => {
   return (
     <Container>
       <form>
-        <Input placeholder="Username..." label="Username" hiddenLabel />
+        <Input placeholder="Username..." label="Username" />
       </form>
     </Container>
   );

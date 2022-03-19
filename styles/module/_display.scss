@@ -32,6 +32,13 @@ $position: (
     .gap-#{$i} {
         gap: #{$i}px;
     }
+    .w-#{$i} {
+        width: percentage($number: $i);
+    }
+    .h-#{$i} {
+        height: percentage($number: $i);
+    }
+
 }
 
 @for $i from 1 to 5 {

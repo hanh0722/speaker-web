@@ -9,12 +9,11 @@ const Input = (props: InputProps) => {
     onChange,
     type,
     defaultValue,
-    label,
     id,
     variant,
     className,
     error,
-    hiddenLabel,
+    iconName: IconComponent,
   } = props;
   const [value, setValue] = useState(defaultValue || "");
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,16 +28,12 @@ const Input = (props: InputProps) => {
     }
   }, [defaultValue]);
   return (
-    <div className={classList(styles["form-group"], className)}>
-      {label && !hiddenLabel && (
-        <label className="d-block pb-10 f-14" htmlFor={id}>
-          {label}
-        </label>
-      )}
+    <div className={classList(styles["form-group"], IconComponent ? styles['form-icon'] : '', className)}>
       <InputComponent
         className={styles.input}
         variant={variant || "outlined"}
         id={id}
+        autoComplete="off"
         {...props}
         value={value}
         type={type || "text"}
@@ -46,6 +41,7 @@ const Input = (props: InputProps) => {
         error={error}
         color="primary"
       />
+      {IconComponent && <div className={styles.icon}><IconComponent/></div>}
     </div>
   );
 };
