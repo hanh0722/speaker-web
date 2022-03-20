@@ -4,6 +4,7 @@ import Container from "./Container";
 import Loading from "./Loading";
 import SkeletonLoading from "./SkeletonLoading";
 import Link from "./Link";
+import Button from "./Button";
 
 export {
     Image,
@@ -11,5 +12,6 @@ export {
     Container,
     Loading,
     SkeletonLoading,
-    Link
+    Link,
+    Button
 }

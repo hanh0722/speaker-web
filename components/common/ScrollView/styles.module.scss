@@ -1,0 +1,18 @@
+.header, .body, .footer {
+    padding: 20px;
+}
+.body {
+    overflow-y: scroll;
+}
+.header {
+    border-bottom: 1px solid $border;
+}
+.parent {
+    height: 100%;
+    background: $white;
+}
+.scroll {
+    .body {
+        flex-grow: 1;
+    }
+}

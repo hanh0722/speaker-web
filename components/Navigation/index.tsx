@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ReactDOM from "react-dom";
 import { Link, Container, Image } from "../core";
 import { Cart } from "../container";
@@ -25,13 +25,14 @@ import { CSSTransition } from "react-transition-group";
 import useDropdown from "../../hook/useDropdown";
 import Modal from "../common/Modal";
 import SearchField from "./SearchField";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
+import { cartActions } from "../../store/slices/cart";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;
+  const dispatch = useDispatch<AppDispatch>();
   const isMobile = useSelector<RootState>((state) => state.ui.isMobileScreen);
   const [isOpenSearchField, setIsOpenSearchField] = useState(false);
-  const [isOpenCart, setIsOpenCart] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const { isToggle, onChangeToggle } = useDropdown(listRef);
@@ -64,13 +65,16 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
   const onOpenSearchField = () => {
     setIsOpenSearchField((prevState) => !prevState);
   };
+  const onDispatchCart = () => {
+    dispatch(cartActions.onChangeActiveCart());
+  }
   return (
     <>
       <SearchField
         onClick={onOpenSearchField}
         isOpenSearchField={isOpenSearchField}
       />
-      <Cart isActiveCart={isOpenCart}/>
+      <Cart />
       <nav
         className={`bg-white shadow-sm ${!isActive && styles.hide} ${
           styles.nav
@@ -125,7 +129,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                 </>
               )}
               <li data-hover="Cart">
-                <IconCart variant={isMobile ? "md" : "lg"} />
+                <IconCart onClick={onDispatchCart} variant={isMobile ? "md" : "lg"} />
               </li>
             </ul>
           </div>

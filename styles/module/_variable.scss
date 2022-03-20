@@ -19,8 +19,10 @@ $weight: (
 ) !default;
 
 $black: #000000;
+$l-black: #191010;
 $white: #fff;
 $gray: #f8f8f8;
+$border: #ddd;
 $direction-X: X;
 $direction-Y: Y;
 $direction-Z: Z;
@@ -40,6 +42,14 @@ $text-transform: (
     capitalize,
     unset,
     inherit
+) !default;
+$text-position: (
+    center,
+    start,
+    inherit,
+    unset,
+    end,
+    none
 ) !default;
 @each $c, $value in $color {
     .color-#{$c} {

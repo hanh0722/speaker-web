@@ -21,7 +21,7 @@ const Link: FC<LinkProps> = (props) => {
   }
   return href ? (
     <LinkComponent {...props} href={href} passHref={true}>
-      <a>{children}</a>
+      <a className={classList(className)}>{children}</a>
     </LinkComponent>
   ) : (
     <div onClick={onClick}>{children}</div>

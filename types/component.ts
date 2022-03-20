@@ -1,6 +1,7 @@
-import { ElementType, RefObject } from "react";
+import { ElementType, ReactNode, RefObject } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
+import { ButtonProps } from "@mui/material";
 
 export interface InputProps extends ClassNameProps {
   type?: string;
@@ -36,7 +37,8 @@ export interface LinkProps extends ClassNameProps, NextLinkProps {
 
 export interface IconWrapperProps extends ClassNameProps {
   icon?: ElementType;
-  variant?: 'sm' | 'md' | 'lg'
+  variant?: 'sm' | 'md' | 'lg';
+  onClick?: () => void;
 }
 
 export interface HamburgerProps extends ClassNameProps {
@@ -55,6 +57,16 @@ export interface SearchFieldProps extends ClassNameProps {
 }
 
 export interface CartProps extends ClassNameProps {
-  onHandleCart?: () => void;
-  isActiveCart: boolean;
+}
+
+export interface ScrollViewProps extends ClassNameProps {
+  scrollable?: boolean
+}
+
+export interface RefElement<T> extends ClassNameProps {
+  ref?: RefObject<T>
+}
+
+export interface ButtonComponentProps extends ButtonProps {
+  prefix?: 'basic' | 'success'
 }

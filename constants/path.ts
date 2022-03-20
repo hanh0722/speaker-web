@@ -5,3 +5,4 @@ export const BLOGS = '/blogs';
 export const FEATURES = '/features';
 export const LOGIN = '/login';
 export const WISHLIST = '/wishlist';
+export const CART = '/cart';

@@ -1,0 +1,9 @@
+.btn{
+    &-basic {
+        background: $black !important;
+        color: $white !important;
+        &:hover {
+            background: $l-black !important;
+        }
+    }
+}

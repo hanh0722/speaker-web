@@ -1,6 +1,7 @@
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 export interface ClassNameProps {
     className?: string;
-    style?: CSSProperties
+    style?: CSSProperties,
+    children?: ReactNode
 }

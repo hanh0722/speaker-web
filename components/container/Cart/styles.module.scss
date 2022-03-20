@@ -5,4 +5,28 @@
     right: 0;
     height: 100vh;
     z-index: 20;
+    @include tablet {
+        width: 50%;
+    }
+    @include mobile {
+        width: 90%;
+    }
+}
+.header {
+    svg {
+        cursor: pointer;
+    }
+}
+.footer {
+    p {
+        @include flex(space-between, center);
+        padding-bottom: 16px;
+        @extend .f-16;
+        @extend .weight-500;
+    }
+    a {
+        padding-top: 16px;
+        text-decoration: underline;
+        @extend .weight-300;
+    }
 }

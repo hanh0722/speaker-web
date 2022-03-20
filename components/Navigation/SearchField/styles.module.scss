@@ -1,5 +1,5 @@
 .search {
-    min-height: 20vh;
+    min-height: 15vh;
     position: fixed;
     top: 0;
     width: 100%;
@@ -21,13 +21,12 @@
     height: 35px;
 }
 .search-field {
-    min-height: 20vh;
+    min-height: 15vh;
     @include tablet {
         min-height: auto;
     }
 }
 .field {
-    max-width: 700px;
     @include padding(0, 32);
     width: 100%;
     .input {

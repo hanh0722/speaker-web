@@ -4,6 +4,15 @@ $shadow: (
     lg: 0px 2px 8px rgba($black, .25)
 ) !default;
 
+$cursor: (
+    pointer
+) !default;
+
+@each $var in $cursor {
+    #{$var} {
+        cursor: $var;
+    }
+}
 @each $var, $value in $shadow {
     .shadow-#{$var} {
         box-shadow: $value;

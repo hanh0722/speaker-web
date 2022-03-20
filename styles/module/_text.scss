@@ -8,3 +8,9 @@
         text-transform: $text;
     }
 }
+
+@each $var in $text-position {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}

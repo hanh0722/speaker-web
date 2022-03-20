@@ -1,3 +1,3 @@
-export const classList = (...args: Array<string | undefined | number | null>) => {
+export const classList = (...args: Array<string | undefined | number | null | boolean>) => {
     return args.filter(item => !!item).join(' ');
 }
