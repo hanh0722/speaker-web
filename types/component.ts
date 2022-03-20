@@ -1,4 +1,4 @@
-import { ElementType, ReactNode, RefObject } from "react";
+import { ChangeEvent, ElementType, RefObject } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
 import { ButtonProps } from "@mui/material";
@@ -6,7 +6,7 @@ import { ButtonProps } from "@mui/material";
 export interface InputProps extends ClassNameProps {
   type?: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
   label?: string;
   id?: string;
@@ -14,6 +14,8 @@ export interface InputProps extends ClassNameProps {
   error?: boolean;
   onBlur?: () => void;
   iconName?: ElementType;
+  errorMessage?: string;
+  onClickIcon?: () => void
 }
 
 export interface ImageProps extends ClassNameProps {
@@ -37,7 +39,7 @@ export interface LinkProps extends ClassNameProps, NextLinkProps {
 
 export interface IconWrapperProps extends ClassNameProps {
   icon?: ElementType;
-  variant?: 'sm' | 'md' | 'lg';
+  variant?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   onClick?: () => void;
 }
 
@@ -69,4 +71,12 @@ export interface RefElement<T> extends ClassNameProps {
 
 export interface ButtonComponentProps extends ButtonProps {
   prefix?: 'basic' | 'success'
+}
+
+export interface BreadCrumbProps extends ClassNameProps {
+  title?: string
+}
+export interface CheckBoxProps extends ClassNameProps {
+  isCheck?: boolean,
+  onChangeCheck?: (value: boolean) => void;
 }

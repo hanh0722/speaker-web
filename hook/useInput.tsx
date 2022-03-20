@@ -1,4 +1,4 @@
-import { ChangeEvent, useReducer, Reducer, useEffect } from "react";
+import { ChangeEvent, useReducer, Reducer } from "react";
 import {
   UseInputActions,
   UseInputState,
@@ -8,7 +8,6 @@ import { isFunction } from "../types/type";
 
 const initialState: UseInputState = {
   isTouched: false,
-  isValid: false,
   value: "",
 };
 
@@ -28,18 +27,14 @@ const reducerFunction: Reducer<UseInputState, UseInputActions> = (
         ...state,
         isTouched: true,
       };
-    case UseInputSerialize.CHECK_VALID:
-      return {
-        ...state,
-        isValid: payload,
-      };
     default:
       return state;
   }
 };
 
-const useInput = () => {
+const useInput = (validateFunction: (value: string) => boolean) => {
   const [state, dispatch] = useReducer(reducerFunction, initialState);
+  const isValid = validateFunction && validateFunction(state.value);
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     dispatch({
@@ -47,6 +42,7 @@ const useInput = () => {
       payload: value,
     });
   };
+  
 
   const onTouchedHandler = () => {
     dispatch({
@@ -58,6 +54,7 @@ const useInput = () => {
   return {
     onChangeHandler,
     onTouchedHandler,
+    isValid,
     ...state,
   };
 };

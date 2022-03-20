@@ -14,12 +14,14 @@ const Input = (props: InputProps) => {
     className,
     error,
     iconName: IconComponent,
+    errorMessage,
+    onClickIcon
   } = props;
   const [value, setValue] = useState(defaultValue || "");
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
     if (onChange) {
-      onChange(event.target.value);
+      onChange(event);
     }
   };
   useEffect(() => {
@@ -28,20 +30,33 @@ const Input = (props: InputProps) => {
     }
   }, [defaultValue]);
   return (
-    <div className={classList(styles["form-group"], IconComponent ? styles['form-icon'] : '', className)}>
-      <InputComponent
-        className={styles.input}
-        variant={variant || "outlined"}
-        id={id}
-        autoComplete="off"
-        {...props}
-        value={value}
-        type={type || "text"}
-        onChange={onChangeHandler}
-        error={error}
-        color="primary"
-      />
-      {IconComponent && <div className={styles.icon}><IconComponent/></div>}
+    <div
+      className={classList(
+        styles["form-group"],
+        IconComponent ? styles["form-icon"] : "",
+        className
+      )}
+    >
+      <div className={styles.main}>
+        <InputComponent
+          className={styles.input}
+          variant={variant || "outlined"}
+          id={id}
+          autoComplete="off"
+          {...props}
+          value={value}
+          type={type || "text"}
+          onChange={onChangeHandler}
+          error={error}
+          color="success"
+        />
+        {IconComponent && (
+          <div onClick={onClickIcon} className={styles.icon}>
+            <IconComponent />
+          </div>
+        )}
+      </div>
+      {errorMessage && error && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 };

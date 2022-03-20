@@ -4,64 +4,39 @@ $mobile-mw: 768px;
 $sm-mobile-mw: 576px;
 
 $color: (
-    black: #000000,
-    white: #fff,
-    gray: #f8f8f8,
-    red: red
+  black: #000000,
+  white: #fff,
+  gray: #f8f8f8,
+  red: red,
 ) !default;
-$weight: (
-    300,
-    400,
-    500,
-    600,
-    700,
-    bold
-) !default;
+$weight: (300, 400, 500, 600, 700, bold) !default;
 
 $black: #000000;
 $l-black: #191010;
 $white: #fff;
 $gray: #f8f8f8;
 $border: #ddd;
+$disabled: rgba(0, 0, 0, 0.12);
 $direction-X: X;
 $direction-Y: Y;
 $direction-Z: Z;
+$form-background: linear-gradient(219.77deg, #ff82f5, #3d86f3 99.17%);
 
-$position: (
-    relative,
-    absolute,
-    static,
-    fixed,
-    sticky,
-    unset
-) !default;
+$position: (relative, absolute, static, fixed, sticky, unset) !default;
 
-$text-transform: (
-    uppercase,
-    lowercase,
-    capitalize,
-    unset,
-    inherit
-) !default;
-$text-position: (
-    center,
-    start,
-    inherit,
-    unset,
-    end,
-    none
-) !default;
+$text-transform: (uppercase, lowercase, capitalize, unset, inherit) !default;
+$text-position: (center, start, inherit, unset, end, none) !default;
 @each $c, $value in $color {
-    .color-#{$c} {
-        color: $c;
-    }
-    .bg-#{$c} {
-        background: $c;
-    }
+  .color-#{$c} {
+    color: $c;
+  }
+  .bg-#{$c} {
+    background: $c;
+  }
 }
 
 @each $var in $weight {
-    .weight-#{$var} {
-        font-weight: $var;
-    }
+  .weight-#{$var} {
+    font-weight: $var;
+  }
 }

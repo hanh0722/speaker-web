@@ -1,5 +1,4 @@
 export interface UseInputState {
-    isValid: boolean,
     isTouched: boolean,
     value: string
 }

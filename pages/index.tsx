@@ -1,6 +1,8 @@
-import type { NextPage } from 'next'
+import { ReactElement } from 'react'
+import MainLayout from '../components/layout/MainLayout'
+import { NextPageWithLayout } from '../types/layout';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <div>
 
@@ -8,4 +10,12 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Home;
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <MainLayout>
+      {page}
+    </MainLayout>
+  )
+}

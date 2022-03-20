@@ -5,17 +5,24 @@
     .input {
         display: flex !important;
     }
-    padding-bottom: 20px;
-    position: relative;
-    .icon {
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-40%);
-    }
+    margin-bottom: 20px;
 }
 .form-icon {
     input {
         padding-right: 45px;
     }
+}
+.main {
+    position: relative;
+    .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        cursor: pointer;
+    }
+}
+.error {
+    color: red;
+    padding-top: 10px;
 }

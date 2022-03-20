@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  padding-top: 32px;
+  .icon {
+    @include flex(center, center);
+    background: $white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid $border;
+  }
+  .title {
+    padding-bottom: 16px;
+    @include flex(center, center);
+    gap: 16px;
+    span {
+      &:first-child,
+      &:last-child {
+        width: 48px;
+        height: 1px;
+        display: block;
+        border: 1px solid $black;
+      }
+    }
+  }
+}

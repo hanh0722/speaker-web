@@ -1,0 +1,58 @@
+.form {
+    height: 100vh;
+    position: relative;
+    .caret{
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+}
+.container {
+    padding: 20px 40px !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    gap: 50px;
+    @include tablet {
+        display: block !important;
+        padding: 24px !important;
+    }
+    .sidebar {
+        max-width: 464px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+        height: 100%;
+        @include padding(20, 40);
+        border-radius: 10px;
+        @include tablet {
+            height: auto;
+            max-width: 100%;
+            padding: 0;
+            box-shadow: none;
+            padding-bottom: 32px;
+        }
+    }
+    .logo{
+        width: 90px !important;
+        height: 35px !important;
+    }
+    .children {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        @include padding(20, 20);
+        border-radius: 8px;
+        @include tablet {
+            max-width: 100%;
+            box-shadow: none;
+            padding: 0;
+        }
+        .title {
+            padding-bottom: 20px;
+        }
+    }
+}

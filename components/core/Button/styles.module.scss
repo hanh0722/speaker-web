@@ -6,4 +6,7 @@
             background: $l-black !important;
         }
     }
+    &:disabled {
+        background: $disabled !important;
+    }
 }

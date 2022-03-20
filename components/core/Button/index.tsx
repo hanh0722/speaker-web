@@ -1,7 +1,7 @@
 import { Button as ButtonComponent } from "@mui/material";
 import PropTypes from "prop-types";
 import { FC } from "react";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 import { ButtonComponentProps } from "../../../types/component";
 import { classList } from "../../../utils/string";
 
@@ -10,7 +10,7 @@ const Button: FC<ButtonComponentProps> = (props) => {
   return (
     <ButtonComponent
       {...props}
-      className={classList(styles[`btn-${prefix}`] ,className)}
+      className={classList(styles.btn, styles[`btn-${prefix}`], className)}
       onClick={onClick}
       variant={variant}
     >
@@ -23,7 +23,7 @@ Button.defaultProps = {
   variant: "contained",
   onClick: () => {},
   className: "",
-  prefix: 'basic'
+  prefix: "basic",
 };
 
 Button.propTypes = {
@@ -34,7 +34,7 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   className: PropTypes.string,
-  prefix: PropTypes.oneOf(['basic', 'success'])
+  prefix: PropTypes.oneOf(["basic", "success"]),
 };
 
 export default Button;
