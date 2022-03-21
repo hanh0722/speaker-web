@@ -9,6 +9,9 @@ const nextConfig = {
     @import "module/_mixin.scss";
     `
   },
+  publicRuntimeConfig: {
+    BASE_URL: process.env['BASE_URL']
+  },
   optimizeFonts: true,
   webpack(config) {
     config.module.rules.push({

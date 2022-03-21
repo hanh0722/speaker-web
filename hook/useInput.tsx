@@ -1,10 +1,10 @@
-import { ChangeEvent, useReducer, Reducer } from "react";
+import { ChangeEvent, useReducer, Reducer, useMemo } from "react";
 import {
   UseInputActions,
   UseInputState,
   UseInputSerialize,
+  UseInputParams,
 } from "../types/hook";
-import { isFunction } from "../types/type";
 
 const initialState: UseInputState = {
   isTouched: false,
@@ -32,9 +32,14 @@ const reducerFunction: Reducer<UseInputState, UseInputActions> = (
   }
 };
 
-const useInput = (validateFunction: (value: string) => boolean) => {
+const useInput = (type?: 'or' | 'and' | null, ...args: Array<(value: string) => boolean>) => {
   const [state, dispatch] = useReducer(reducerFunction, initialState);
-  const isValid = validateFunction && validateFunction(state.value);
+  const isValid = useMemo(() => {
+    if (type === 'or') {
+      return args.some(functionValidate => functionValidate(state.value));
+    }
+    return args.every(functionValidate => functionValidate(state.value));
+  }, [state.value, args, type]);
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     dispatch({
@@ -42,7 +47,6 @@ const useInput = (validateFunction: (value: string) => boolean) => {
       payload: value,
     });
   };
-  
 
   const onTouchedHandler = () => {
     dispatch({

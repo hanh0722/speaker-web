@@ -16,3 +16,10 @@ export const isValidPassword = (value: string) => {
     return REGEX_PASSWORD.test(value);
 }
 
+export const isMobilePhone = (value: string) => {
+    if (value.length < 10 || value.length > 11) {
+        return false;
+    }
+    return true;
+}
+

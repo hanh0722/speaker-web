@@ -70,7 +70,8 @@ export interface RefElement<T> extends ClassNameProps {
 }
 
 export interface ButtonComponentProps extends ButtonProps {
-  prefix?: 'basic' | 'success'
+  prefix?: 'basic' | 'success',
+  isLoading?: boolean,
 }
 
 export interface BreadCrumbProps extends ClassNameProps {

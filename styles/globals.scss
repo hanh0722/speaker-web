@@ -32,3 +32,10 @@ body[data-active]{
 .app-container {
   padding-top: 90px;
 }
+.error-message {
+  padding-top: 20px;
+  @extend .text-center;
+  color: red;
+  @extend .f-14;
+  @extend .weight-500;
+}
