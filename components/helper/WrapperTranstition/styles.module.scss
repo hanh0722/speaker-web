@@ -1,0 +1,10 @@
+.transition {
+    transition: all .5s ease-in;
+    transform-origin: 50%;
+    transform: scale(1);
+    opacity: 1;
+}
+.active {
+    transform: scale(1.02);
+    opacity: .6;
+}

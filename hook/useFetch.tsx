@@ -22,7 +22,7 @@ const reducerFetchingFunction = <T extends BaseResponse, U extends BaseResponse>
         case UseFetchSerialize.ERROR: 
             return {
                 ...state,
-                error: action.payload,
+                error: action.payload as U,
                 isLoading: false
             }
         case UseFetchSerialize.SUCCESS:
@@ -74,7 +74,10 @@ const useFetch = <T extends ObjectProps>() => {
         }catch(err: any) {
             dispatch({
                 type: UseFetchSerialize.ERROR,
-                payload: err?.response?.data?.message || err?.message || "Server Internal Error"
+                payload: {
+                    message: err?.response?.data?.message || err?.message || "Server Internal Error",
+                    code: err?.code || err?.data?.code || err?.response?.status || 500
+                }
             })
         }
     }, [token]);

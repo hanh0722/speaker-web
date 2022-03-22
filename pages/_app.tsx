@@ -7,6 +7,7 @@ import "../styles/globals.scss";
 import { HeadGeneral } from "../components/common";
 import WrapperOptions from "../components/helper/WrapperOptions";
 import { AppPropsWithLayout } from "../types/layout";
+import WrapperTransition from "../components/helper/WrapperTranstition";
 
 const persistor = persistStore(store);
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
@@ -17,7 +18,9 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <WrapperOptions>
-            {getLayout(<Component {...pageProps} />)}
+            <WrapperTransition>
+              {getLayout(<Component {...pageProps} />)}
+            </WrapperTransition>
           </WrapperOptions>
         </PersistGate>
       </Provider>

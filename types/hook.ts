@@ -28,7 +28,7 @@ export interface ServerMessageResponse {
 export interface UseFetchState<T extends ObjectProps, U extends ObjectProps> {
     isLoading: boolean,
     data?: null | T,
-    error?: null | string | U
+    error?: null | U
 }
 
 export interface UseFetchActions {

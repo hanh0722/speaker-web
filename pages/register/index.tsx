@@ -1,25 +1,28 @@
 import React, { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import useInput from "../../hook/useInput";
 import { CheckBox } from "../../components/common";
-import { Button } from "../../components/core";
+import { Button, Link } from "../../components/core";
 import Input from "../../components/core/Input";
 import { FormAuth } from "../../components/layout";
 import styles from "./styles.module.scss";
 import { isRequired, isValidPassword } from "../../utils/string";
 import { IconEye } from "../../components/core/Icons";
 import { useRegister } from "../../service";
+import { VALIDATE_AFTER_REGISTER } from "../../constants/path";
 
 const Register = () => {
+  const router = useRouter();
   const [isCheck, setIsCheck] = useState(false);
   const [isTextType, setIsTextType] = useState(false);
-  const {data, error, isLoading, onRegister, onResetAsync} = useRegister();
+  const { data, error, isLoading, onRegister, onResetAsync } = useRegister();
   const {
     isValid: isValidUsername,
     isTouched: isTouchedUsername,
     onChangeHandler: onChangeUsername,
     onTouchedHandler: onTouchedUsername,
     value: username,
-  } = useInput('or', isRequired);
+  } = useInput("or", isRequired);
   const {
     isValid: isPassword,
     isTouched: isTouchedPassword,
@@ -33,7 +36,7 @@ const Register = () => {
     onChangeHandler: onChangeName,
     onTouchedHandler: onTouchedName,
     value: name,
-  } = useInput('and', isRequired);
+  } = useInput("and", isRequired);
 
   const onChangeType = () => {
     setIsTextType((prevState) => !prevState);
@@ -44,7 +47,7 @@ const Register = () => {
   useEffect(() => {
     return () => {
       onResetAsync();
-    }
+    };
   }, [onResetAsync]);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -53,7 +56,15 @@ const Register = () => {
     }
     onRegister(name, username, password);
   };
-  console.log(error);
+  useEffect(() => {
+    onResetAsync();
+  }, [username, password, name, onResetAsync]);
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      router.push(VALIDATE_AFTER_REGISTER);
+    }
+  }, [data, isLoading, router]);
   return (
     <>
       <FormAuth title="Register">
@@ -94,14 +105,16 @@ const Register = () => {
           <Button
             type="submit"
             isLoading={isLoading}
-            disabled={!isPassword || !isValidUsername || !isValidName || !isCheck}
+            disabled={
+              !isPassword || !isValidUsername || !isValidName || !isCheck
+            }
             className={styles.button}
             fullWidth
             size="large"
           >
             Register
           </Button>
-          {error && <p className={"error-message"}>{error}</p>}
+          {error && <p className={"error-message"}>{error?.message}</p>}
         </form>
       </FormAuth>
     </>

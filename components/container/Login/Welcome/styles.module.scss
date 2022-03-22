@@ -1,0 +1,15 @@
+.background {
+    background: $form-background;
+    transform: rotate(-180deg);
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+}
+.container {
+    position: relative;
+    min-height: 100vh;
+}
+.form {
+    z-index: 100;
+}

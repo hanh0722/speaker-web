@@ -7,5 +7,6 @@ export const LOGIN = '/login';
 export const WISHLIST = '/wishlist';
 export const CART = '/cart';
 export const REGISTER = '/register';
+export const VALIDATE_AFTER_REGISTER = '/validate';
 
-export const PATH_HIDDEN_NAVIGATION = [LOGIN, REGISTER];
+export const ROUTE_NOT_ACTIVE_TRANSITION = ['/'];
