@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 import Loading from "../Loading";
 
 const Image: FC<ImageProps> = (props) => {
-  const { className, src, alt, style, roundedLoading } = props;
+  const { className, src, alt, style } = props;
   const { onHandleErrorImage, onLoadImage, srcImage, isLoading } =
     useImage(src);
 

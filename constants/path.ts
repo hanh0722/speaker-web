@@ -9,4 +9,4 @@ export const CART = '/cart';
 export const REGISTER = '/register';
 export const VALIDATE_AFTER_REGISTER = '/validate';
 
-export const ROUTE_NOT_ACTIVE_TRANSITION = ['/'];
+export const ROUTE_ACTIVE_TRANSITION = ['/register'];

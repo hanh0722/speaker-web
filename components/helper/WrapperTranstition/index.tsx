@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { ClassNameProps } from "../../../types/string";
 import styles from "./styles.module.scss";
 import { classList } from "../../../utils/string";
-import { ROUTE_NOT_ACTIVE_TRANSITION } from "../../../constants/path";
+import { ROUTE_ACTIVE_TRANSITION } from "../../../constants/path";
 
 const WrapperTransition: FC<ClassNameProps> = (props) => {
   const { className, children } = props;
@@ -12,7 +12,7 @@ const WrapperTransition: FC<ClassNameProps> = (props) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (ROUTE_NOT_ACTIVE_TRANSITION.some((value) => value.includes(asPath))) {
+    if (!ROUTE_ACTIVE_TRANSITION.some((value) => value.includes(asPath))) {
       setDisplayChildren(children);
       return;
     }

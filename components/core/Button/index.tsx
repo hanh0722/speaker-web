@@ -38,7 +38,7 @@ Button.propTypes = {
   ]),
   onClick: PropTypes.func,
   className: PropTypes.string,
-  prefix: PropTypes.oneOf(["basic", "success"]),
+  prefix: PropTypes.oneOf(["basic", "normal"]),
   disabled: PropTypes.bool
 };
 

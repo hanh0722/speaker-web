@@ -1,4 +1,4 @@
-import { ChangeEvent, ElementType, RefObject } from "react";
+import { ChangeEvent, ElementType, ReactEventHandler, RefObject, SyntheticEvent } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
 import { ButtonProps } from "@mui/material";
@@ -20,10 +20,9 @@ export interface InputProps extends ClassNameProps {
 
 export interface ImageProps extends ClassNameProps {
   src: string;
-  onLoad?: () => {};
+  onLoad?: (event?: SyntheticEvent<HTMLImageElement>) => {};
   onError?: () => {};
   alt?: string;
-  roundedLoading?: boolean;
 }
 
 export interface SkeletonLoadingProps extends ClassNameProps {
@@ -70,7 +69,7 @@ export interface RefElement<T> extends ClassNameProps {
 }
 
 export interface ButtonComponentProps extends ButtonProps {
-  prefix?: 'basic' | 'success',
+  prefix?: 'basic' | 'normal',
   isLoading?: boolean,
 }
 
@@ -80,4 +79,10 @@ export interface BreadCrumbProps extends ClassNameProps {
 export interface CheckBoxProps extends ClassNameProps {
   isCheck?: boolean,
   onChangeCheck?: (value: boolean) => void;
+}
+
+export interface SocialLoginProps extends ClassNameProps {
+  isHiddenTitle?: boolean;
+  titleGoogle?: string;
+  titleFacebook?: string
 }

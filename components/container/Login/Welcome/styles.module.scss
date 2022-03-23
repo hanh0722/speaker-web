@@ -1,3 +1,8 @@
+@mixin box-content {
+    @include padding(10, 16);
+    font-weight: 500;
+    border-radius: 4px;
+}
 .background {
     background: $form-background;
     transform: rotate(-180deg);
@@ -9,7 +14,73 @@
 .container {
     position: relative;
     min-height: 100vh;
+    .image {
+        img {
+            width: 100%;
+        }
+        position: relative;
+        top: 4px;
+        z-index: -1;
+    }
 }
 .form {
+    @include padding(0, 15);
     z-index: 100;
+    .main-form {
+        @include padding(16, 16);
+        background: $white;
+        border-radius: 8px;
+    }
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    .social {
+        padding-top: 0;
+        display: block;
+        :global {
+            .container-social {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 12px;
+            }
+            .icon-component {
+                border: none;
+                width: 100%;
+                justify-content: flex-start;
+                height: auto;
+                @include box-content();
+                color: $white;
+                &:first-child {
+                    background: $fb-blue;
+                    svg path{
+                        fill: $white;
+                    }
+                }
+                &:last-child {
+                    background: $google-red;
+                    svg path{
+                        fill: $white;
+                    }
+                }
+                span {
+                    padding-left: 12px;
+                }
+            }
+        }
+    }
+}
+.login {
+    span {
+        padding-left: 12px;
+    }
+    @include box-content();
+    border: 1px solid $black;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.title {
+    padding-top: 16px;
+    a {
+        color: $blue;
+    }
 }
