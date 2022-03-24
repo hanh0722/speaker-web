@@ -15,7 +15,8 @@ export interface InputProps extends ClassNameProps {
   onBlur?: () => void;
   iconName?: ElementType;
   errorMessage?: string;
-  onClickIcon?: () => void
+  onClickIcon?: () => void;
+  ref?: RefObject<HTMLInputElement>
 }
 
 export interface ImageProps extends ClassNameProps {

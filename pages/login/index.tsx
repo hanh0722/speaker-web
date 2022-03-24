@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useRouter } from "next/router";
 import { WELCOME } from "../../constants/type";
-import { Welcome } from "../../components/container/Login";
+import { FormLogin, Welcome } from "../../components/container/Login";
 import { HeadGeneral } from "../../components/common";
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
   return (
     <>
       <HeadGeneral title="Login" />
-      {isWelcomePage ? <Welcome /> : <></>}
+      {isWelcomePage ? <Welcome /> : <FormLogin/>}
     </>
   );
 };

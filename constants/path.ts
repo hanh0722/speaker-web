@@ -8,5 +8,6 @@ export const WISHLIST = '/wishlist';
 export const CART = '/cart';
 export const REGISTER = '/register';
 export const VALIDATE_AFTER_REGISTER = '/validate';
+export const FORGET_PASSWORD = '/forget-password';
 
 export const ROUTE_ACTIVE_TRANSITION = ['/register'];

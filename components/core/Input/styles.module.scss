@@ -15,11 +15,19 @@
 .main {
     position: relative;
     .icon {
+        width: 25px;
+        height: 25px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         right: 20px;
         cursor: pointer;
+        @include flex(center, center);
+        button {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
     }
 }
 .error {
