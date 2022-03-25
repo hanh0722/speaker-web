@@ -8,6 +8,7 @@ import { HeadGeneral } from "../components/common";
 import WrapperOptions from "../components/helper/WrapperOptions";
 import { AppPropsWithLayout } from "../types/layout";
 import WrapperTransition from "../components/helper/WrapperTranstition";
+import UserWrapper from "../components/helper/UserWrapper";
 
 const persistor = persistStore(store);
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
@@ -17,11 +18,13 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       <HeadGeneral />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <WrapperOptions>
-            <WrapperTransition>
-              {getLayout(<Component {...pageProps} />)}
-            </WrapperTransition>
-          </WrapperOptions>
+          <UserWrapper>
+            <WrapperOptions>
+              <WrapperTransition>
+                {getLayout(<Component {...pageProps} />)}
+              </WrapperTransition>
+            </WrapperOptions>
+          </UserWrapper>
         </PersistGate>
       </Provider>
     </>

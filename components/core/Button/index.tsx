@@ -7,10 +7,10 @@ import { classList } from "../../../utils/string";
 import { LoadingSpinner } from "../../common";
 
 const Button: FC<ButtonComponentProps> = (props) => {
-  const { children, variant, onClick, className, prefix, isLoading, disabled } = props;
+  const { children, variant, onClick, className, prefix, isLoading, disabled, ...Props } = props;
   return (
     <ButtonComponent
-      {...props}
+      {...Props}
       className={classList(styles.btn, styles[`btn-${prefix}`], className)}
       onClick={onClick}
       variant={variant}

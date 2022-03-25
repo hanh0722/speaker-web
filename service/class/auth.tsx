@@ -5,10 +5,14 @@ const request = axios.create({
     url: BASE_URL,
 });
 
-const onLogin = (username: string, password: string) => {
+const onLogin = (username?: string, password?: string, token?: string) => {
     return request.post(`${BASE_URL}/api/auth/login`, {
         username,
         password   
+    }, {
+      headers: {
+        authorization: 'Bearer ' + (token || '')
+      }
     });
 }
 

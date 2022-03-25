@@ -14,12 +14,17 @@ import { IconEye } from "../../../core/Icons";
 import { FormAuth } from "../../../layout";
 import { onLogin } from "../../../../service/class/auth";
 import styles from "./styles.module.scss";
+import { isValidPassword } from "../../../../utils/string";
+import { ObjectProps } from "../../../../types/base";
 
 interface FormLoginState {
   isLoading: boolean;
   isActivePassword: boolean;
   username: string;
   password: string;
+  error: null | string;
+  isChecked: boolean;
+  data: null | ObjectProps
 }
 
 class FormLogin extends Component<ClassNameProps, FormLoginState> {
@@ -27,12 +32,19 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
   constructor(props: ClassNameProps) {
     super(props);
     this.state = {
+      error: null,
       isLoading: false,
+      data: null,
       isActivePassword: false,
       username: "",
       password: "",
+      isChecked: false
     };
     this.usernameRef = createRef<HTMLInputElement>();
+  }
+  
+  componentWillUnmount() {
+    this._onResetState();
   }
   _onChangeType = () => {
     this.setState((prevState) => {
@@ -43,15 +55,18 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
     });
   };
   _onChangeUsername = (event: ChangeEvent) => {
+    this._onResetState();
     const { value } = event.target as HTMLInputElement;
     this.setState({ username: value });
   };
   _onChangePassword = (event: ChangeEvent) => {
+    this._onResetState();
     const { value } = event.target as HTMLInputElement;
     this.setState({ password: value });
   };
 
   _onSubmit = (event: FormEvent) => {
+    this._onResetState();
     const { username, password } = this.state;
     event.preventDefault();
     if (!username || !password) {
@@ -59,19 +74,44 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
     }
     this._onLoginUser();
   };
+  _onResetState = () => {
+    this.setState({
+      isLoading: false,
+      data: null,
+      error: null
+    })
+  }
 
   _onLoginUser = async () => {
     const { username, password } = this.state;
+    if (!isValidPassword(password) || !username) {
+      return;
+    }
     try {
-        const response = await onLogin(username, password);
-        console.log(response);
+      this.setState({ isLoading: true });
+      const response = await onLogin(username, password);
+      this.setState({
+        isLoading: false
+      })
     } catch (err: any) {
-        console.log(err.response);
+      this.setState({
+        isLoading: false,
+        error: err.response?.data?.message
+      })
     }
   };
+  _onChangeCheck = () => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        isChecked: !prevState.isChecked
+      }
+    })
+  }
 
   render(): ReactNode {
-    const { isActivePassword, username, password } = this.state;
+    console.log(this.state.error);
+    const { isActivePassword, username, password, isChecked, isLoading, error } = this.state;
     return (
       <FormAuth>
         <form onSubmit={this._onSubmit}>
@@ -91,13 +131,15 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
             className={`d-flex align-center justify-between ${styles.remember}`}
           >
             <div className={`d-flex align-center ${styles["check-box"]}`}>
-              <CheckBox />
+              <CheckBox isCheck={isChecked} onChangeCheck={this._onChangeCheck}/>
               <span>Remember me</span>
             </div>
             <Link href={FORGET_PASSWORD}>Forgot password?</Link>
           </div>
+          {error && <p className={`text-center ${styles.error}`}>{error}</p>}
           <Button
-            disabled={!username || !password}
+            isLoading={isLoading}
+            disabled={!username || !isValidPassword(password)}
             type="submit"
             fullWidth
             size="large"
@@ -109,5 +151,6 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
     );
   }
 }
+
 
 export default FormLogin;

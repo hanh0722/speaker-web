@@ -87,3 +87,7 @@ export interface SocialLoginProps extends ClassNameProps {
   titleGoogle?: string;
   titleFacebook?: string
 }
+
+export interface LoginFormProps extends ClassNameProps {
+  onLogin: (username: string, password: string) => void;
+}
