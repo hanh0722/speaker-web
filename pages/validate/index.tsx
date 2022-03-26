@@ -18,7 +18,7 @@ const Validate: NextPageWithLayout = (props) => {
 
   const onSubmitForm = (event: FormEvent) => {
     event.preventDefault();
-    const username = router.query['username'] as string;
+    const username = router.query["username"] as string;
     if (!isValid || !username) {
       return;
     }
@@ -29,17 +29,17 @@ const Validate: NextPageWithLayout = (props) => {
       router.push({
         pathname: VALIDATE_OTP,
         query: {
-          username: router.query['username']
-        }
-      })
+          username: router.query["username"],
+        },
+      });
     }
   }, [isLoading, data, router]);
   useEffect(() => {
     return () => {
       onResetAsync();
-    }
+    };
   }, [onResetAsync]);
-  
+
   return (
     <>
       <HeadGeneral title="Validate Account | Store" />
