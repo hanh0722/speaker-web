@@ -14,3 +14,7 @@ export type AppPropsWithLayout = AppProps & {
 export interface FormAuthLayoutProps extends ClassNameProps {
   title?: string
 }
+
+export interface AuthBasicLayoutProps extends ClassNameProps {
+  title?: string
+}

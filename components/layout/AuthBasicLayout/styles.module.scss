@@ -1,0 +1,43 @@
+.container {
+  padding: 60px 20px 20px 20px;
+  min-height: 100vh;
+  background: url('/BG.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  @include tablet {
+    background-position: center center;
+  }
+}
+.main {
+  @include padding(24, 0);
+  max-width: 600px !important;
+  border: 1px solid $border;
+  border-radius: 4px;
+  margin-top: 24px;
+  @include tablet {
+    max-width: 100% !important;
+    border: none;
+    margin-top: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .title {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 12px;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: $black;
+      border-radius: 2px;
+    }
+  }
+}
+.content {
+  padding-top: 32px;
+}

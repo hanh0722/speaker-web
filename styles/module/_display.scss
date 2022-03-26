@@ -38,7 +38,9 @@ $position: (
     .h-#{$i} {
         height: percentage($number: $i);
     }
-
+    .lh-#{$i} {
+      line-height: #{$i}px;
+    }
 }
 
 @for $i from 1 to 5 {

@@ -1,4 +1,4 @@
-export interface UserPayload {
+export interface User {
   _id: string;
   username: string;
   name: string;
@@ -9,8 +9,17 @@ export interface UserPayload {
 }
 export interface UserState {
   isLoading: boolean;
-  user: UserPayload | null;
+  user: User | null;
   isLoggedIn: boolean;
   token: string | null;
-  error: null | any
+  error: null | any;
+  timeout: null | number;
+  expiration: boolean
+}
+
+export interface UserPayload {
+  payload: {
+    user: User,
+    token: string
+  }
 }

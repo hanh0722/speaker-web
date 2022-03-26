@@ -1,0 +1,41 @@
+@mixin enter {
+  opacity: 0;
+}
+@mixin active {
+  opacity: 1;
+}
+
+.enter {
+  @include enter();
+}
+.enter-active {
+  @include active();
+  transition: all 0.3s ease-out;
+}
+.exit {
+  @include active();
+}
+.exit-active {
+  @include enter();
+  transition: all 0.3s ease-out;
+}
+.header, .footer {
+  @include padding(20, 20);
+}
+.body {
+  @include padding(20, 20);
+}
+.main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: $white;
+  padding: 20px;
+}
+.modal-{
+  &sm {
+    
+  }
+}

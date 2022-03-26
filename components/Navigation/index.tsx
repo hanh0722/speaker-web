@@ -1,6 +1,7 @@
 import React, { FC, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
 import { Link, Container, Image, Button } from "../core";
 import { Cart } from "../container";
@@ -23,7 +24,6 @@ import {
   REGISTER
 } from "../../constants/path";
 import Hamburger from "../common/Hamburger";
-import { CSSTransition } from "react-transition-group";
 import useDropdown from "../../hook/useDropdown";
 import Modal from "../common/Modal";
 import SearchField from "./SearchField";
@@ -51,7 +51,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
   const renderListItem = () => {
     return (
       <ul ref={listRef} className={`d-flex ${styles.list}`}>
-        <Link href={HOME}>
+        <Link activeClassname={styles.active} href={HOME}>
           <li>Home</li>
           <IconCaret variant="sm" />
         </Link>
@@ -135,11 +135,11 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
               </li>
               {!isMobile && (
                 <>
-                  <Link href={`${LOGIN}?welcome=true`}>
+                  {!user && <Link href={`${LOGIN}?welcome=true`}>
                     <li data-hover="Account">
                       <IconPeople variant={isMobile ? "md" : "lg"} />
                     </li>
-                  </Link>
+                  </Link>}
                   <Link href={WISHLIST}>
                     <li data-hover="Wishlist">
                       <IconStar variant={isMobile ? "md" : "lg"} />

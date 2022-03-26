@@ -4,6 +4,18 @@
   transition: all 0.3s ease-in-out;
   transform: translateY(5px);
 }
+.active {
+  color: $black !important;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    background: $black;
+    width: 100%;
+  }
+}
 
 .image {
   width: 90px;
@@ -29,6 +41,7 @@
   align-items: center;
   ul {
     list-style: none;
+    height: 100%;
   }
   a {
     text-decoration: none;
@@ -42,25 +55,16 @@
   padding-left: 32px;
   li {
     @include padding(8, 0);
-    position: relative;
-    &::before {
-      content: "";
-      transition: all 0.3s ease-in-out;
-      background: $black;
-      width: 0;
-      height: 2px;
-      position: absolute;
-      bottom: 0;
-    }
   }
   a {
     @include margin(0, 16);
     text-transform: uppercase;
     @extend .weight-500;
+    position: relative;
+    color: $dark-gray;
+    transition: all .15s ease-in-out;
     &:hover {
-      li:before {
-        width: 100%;
-      }
+      color: $black
     }
     @include flex(center, center);
     svg {

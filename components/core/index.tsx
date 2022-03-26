@@ -5,6 +5,7 @@ import Loading from "./Loading";
 import SkeletonLoading from "./SkeletonLoading";
 import Link from "./Link";
 import Button from "./Button";
+import Modal from "./Modal";
 
 export {
     Image,
@@ -13,5 +14,6 @@ export {
     Loading,
     SkeletonLoading,
     Link,
-    Button
+    Button,
+    Modal
 }

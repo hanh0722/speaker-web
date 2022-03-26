@@ -1,21 +1,13 @@
-import { ReactElement } from 'react'
-import MainLayout from '../components/layout/MainLayout'
-import { NextPageWithLayout } from '../types/layout';
+import { ReactElement } from "react";
+import MainLayout from "../components/layout/MainLayout";
+import { NextPageWithLayout } from "../types/layout";
 
 const Home: NextPageWithLayout = () => {
-  return (
-    <div>
-
-    </div>
-  )
-}
+  return <div></div>;
+};
 
 export default Home;
 
 Home.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <MainLayout>
-      {page}
-    </MainLayout>
-  )
-}
+  return <MainLayout>{page}</MainLayout>;
+};

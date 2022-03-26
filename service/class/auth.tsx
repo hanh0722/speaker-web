@@ -1,21 +1,28 @@
 import axios from "axios";
+import { UserResponse } from "../../types/request";
 import { BASE_URL } from "../../utils/config";
 
 const request = axios.create({
-    url: BASE_URL,
+  url: BASE_URL,
 });
 
-const onLogin = (username?: string, password?: string, token?: string) => {
-    return request.post(`${BASE_URL}/api/auth/login`, {
-        username,
-        password   
-    }, {
+const onLogin = <T extends UserResponse>(
+  username?: string,
+  password?: string,
+  token?: string
+) => {
+  return request.post<T>(
+    `${BASE_URL}/api/auth/login`,
+    {
+      username,
+      password,
+    },
+    {
       headers: {
-        authorization: 'Bearer ' + (token || '')
-      }
-    });
-}
+        authorization: "Bearer " + (token || ""),
+      },
+    }
+  );
+};
 
-export {
-    onLogin
-}
+export { onLogin };

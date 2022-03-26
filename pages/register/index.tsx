@@ -1,8 +1,8 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useInput from "../../hook/useInput";
-import { CheckBox } from "../../components/common";
-import { Button, Link } from "../../components/core";
+import { CheckBox, HeadGeneral } from "../../components/common";
+import { Button } from "../../components/core";
 import Input from "../../components/core/Input";
 import { FormAuth } from "../../components/layout";
 import styles from "./styles.module.scss";
@@ -62,11 +62,17 @@ const Register = () => {
 
   useEffect(() => {
     if (!isLoading && data) {
-      router.push(VALIDATE_AFTER_REGISTER);
+      router.push({
+        pathname: VALIDATE_AFTER_REGISTER,
+        query: {
+          username: username
+        }
+      })
     }
-  }, [data, isLoading, router]);
+  }, [data, isLoading, router, username]);
   return (
     <>
+    <HeadGeneral title="Register | Store"/>
       <FormAuth title="Register">
         <form onSubmit={onSubmit}>
           <Input

@@ -1,4 +1,9 @@
-import { ChangeEvent, ElementType, ReactEventHandler, RefObject, SyntheticEvent } from "react";
+import {
+  ChangeEvent,
+  ElementType,
+  RefObject,
+  SyntheticEvent,
+} from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
 import { ButtonProps } from "@mui/material";
@@ -16,7 +21,8 @@ export interface InputProps extends ClassNameProps {
   iconName?: ElementType;
   errorMessage?: string;
   onClickIcon?: () => void;
-  ref?: RefObject<HTMLInputElement>
+  ref?: RefObject<HTMLInputElement>;
+  value?: string
 }
 
 export interface ImageProps extends ClassNameProps {
@@ -35,18 +41,19 @@ export interface SkeletonLoadingProps extends ClassNameProps {
 export interface LinkProps extends ClassNameProps, NextLinkProps {
   blank?: boolean;
   onClick?: () => void;
+  activeClassname?: string
 }
 
 export interface IconWrapperProps extends ClassNameProps {
   icon?: ElementType;
-  variant?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  variant?: "sm" | "md" | "lg" | "xl" | "xxl";
   onClick?: () => void;
 }
 
 export interface HamburgerProps extends ClassNameProps {
   variant?: number;
   onClick?: () => void;
-  ref?: RefObject<HTMLDivElement> | undefined
+  ref?: RefObject<HTMLDivElement> | undefined;
 }
 
 export interface ModalProps extends ClassNameProps {
@@ -58,36 +65,41 @@ export interface SearchFieldProps extends ClassNameProps {
   isOpenSearchField: boolean;
 }
 
-export interface CartProps extends ClassNameProps {
-}
+export interface CartProps extends ClassNameProps {}
 
 export interface ScrollViewProps extends ClassNameProps {
-  scrollable?: boolean
+  scrollable?: boolean;
 }
 
 export interface RefElement<T> extends ClassNameProps {
-  ref?: RefObject<T>
+  ref?: RefObject<T>;
 }
 
 export interface ButtonComponentProps extends ButtonProps {
-  prefix?: 'basic' | 'normal',
-  isLoading?: boolean,
+  prefix?: "basic" | "normal";
+  isLoading?: boolean;
 }
 
 export interface BreadCrumbProps extends ClassNameProps {
-  title?: string
+  title?: string;
 }
 export interface CheckBoxProps extends ClassNameProps {
-  isCheck?: boolean,
+  isCheck?: boolean;
   onChangeCheck?: (value: boolean) => void;
 }
 
 export interface SocialLoginProps extends ClassNameProps {
   isHiddenTitle?: boolean;
   titleGoogle?: string;
-  titleFacebook?: string
+  titleFacebook?: string;
+}
+export interface ModalExtendsProps extends ModalProps {
+  show: boolean;
+  onHide?: () => void;
+  variant?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  scrollable?: boolean
 }
 
-export interface LoginFormProps extends ClassNameProps {
-  onLogin: (username: string, password: string) => void;
+export interface PieceModalProps extends ClassNameProps {
+  onHide?: () => void;
 }

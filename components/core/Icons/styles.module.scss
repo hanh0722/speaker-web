@@ -1,25 +1,26 @@
 .icon {
+  width: 20px;
+  height: 20px;
+  @include flex(center, center);
+  &.md {
+    width: 16px;
+    height: 16px;
+  }
+  &.lg {
     width: 20px;
     height: 20px;
-    @include flex(center, center);
-    &.md {
-        width: 16px;
-        height: 16px;
-    }
-    &.lg {
-        width: 20px;
-        height: 20px;
-    }
-    &.sm {
-        width: 12px;
-        height: 12px;
-    }
-    &.xl {
-        width: 24px;
-        height: 24px;
-    }
-    &.xxl {
-        width: 30px;
-        height: 30px;
-    }
+  }
+  &.sm {
+    width: 12px;
+    height: 12px;
+  }
+  &.xl {
+    width: 24px;
+    height: 24px;
+  }
+  &.xxl {
+    width: 30px;
+    height: 30px;
+  }
+  cursor: pointer;
 }

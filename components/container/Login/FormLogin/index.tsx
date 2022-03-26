@@ -1,13 +1,7 @@
-import {
-  ChangeEvent,
-  Component,
-  createRef,
-  FormEvent,
-  ReactNode,
-  RefObject,
-} from "react";
-import { FORGET_PASSWORD } from "../../../../constants/path";
-import { ClassNameProps } from "../../../../types/string";
+import { ChangeEvent, Component, FormEvent, ReactNode } from "react";
+import { withRouter } from "next/router";
+import { connect } from "react-redux";
+import { FORGET_PASSWORD, HOME, REGISTER } from "../../../../constants/path";
 import { CheckBox } from "../../../common";
 import { Button, Input, Link } from "../../../core";
 import { IconEye } from "../../../core/Icons";
@@ -15,21 +9,17 @@ import { FormAuth } from "../../../layout";
 import { onLogin } from "../../../../service/class/auth";
 import styles from "./styles.module.scss";
 import { isValidPassword } from "../../../../utils/string";
-import { ObjectProps } from "../../../../types/base";
+import {
+  FormLoginState,
+  LoginFormProps,
+  mapDispatchToProps,
+} from "../../../../types/page";
+import { UserResponse } from "../../../../types/request";
+import { RootState } from "../../../../store";
+import { onLoginUser } from "../../../../utils/login";
 
-interface FormLoginState {
-  isLoading: boolean;
-  isActivePassword: boolean;
-  username: string;
-  password: string;
-  error: null | string;
-  isChecked: boolean;
-  data: null | ObjectProps
-}
-
-class FormLogin extends Component<ClassNameProps, FormLoginState> {
-  usernameRef: RefObject<HTMLInputElement>;
-  constructor(props: ClassNameProps) {
+class FormLogin extends Component<LoginFormProps, FormLoginState> {
+  constructor(props: LoginFormProps) {
     super(props);
     this.state = {
       error: null,
@@ -38,11 +28,9 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
       isActivePassword: false,
       username: "",
       password: "",
-      isChecked: false
+      isChecked: false,
     };
-    this.usernameRef = createRef<HTMLInputElement>();
   }
-  
   componentWillUnmount() {
     this._onResetState();
   }
@@ -64,7 +52,6 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
     const { value } = event.target as HTMLInputElement;
     this.setState({ password: value });
   };
-
   _onSubmit = (event: FormEvent) => {
     this._onResetState();
     const { username, password } = this.state;
@@ -78,40 +65,48 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
     this.setState({
       isLoading: false,
       data: null,
-      error: null
-    })
-  }
-
+      error: null,
+    });
+  };
   _onLoginUser = async () => {
+    const { onSetUser, router } = this.props;
     const { username, password } = this.state;
     if (!isValidPassword(password) || !username) {
       return;
     }
     try {
       this.setState({ isLoading: true });
-      const response = await onLogin(username, password);
+      const response = await onLoginUser(username, password);
       this.setState({
-        isLoading: false
-      })
+        isLoading: false,
+      });
+      const { token, user } = response as UserResponse;
+      onSetUser(user, token);
+      router.push("/");
     } catch (err: any) {
       this.setState({
         isLoading: false,
-        error: err.response?.data?.message
-      })
+        error: err || err?.message || "Server Internal Error",
+      });
     }
   };
   _onChangeCheck = () => {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
         ...prevState,
-        isChecked: !prevState.isChecked
-      }
-    })
-  }
-
+        isChecked: !prevState.isChecked,
+      };
+    });
+  };
   render(): ReactNode {
-    console.log(this.state.error);
-    const { isActivePassword, username, password, isChecked, isLoading, error } = this.state;
+    const {
+      isActivePassword,
+      username,
+      password,
+      isChecked,
+      isLoading,
+      error,
+    } = this.state;
     return (
       <FormAuth>
         <form onSubmit={this._onSubmit}>
@@ -119,22 +114,32 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
             <p className="f-20 weight-500">Login to Regler</p>
             <p>Enter your details below</p>
           </div>
-          <Input placeholder="Username..." onChange={this._onChangeUsername} />
+          <Input
+            label="Username..."
+            onChange={this._onChangeUsername}
+            value={username}
+          />
           <Input
             type={isActivePassword ? "text" : "password"}
-            placeholder="Password..."
+            label="Password..."
             iconName={IconEye}
             onClickIcon={this._onChangeType}
             onChange={this._onChangePassword}
+            value={password}
           />
           <div
             className={`d-flex align-center justify-between ${styles.remember}`}
           >
             <div className={`d-flex align-center ${styles["check-box"]}`}>
-              <CheckBox isCheck={isChecked} onChangeCheck={this._onChangeCheck}/>
+              <CheckBox
+                isCheck={isChecked}
+                onChangeCheck={this._onChangeCheck}
+              />
               <span>Remember me</span>
             </div>
-            <Link href={FORGET_PASSWORD}>Forgot password?</Link>
+            <Link href={FORGET_PASSWORD}>
+              <p>Forgot password?</p>
+            </Link>
           </div>
           {error && <p className={`text-center ${styles.error}`}>{error}</p>}
           <Button
@@ -146,11 +151,24 @@ class FormLogin extends Component<ClassNameProps, FormLoginState> {
           >
             Log in
           </Button>
+          <Link href={REGISTER}>
+            <p className={`text-end f-14 ${styles.register}`}>
+              {"Doesn't have an account?"} Register now
+            </p>
+          </Link>
         </form>
       </FormAuth>
     );
   }
 }
 
+const mapStateToProps = (state: RootState) => {
+  return {
+    user: state.user,
+  };
+};
 
-export default FormLogin;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(FormLogin));
