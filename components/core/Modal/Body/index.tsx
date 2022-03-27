@@ -1,28 +1,33 @@
 import React, { FC } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { PieceModalProps } from "../../../../types/component";
 import { classList } from "../../../../utils/string";
-import styles from '../styles.module.scss';
+import styles from "../styles.module.scss";
+import { IconClose } from "../../Icons";
 
 const ModalBody: FC<PieceModalProps> = (props) => {
-  const {className, children, style} = props;
+  const { className, children, style, closeBody } = props;
   return (
-    <div style={{...style}} className={classList(styles.body, className)}>
+    <div
+      style={{ ...style }}
+      className={classList(styles.body, className, "body")}
+    >
+      {closeBody && <IconClose className={styles.close}/>}
       {children}
     </div>
-  )
-}
+  );
+};
 
 ModalBody.defaultProps = {
-  className: '',
+  className: "",
   children: null,
-  style: {}
+  style: {},
 };
 
 ModalBody.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  style: PropTypes.object
-}
+  style: PropTypes.object,
+};
 
 export default ModalBody;

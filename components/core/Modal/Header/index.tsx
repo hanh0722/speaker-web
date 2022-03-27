@@ -9,7 +9,8 @@ const ModalHeader: FC<PieceModalProps> = (props) => {
   const {children, className, onHide, ...Props} = props;
   return (
     <div {...Props} className={classList(styles.header, className)}>
-      <IconClose onClick={onHide}/>
+      <IconClose variant="lg" className={styles.close} onClick={onHide}/>
+      {children}
     </div>
   )
 }

@@ -1,12 +1,14 @@
 import {
   ChangeEvent,
   ElementType,
+  KeyboardEventHandler,
   RefObject,
   SyntheticEvent,
 } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
-import { ButtonProps } from "@mui/material";
+import { ButtonProps, InputBaseProps } from "@mui/material";
+import { ObjectProps } from "./base";
 
 export interface InputProps extends ClassNameProps {
   type?: string;
@@ -22,7 +24,9 @@ export interface InputProps extends ClassNameProps {
   errorMessage?: string;
   onClickIcon?: () => void;
   ref?: RefObject<HTMLInputElement>;
-  value?: string
+  value?: string;
+  inputProps?: ObjectProps;
+  onKeyDown?: (event: any) => void;
 }
 
 export interface ImageProps extends ClassNameProps {
@@ -46,7 +50,7 @@ export interface LinkProps extends ClassNameProps, NextLinkProps {
 
 export interface IconWrapperProps extends ClassNameProps {
   icon?: ElementType;
-  variant?: "sm" | "md" | "lg" | "xl" | "xxl";
+  variant?: "sm" | "md" | "lg" | "xl" | "xxl" | "unset";
   onClick?: () => void;
 }
 
@@ -97,9 +101,20 @@ export interface ModalExtendsProps extends ModalProps {
   show: boolean;
   onHide?: () => void;
   variant?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
-  scrollable?: boolean
+  scrollable?: boolean;
+  center?: boolean
 }
 
 export interface PieceModalProps extends ClassNameProps {
   onHide?: () => void;
+  closeBody?: boolean
+}
+
+export interface InputOTPProps extends ClassNameProps {
+  inputs: number;
+  onGet?: (value: Array<number | null>) => void;
+}
+
+export interface GridProps extends ClassNameProps {
+  cols?: number
 }

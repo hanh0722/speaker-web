@@ -1,4 +1,5 @@
 import React, { FormEvent, ReactElement, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Input } from "../../components/core";
 import { HeadGeneral } from "../../components/common";
 import { AuthBasicLayout } from "../../components/layout";
@@ -8,8 +9,12 @@ import { isEmail, isMobilePhone } from "../../utils/string";
 import { useAuthenticate } from "../../service/auth";
 import { useRouter } from "next/router";
 import { VALIDATE_OTP } from "../../constants/path";
+import { AppDispatch, RootState } from "../../store";
+import { authActions } from "../../store/slices/auth";
 
 const Validate: NextPageWithLayout = (props) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const username = useSelector<RootState>(state => state.auth.username) as string;
   const router = useRouter();
   const { data, error, isLoading, onAuthenticate, onResetAsync } =
     useAuthenticate();
@@ -18,7 +23,6 @@ const Validate: NextPageWithLayout = (props) => {
 
   const onSubmitForm = (event: FormEvent) => {
     event.preventDefault();
-    const username = router.query["username"] as string;
     if (!isValid || !username) {
       return;
     }
@@ -26,14 +30,16 @@ const Validate: NextPageWithLayout = (props) => {
   };
   useEffect(() => {
     if (!isLoading && data) {
+      dispatch(authActions.onSetAuth({
+        username: username,
+        type: isEmail(value) ? 'Email' : 'Mobile Phone',
+        validate_info: value
+      }))
       router.push({
         pathname: VALIDATE_OTP,
-        query: {
-          username: router.query["username"],
-        },
       });
     }
-  }, [isLoading, data, router]);
+  }, [isLoading, data, router, value, dispatch, username]);
   useEffect(() => {
     return () => {
       onResetAsync();

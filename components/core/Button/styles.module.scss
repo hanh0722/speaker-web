@@ -1,12 +1,12 @@
-.btn{
-    &-basic {
-        background: $black !important;
-        color: $white !important;
-        &:hover {
-            background: $l-black !important;
-        }
+.btn {
+  &-basic {
+    background: $black !important;
+    color: $white !important;
+    &:hover {
+      background: $l-black !important;
     }
-    &:disabled {
-        background: $disabled !important;
-    }
+  }
+  &:disabled {
+    background: $disabled !important;
+  }
 }

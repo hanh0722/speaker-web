@@ -4,11 +4,13 @@ import BreadCrumb from "./BreadCrumb";
 import Hamburger from "./Hamburger";
 import CheckBox from "./CheckBox";
 import LoadingSpinner from "./LoadingSpinner";
+import InputOTP from "./InputOTP";
 export {
     HeadGeneral,
     Modal,
     Hamburger,
     BreadCrumb,
     CheckBox,
-    LoadingSpinner
+    LoadingSpinner,
+    InputOTP
 }

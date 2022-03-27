@@ -1,0 +1,35 @@
+.title {
+  color: $dark-gray;
+}
+.container {
+  background: $white;
+}
+.info {
+  padding-top: 10px;
+  padding-bottom: 16px;
+}
+.time {
+  color: $dark-gray;
+  span {
+    color: $black;
+    font-weight: 500;
+  }
+}
+.otp {
+  padding-top: 32px;
+}
+.resend {
+  padding-top: 16px;
+  color: $dark-gray;
+  span {
+    color: $blue;
+    cursor: pointer;
+  }
+}
+.button {
+  padding-top: 16px;
+}
+.error {
+  padding-top: 16px;
+  color: red;
+}

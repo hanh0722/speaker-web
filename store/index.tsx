@@ -16,6 +16,7 @@ import {
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { isClient } from "../utils/server";
 import { uiSlice, userSlice } from "./slices";
+import authSlice from "./slices/auth";
 import cartSlice from "./slices/cart";
 
 const createNoopStorage = () => {
@@ -35,7 +36,8 @@ const createNoopStorage = () => {
 const reducers = combineReducers({
   user: userSlice.reducer,
   ui: uiSlice.reducer,
-  cart: cartSlice.reducer
+  cart: cartSlice.reducer,
+  auth: authSlice.reducer
 });
 
 const storage = isClient() ? createWebStorage("local") : createNoopStorage();

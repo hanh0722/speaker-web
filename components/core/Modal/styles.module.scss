@@ -19,23 +19,73 @@
   @include enter();
   transition: all 0.3s ease-out;
 }
-.header, .footer {
-  @include padding(20, 20);
+.container {
+
+}
+.header {
+  font-size: 20px;
+  font-weight: 500;
+  position: relative;
+  padding: 20px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 1rem;
+}
+.footer {
+  padding-bottom: 20px;
 }
 .body {
-  @include padding(20, 20);
+  padding: 20px;
+  .close {
+    top: 20px;
+    transform: translateY(0);
+  }
 }
 .main {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
   background: $white;
-  padding: 20px;
+  width: 100%;
+  border-radius: 8px;
+  max-height: calc(100vh - 100px);
+  @include mobile {
+    max-width: 90%!important;
+  }
+}
+.scroll {
+  .body {
+    overflow-y: scroll;
+    flex-grow: 1;
+  }
+}
+.center {
+  .header {
+    text-align: center;
+  }
 }
 .modal-{
   &sm {
-    
+    max-width: 375px;
+  }
+  &md {
+    max-width: 500px;
+  }
+  &lg {
+    max-width: 768px;
+  }
+  &xl {
+    max-width: 1024px;
+  }
+  &full {
+    max-width: 100%;
   }
 }

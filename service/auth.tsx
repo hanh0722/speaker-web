@@ -58,3 +58,24 @@ export const useAuthenticate = () => {
     onAuthenticate,
   };
 };
+
+export const useCheckOTPService = () => {
+  const {isLoading, data, error, request, onResetAsync} = useFetch<BaseResponse>();
+  const onCheckOTP = useCallback((username: string, otp: number) => {
+    request({
+      url: `${AUTH_URL}/validate`,
+      method: 'POST',
+      data: {
+        username,
+        otp
+      }
+    })
+  }, [request]);
+  return {
+    isLoading,
+    data,
+    error,
+    onResetAsync,
+    onCheckOTP
+  }
+}

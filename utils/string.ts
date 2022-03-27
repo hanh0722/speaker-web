@@ -1,6 +1,6 @@
 import { REGEX_PASSWORD } from "../constants/string";
 
-export const classList = (...args: Array<string | undefined | number | null | boolean>) => {
+export const classList = (...args: Array<any>) => {
     return args.filter(item => !!item).join(' ');
 }
 
@@ -23,3 +23,14 @@ export const isMobilePhone = (value: string) => {
     return true;
 }
 
+export const convertToOTP = (array: Array<number | null>) => {
+  try{
+    const isNotValid = array.some(value => !value);
+    if (isNotValid) {
+      return null;
+    }
+    return +array.join('')
+  }catch(err) {
+    return null;
+  }
+}

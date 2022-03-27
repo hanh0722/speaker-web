@@ -11,7 +11,7 @@ import ModalBody from "./Body";
 import ModalFooter from "./Footer";
 
 const Modal: FC<ModalExtendsProps> = (props) => {
-  const { show, children, onHide, variant, scrollable } = props;
+  const { show, children, onHide, variant, scrollable, center } = props;
   return (
     <>
       {ReactDOM.createPortal(
@@ -34,7 +34,12 @@ const Modal: FC<ModalExtendsProps> = (props) => {
                 onClick={onHide}
               />
               <div
-                className={classList(styles.main, styles[`modal-${variant}`])}
+                className={classList(
+                  styles.main,
+                  styles[`modal-${variant}`],
+                  scrollable && styles.scroll,
+                  center && styles.center
+                )}
               >
                 {children}
               </div>
@@ -64,8 +69,9 @@ Modal.propTypes = {
   variant: PropTypes.oneOf(["sm", "md", "lg", "xl", "full"]),
   style: PropTypes.object,
 };
+
 export default Object.assign(Modal, {
   Header: ModalHeader,
   Body: ModalBody,
-  Footer: ModalFooter
+  Footer: ModalFooter,
 });

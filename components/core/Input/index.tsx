@@ -16,10 +16,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
     iconName: IconComponent,
     errorMessage,
     onClickIcon,
+    inputProps,
     ...rest
   } = props;
   const [value, setValue] = useState(defaultValue || "");
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    
     setValue(event.target.value);
     if (onChange) {
       onChange(event);
@@ -46,6 +48,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
           id={id}
           autoComplete="off"
           value={value}
+          InputProps={{
+            ...inputProps,
+          }}
           type={type || "text"}
           onChange={onChangeHandler}
           error={error}

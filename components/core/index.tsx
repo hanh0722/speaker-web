@@ -6,14 +6,18 @@ import SkeletonLoading from "./SkeletonLoading";
 import Link from "./Link";
 import Button from "./Button";
 import Modal from "./Modal";
+import Grid from "./Grid";
+import LoadingCore from "./LoadingCore";
 
 export {
-    Image,
-    Input,
-    Container,
-    Loading,
-    SkeletonLoading,
-    Link,
-    Button,
-    Modal
-}
+  Image,
+  Input,
+  Container,
+  Loading,
+  SkeletonLoading,
+  Link,
+  Button,
+  Modal,
+  Grid,
+  LoadingCore,
+};

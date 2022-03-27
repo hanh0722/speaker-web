@@ -16,7 +16,7 @@ const Button: FC<ButtonComponentProps> = (props) => {
       variant={variant}
       disabled={disabled || isLoading}
     >
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <LoadingSpinner className={styles.spinner} />}
       {children}
     </ButtonComponent>
   );

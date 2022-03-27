@@ -10,17 +10,19 @@ import IconGoogle from "./IconGoogle";
 import IconCheck from "./IconCheck";
 import IconEye from "./IconEye";
 import IconEyeClose from "./IconEyeClose";
+import IconSuccessOTP from "./IconSuccessOTP";
 export {
-    IconCaret,
-    IconPeople,
-    IconSearch,
-    IconStar,
-    IconCart,
-    IconClose,
-    IconCaretLeft,
-    IconFacebook,
-    IconGoogle,
-    IconCheck,
-    IconEye,
-    IconEyeClose
-}
+  IconCaret,
+  IconPeople,
+  IconSearch,
+  IconStar,
+  IconCart,
+  IconClose,
+  IconCaretLeft,
+  IconFacebook,
+  IconGoogle,
+  IconCheck,
+  IconEye,
+  IconEyeClose,
+  IconSuccessOTP,
+};

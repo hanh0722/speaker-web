@@ -26,6 +26,11 @@ html {
   }
 }
 
+input[type="number"] {
+  &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+}
 body[data-active]{
   overflow: hidden;
 }

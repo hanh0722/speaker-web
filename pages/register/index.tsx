@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import useInput from "../../hook/useInput";
 import { CheckBox, HeadGeneral } from "../../components/common";
@@ -10,9 +11,12 @@ import { isRequired, isValidPassword } from "../../utils/string";
 import { IconEye } from "../../components/core/Icons";
 import { useRegister } from "../../service";
 import { VALIDATE_AFTER_REGISTER } from "../../constants/path";
+import { AppDispatch } from "../../store";
+import { authActions } from "../../store/slices/auth";
 
 const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
   const [isCheck, setIsCheck] = useState(false);
   const [isTextType, setIsTextType] = useState(false);
   const { data, error, isLoading, onRegister, onResetAsync } = useRegister();
@@ -62,14 +66,12 @@ const Register = () => {
 
   useEffect(() => {
     if (!isLoading && data) {
+      dispatch(authActions.onSetUsername(username));
       router.push({
         pathname: VALIDATE_AFTER_REGISTER,
-        query: {
-          username: username
-        }
       })
     }
-  }, [data, isLoading, router, username]);
+  }, [data, isLoading, router, username, dispatch]);
   return (
     <>
     <HeadGeneral title="Register | Store"/>

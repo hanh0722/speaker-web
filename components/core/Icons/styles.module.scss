@@ -22,5 +22,9 @@
     width: 30px;
     height: 30px;
   }
+  &.unset {
+    width: auto;
+    height: auto;
+  }
   cursor: pointer;
 }
