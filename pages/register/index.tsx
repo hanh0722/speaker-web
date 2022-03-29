@@ -7,7 +7,12 @@ import { Button } from "../../components/core";
 import Input from "../../components/core/Input";
 import { FormAuth } from "../../components/layout";
 import styles from "./styles.module.scss";
-import { isRequired, isValidPassword } from "../../utils/string";
+import {
+  isEmail,
+  isMobilePhone,
+  isRequired,
+  isValidPassword,
+} from "../../utils/string";
 import { IconEye } from "../../components/core/Icons";
 import { useRegister } from "../../service";
 import { VALIDATE_AFTER_REGISTER } from "../../constants/path";
@@ -27,6 +32,13 @@ const Register = () => {
     onTouchedHandler: onTouchedUsername,
     value: username,
   } = useInput("or", isRequired);
+  const {
+    isValid: isValidInfo,
+    isTouched: isTouchedInfo,
+    onChangeHandler: onChangeInfo,
+    onTouchedHandler: onTouchedInfo,
+    value: valueInfo,
+  } = useInput("or", isEmail, isMobilePhone);
   const {
     isValid: isPassword,
     isTouched: isTouchedPassword,
@@ -55,10 +67,10 @@ const Register = () => {
   }, [onResetAsync]);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (!isValidUsername || !isPassword || !isValidName || !isCheck) {
+    if (!isValidUsername || !isPassword || !isValidName || !isCheck || !isValidInfo) {
       return;
     }
-    onRegister(name, username, password);
+    onRegister(name, username, password, valueInfo);
   };
   useEffect(() => {
     onResetAsync();
@@ -69,12 +81,12 @@ const Register = () => {
       dispatch(authActions.onSetUsername(username));
       router.push({
         pathname: VALIDATE_AFTER_REGISTER,
-      })
+      });
     }
   }, [data, isLoading, router, username, dispatch]);
   return (
     <>
-    <HeadGeneral title="Register | Store"/>
+      <HeadGeneral title="Register | Store" />
       <FormAuth title="Register">
         <form onSubmit={onSubmit}>
           <Input
@@ -102,6 +114,15 @@ const Register = () => {
             errorMessage="Password must have at least 8 character, a number[0-9], a letter [a-z] and one special character"
             iconName={IconEye}
             onClickIcon={onChangeType}
+          />
+          <Input
+            onChange={onChangeInfo}
+            onBlur={onTouchedInfo}
+            value={valueInfo}
+            error={!isValidInfo && isTouchedInfo}
+            errorMessage="Email or Mobile Phone number is not valid"
+            type="text"
+            label="Email/Phone Number..."
           />
           <div className="d-flex align-center gap-16">
             <CheckBox onChangeCheck={onCheck} isCheck={isCheck} />

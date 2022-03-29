@@ -18,7 +18,7 @@ const Modal: FC<ModalExtendsProps> = (props) => {
         <>
           <CSSTransition
             in={show}
-            timeout={300}
+            timeout={500}
             unmountOnExit
             mountOnEnter
             classNames={{
@@ -29,19 +29,20 @@ const Modal: FC<ModalExtendsProps> = (props) => {
             }}
           >
             <>
-              <Component
-                className={`d-flex justify-center align-center`}
-                onClick={onHide}
-              />
               <div
-                className={classList(
-                  styles.main,
-                  styles[`modal-${variant}`],
-                  scrollable && styles.scroll,
-                  center && styles.center
-                )}
+                className={`d-flex justify-center align-center ${styles.container}`}
               >
-                {children}
+                <div
+                  className={classList(
+                    styles.main,
+                    styles[`modal-${variant}`],
+                    scrollable && styles.scroll,
+                    center && styles.center
+                  )}
+                >
+                  {children}
+                </div>
+                <Component className={styles.backdrop} onClick={onHide} />
               </div>
             </>
           </CSSTransition>

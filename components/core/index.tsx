@@ -8,6 +8,7 @@ import Button from "./Button";
 import Modal from "./Modal";
 import Grid from "./Grid";
 import LoadingCore from "./LoadingCore";
+import Carousel from "./Carousel";
 
 export {
   Image,
@@ -20,4 +21,5 @@ export {
   Modal,
   Grid,
   LoadingCore,
+  Carousel,
 };

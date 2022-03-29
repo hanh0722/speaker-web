@@ -1,12 +1,11 @@
 import { ChangeEvent, Component, FormEvent, ReactNode } from "react";
 import { withRouter } from "next/router";
 import { connect } from "react-redux";
-import { FORGET_PASSWORD, HOME, REGISTER } from "../../../../constants/path";
+import { FORGET_PASSWORD, REGISTER } from "../../../../constants/path";
 import { CheckBox } from "../../../common";
 import { Button, Input, Link } from "../../../core";
 import { IconEye } from "../../../core/Icons";
 import { FormAuth } from "../../../layout";
-import { onLogin } from "../../../../service/class/auth";
 import styles from "./styles.module.scss";
 import { isValidPassword } from "../../../../utils/string";
 import {
@@ -17,6 +16,7 @@ import {
 import { UserResponse } from "../../../../types/request";
 import { RootState } from "../../../../store";
 import { onLoginUser } from "../../../../utils/login";
+import ModalValidate from "../ModalValidate";
 
 class FormLogin extends Component<LoginFormProps, FormLoginState> {
   constructor(props: LoginFormProps) {
@@ -107,57 +107,63 @@ class FormLogin extends Component<LoginFormProps, FormLoginState> {
       isLoading,
       error,
     } = this.state;
+
     return (
-      <FormAuth>
-        <form onSubmit={this._onSubmit}>
-          <div className={`text-center ${styles.title}`}>
-            <p className="f-20 weight-500">Login to Regler</p>
-            <p>Enter your details below</p>
-          </div>
-          <Input
-            label="Username..."
-            onChange={this._onChangeUsername}
-            value={username}
-          />
-          <Input
-            type={isActivePassword ? "text" : "password"}
-            label="Password..."
-            iconName={IconEye}
-            onClickIcon={this._onChangeType}
-            onChange={this._onChangePassword}
-            value={password}
-          />
-          <div
-            className={`d-flex align-center justify-between ${styles.remember}`}
-          >
-            <div className={`d-flex align-center ${styles["check-box"]}`}>
-              <CheckBox
-                isCheck={isChecked}
-                onChangeCheck={this._onChangeCheck}
-              />
-              <span>Remember me</span>
+      <>
+      <ModalValidate username={username} show={!!error && error?.code === 403} onHide={this._onResetState}/>
+        <FormAuth>
+          <form onSubmit={this._onSubmit}>
+            <div className={`text-center ${styles.title}`}>
+              <p className="f-20 weight-500">Login to Regler</p>
+              <p>Enter your details below</p>
             </div>
-            <Link href={FORGET_PASSWORD}>
-              <p>Forgot password?</p>
+            <Input
+              label="Username..."
+              onChange={this._onChangeUsername}
+              value={username}
+            />
+            <Input
+              type={isActivePassword ? "text" : "password"}
+              label="Password..."
+              iconName={IconEye}
+              onClickIcon={this._onChangeType}
+              onChange={this._onChangePassword}
+              value={password}
+            />
+            <div
+              className={`d-flex align-center justify-between ${styles.remember}`}
+            >
+              <div className={`d-flex align-center ${styles["check-box"]}`}>
+                <CheckBox
+                  isCheck={isChecked}
+                  onChangeCheck={this._onChangeCheck}
+                />
+                <span>Remember me</span>
+              </div>
+              <Link href={FORGET_PASSWORD}>
+                <p>Forgot password?</p>
+              </Link>
+            </div>
+            {error && (
+              <p className={`text-center ${styles.error}`}>{error?.message}</p>
+            )}
+            <Button
+              isLoading={isLoading}
+              disabled={!username || !isValidPassword(password)}
+              type="submit"
+              fullWidth
+              size="large"
+            >
+              Log in
+            </Button>
+            <Link href={REGISTER}>
+              <p className={`text-end f-14 ${styles.register}`}>
+                {"Doesn't have an account?"} Register now
+              </p>
             </Link>
-          </div>
-          {error && <p className={`text-center ${styles.error}`}>{error}</p>}
-          <Button
-            isLoading={isLoading}
-            disabled={!username || !isValidPassword(password)}
-            type="submit"
-            fullWidth
-            size="large"
-          >
-            Log in
-          </Button>
-          <Link href={REGISTER}>
-            <p className={`text-end f-14 ${styles.register}`}>
-              {"Doesn't have an account?"} Register now
-            </p>
-          </Link>
-        </form>
-      </FormAuth>
+          </form>
+        </FormAuth>
+      </>
     );
   }
 }

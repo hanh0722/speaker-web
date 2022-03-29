@@ -1,8 +1,10 @@
 @mixin enter {
   opacity: 0;
+  transform: translateY(4%);
 }
 @mixin active {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .enter {
@@ -10,17 +12,14 @@
 }
 .enter-active {
   @include active();
-  transition: all 0.3s ease-out;
+  transition: all 0.5s ease-out;
 }
 .exit {
   @include active();
 }
 .exit-active {
   @include enter();
-  transition: all 0.3s ease-out;
-}
-.container {
-
+  transition: all 0.5s ease-out;
 }
 .header {
   font-size: 20px;
@@ -45,18 +44,25 @@
     transform: translateY(0);
   }
 }
+.container {
+  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+}
+.backdrop {
+  position: absolute;
+  z-index: 100;
+}
 .main {
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 100;
   background: $white;
   width: 100%;
   border-radius: 8px;
   max-height: calc(100vh - 100px);
+  z-index: 101;
   @include mobile {
     max-width: 90%!important;
   }

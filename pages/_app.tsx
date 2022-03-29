@@ -20,9 +20,9 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
         <PersistGate loading={null} persistor={persistor}>
           <UserWrapper>
             <WrapperOptions>
-              <WrapperTransition>
-                {getLayout(<Component {...pageProps} />)}
-              </WrapperTransition>
+              {/* <WrapperTransition> */}
+              {getLayout(<Component {...pageProps} />)}
+              {/* </WrapperTransition> */}
             </WrapperOptions>
           </UserWrapper>
         </PersistGate>

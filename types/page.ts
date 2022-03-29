@@ -2,7 +2,7 @@ import { WithRouterProps } from "./router";
 import { connect, ConnectedProps } from "react-redux";
 import { AppDispatch } from "../store";
 import { userActions } from "../store/slices/user";
-import { ObjectProps } from "./base";
+import { ErrorProps, ObjectProps } from "./base";
 import { User } from "./redux";
 import { ClassNameProps } from "./string";
 
@@ -25,7 +25,7 @@ export interface FormLoginState {
   isActivePassword: boolean;
   username: string;
   password: string;
-  error: null | string;
+  error: null | ErrorProps;
   isChecked: boolean;
   data: null | ObjectProps;
 }

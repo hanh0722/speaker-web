@@ -25,7 +25,7 @@ export const isMobilePhone = (value: string) => {
 
 export const convertToOTP = (array: Array<number | null>) => {
   try{
-    const isNotValid = array.some(value => !value);
+    const isNotValid = array.some(value => value === null);
     if (isNotValid) {
       return null;
     }

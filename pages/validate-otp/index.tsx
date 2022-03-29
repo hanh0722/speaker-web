@@ -4,7 +4,7 @@ import { AuthBasicLayout } from "../../components/layout";
 import { RootState } from "../../store";
 import { AuthState } from "../../store/slices/auth";
 import styles from "./styles.module.scss";
-import { InputOTP } from "../../components/common";
+import { HeadGeneral, InputOTP } from "../../components/common";
 import useInterval from "../../hook/useInterval";
 import { getMinutesAndSeconds } from "../../utils/time";
 import { useAuthenticate, useCheckOTPService } from "../../service/auth";
@@ -60,6 +60,7 @@ const ValidateOTP = () => {
   }, [onResetAsync, onResetOTP]);
   return (
     <>
+    <HeadGeneral title="Validate OTP"/>
       <ModalOTP show={!isLoadingCheck && !!dataCheck && !errorCheck} />
       <AuthBasicLayout
         mainClass={styles.container}

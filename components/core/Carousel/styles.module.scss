@@ -1,0 +1,8 @@
+.swiper {
+  :global {
+    .swiper-button-prev, .swiper-button-next {
+      color: $black;
+      width: 10px;
+    }
+  }
+}

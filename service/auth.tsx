@@ -10,7 +10,7 @@ export const useRegister = () => {
     useFetch<BaseResponse>();
 
   const onRegister = useCallback(
-    (name: string, username: string, password: string) => {
+    (name: string, username: string, password: string, info: string) => {
       request({
         url: `${AUTH_URL}/register`,
         method: "POST",
@@ -18,6 +18,7 @@ export const useRegister = () => {
           username,
           password,
           name,
+          info
         },
       });
     },

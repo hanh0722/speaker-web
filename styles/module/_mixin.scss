@@ -27,8 +27,12 @@
     @content;
   }
 }
-@mixin padding($paddingX, $paddingY) {
-  padding: #{$paddingX}px #{$paddingY}px;
+@mixin padding($paddingX, $paddingY: "") {
+  @if $paddingY == "" {
+    padding: #{$paddingX}px;
+  } @else {
+    padding: #{$paddingX}px #{$paddingY}px;
+  }
 }
 
 @mixin margin($marginX, $marginY) {

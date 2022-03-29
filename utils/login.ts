@@ -12,7 +12,10 @@ export const onLoginUser = async (username: string, password: string) => {
         localStorage.setItem('expirationTime', response?.data?.exp_time?.toString());
       }
     }catch(err: any) {
-      reject(err.response.data?.message || "Server internal error");
+      reject({
+        code: err.response?.data?.code || err?.response?.status,
+        message: err.response.data?.message
+      });
     }
   })
 };

@@ -1,6 +1,7 @@
 export interface ObjectProps {
-    [props: string | number]: any
+  [props: string | number]: any;
 }
 export interface ErrorProps extends Error {
-    code?: number
+  code?: number;
+  message: string
 }

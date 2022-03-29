@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   ElementType,
   KeyboardEventHandler,
+  ReactNode,
   RefObject,
   SyntheticEvent,
 } from "react";
@@ -9,6 +10,7 @@ import { LinkProps as NextLinkProps } from "next/link";
 import { ClassNameProps } from "./string";
 import { ButtonProps, InputBaseProps } from "@mui/material";
 import { ObjectProps } from "./base";
+import { SwiperProps, SwiperSlideProps } from "swiper/react";
 
 export interface InputProps extends ClassNameProps {
   type?: string;
@@ -118,3 +120,11 @@ export interface InputOTPProps extends ClassNameProps {
 export interface GridProps extends ClassNameProps {
   cols?: number
 }
+
+export interface SwiperCoreProps extends ClassNameProps, SwiperProps {
+
+}
+
+export interface SwiperSlideCoreProps extends SwiperSlideProps, ClassNameProps {
+  children: ReactNode
+};

@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import usePrevious from "../../../hook/usePrevious";
-import { Container } from "../../core";
 import Navigation from "../../Navigation";
 
 const MainLayout: FC<{}> = (props) => {
@@ -22,7 +21,7 @@ const MainLayout: FC<{}> = (props) => {
   }, [onHandleScroll]);
 
   const isActive = useMemo(() => {
-    if (valueBefore < scroll) {
+    if (valueBefore < scroll && scroll > 50) {
       return false;
     }
     return true;
@@ -30,7 +29,7 @@ const MainLayout: FC<{}> = (props) => {
   return (
     <>
       <Navigation isActive={isActive} />
-      <Container className="app-container">{props.children}</Container>
+      <div className="app-container">{props.children}</div>
     </>
   );
 };
