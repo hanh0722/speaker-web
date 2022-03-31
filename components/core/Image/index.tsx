@@ -10,7 +10,6 @@ const Image: FC<ImageProps> = (props) => {
   const { className, src, alt, style } = props;
   const { onHandleErrorImage, onLoadImage, srcImage, isLoading } =
     useImage(src);
-
   return (
     <>
       {isLoading && (

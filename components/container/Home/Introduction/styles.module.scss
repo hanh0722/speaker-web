@@ -6,3 +6,15 @@
     padding-top: 25px;
   }
 }
+.grid {
+  padding-top: 50px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  @include basic-desktop {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+  @include mobile {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

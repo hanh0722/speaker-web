@@ -118,7 +118,8 @@ export interface InputOTPProps extends ClassNameProps {
 }
 
 export interface GridProps extends ClassNameProps {
-  cols?: number
+  cols?: number;
+  prefix?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
 }
 
 export interface SwiperCoreProps extends ClassNameProps, SwiperProps {

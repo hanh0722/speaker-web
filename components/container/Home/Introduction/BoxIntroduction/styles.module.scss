@@ -1,0 +1,19 @@
+.box {
+  @include padding(50, 30);
+  background: $gray;
+  border-radius: 15px;
+  .image {
+    position: relative;
+    max-width: 80px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  h5 {
+    @include padding(12, 0);
+  }
+  p {
+    color: $sub-text-gray;
+  }
+}

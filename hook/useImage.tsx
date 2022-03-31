@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent, useCallback } from "react";
 import { DEFAULT_IMAGE } from "../constants/string";
 
 const useImage = (url: string) => {
@@ -11,16 +11,30 @@ const useImage = (url: string) => {
   };
 
   const onLoadImage = (event: SyntheticEvent<HTMLImageElement>) => {
+    if (srcImage === DEFAULT_IMAGE) {
+      setIsLoading(false);
+      return;
+    }
     const { currentTarget } = event as SyntheticEvent<HTMLImageElement>;
     setSrcImage(url);
     setIsLoading(false);
   };
+
+  const onCalculateImage = useCallback((): {width: number, height: number} => {
+    const image = new Image();
+    image.src = url;
+    return {
+      width: image.width,
+      height: image.height,
+    };
+  }, [url]);
 
   return {
     srcImage,
     onLoadImage,
     onHandleErrorImage,
     isLoading,
+    onCalculateImage,
   };
 };
 

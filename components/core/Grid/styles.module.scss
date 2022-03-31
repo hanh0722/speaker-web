@@ -7,3 +7,25 @@
     gap: 12px;
   }
 }
+.grid- {
+  &sm {
+    gap: 12px;
+  }
+  &md {
+    gap: 16px;
+  }
+  &lg {
+    gap: 20px;
+  }
+  &xl {
+    gap: 32px;
+  }
+  &xxl {
+    gap: 50px;
+  }
+  @include tablet {
+    &sm, &md, &lg, &xl, &xxl {
+      gap: 20px;
+    }
+  }
+}

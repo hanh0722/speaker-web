@@ -12,6 +12,7 @@ import IconEye from "./IconEye";
 import IconEyeClose from "./IconEyeClose";
 import IconSuccessOTP from "./IconSuccessOTP";
 import IconError from "./IconError";
+import IconSpeaker from "./IconSpeaker";
 export {
   IconCaret,
   IconPeople,
@@ -26,5 +27,6 @@ export {
   IconEye,
   IconEyeClose,
   IconSuccessOTP,
-  IconError
+  IconError,
+  IconSpeaker
 };
