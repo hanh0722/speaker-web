@@ -1,9 +1,14 @@
 import axios from "axios";
 import { UserResponse } from "../../types/request";
 import { BASE_URL } from "../../utils/config";
+import { getCookie } from "../../utils/cookies";
+import { isClient } from "../../utils/server";
 
-const request = axios.create({
+export const request = axios.create({
   url: BASE_URL,
+  headers: {
+    authorization: isClient() && getCookie('token') ? `Bearer ${getCookie('jwt')}` : ''
+  }
 });
 
 const onLogin = <T extends UserResponse>(

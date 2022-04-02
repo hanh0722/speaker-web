@@ -1,11 +1,22 @@
+import { GetServerSideProps } from "next";
 import { ReactElement } from "react";
 import { HeadGeneral } from "../components/common";
-import { Introduction, SwiperBanner, IntroLanding, Landing, PremiumLanding } from "../components/container/Home";
+import {
+  Introduction,
+  SwiperBanner,
+  IntroLanding,
+  Landing,
+  PremiumLanding,
+  ProductHome,
+} from "../components/container/Home";
 import { Container } from "../components/core";
 import MainLayout from "../components/layout/MainLayout";
+import { CREATION_TIME } from "../constants/request";
+import { onFetchProducts } from "../service/class/products";
+import { HomeServerSideProps } from "../types/api/page/home";
 import { NextPageWithLayout } from "../types/layout";
 
-const Home: NextPageWithLayout = () => {
+const Home: NextPageWithLayout = ({ products }: any) => {
   return (
     <>
       <HeadGeneral title="Home | Store" />
@@ -13,13 +24,39 @@ const Home: NextPageWithLayout = () => {
       <Container>
         <Introduction />
         <Landing />
-        <IntroLanding/>
+        <IntroLanding />
       </Container>
-      <PremiumLanding/>
+      <PremiumLanding />
+      <Container>
+        <ProductHome data={products}/>
+      </Container>
     </>
   );
 };
 
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const token = context.req.cookies["token"];
+  let products;
+  try {
+    const productResponse = await onFetchProducts(
+      {
+        page: 1,
+        sort: -1,
+        key: CREATION_TIME,
+      },
+      token
+    );
+    products = productResponse.data?.data;
+  } catch (err: any) {
+    console.log(err);
+    products = [];
+  }
+  return {
+    props: {
+      products: products,
+    },
+  };
+};
 export default Home;
 
 Home.getLayout = function getLayout(page: ReactElement) {

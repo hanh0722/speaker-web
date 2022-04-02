@@ -6,3 +6,20 @@
     }
   }
 }
+.container {
+  padding-bottom: 20px;
+  .left, .right {
+    svg {
+      fill: $white;
+    }
+    width: 40px;
+    height: 40px;
+    @include flex(center, center);
+    background: rgba($color: $black, $alpha: .6);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .left {
+    margin-right: 20px;
+  }
+}

@@ -7,6 +7,7 @@ export const LOGIN = '/login';
 export const WISHLIST = '/wishlist';
 export const CART = '/cart';
 export const REGISTER = '/register';
+export const PRODUCT = '/product';
 export const VALIDATE_AFTER_REGISTER = '/validate';
 export const FORGET_PASSWORD = '/forget-password';
 export const VALIDATE_OTP = '/validate-otp';

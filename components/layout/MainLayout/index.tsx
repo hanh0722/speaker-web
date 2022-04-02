@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import usePrevious from "../../../hook/usePrevious";
-import Navigation from "../../Navigation";
+import Navigation from "../../common/Navigation";
 
 const MainLayout: FC<{}> = (props) => {
   const [scroll, setScroll] = useState(0);

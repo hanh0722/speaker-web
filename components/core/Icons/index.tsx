@@ -13,6 +13,11 @@ import IconEyeClose from "./IconEyeClose";
 import IconSuccessOTP from "./IconSuccessOTP";
 import IconError from "./IconError";
 import IconSpeaker from "./IconSpeaker";
+import IconSound from "./IconSound";
+import IconVolume from "./IconVolume";
+import IconHouse from "./IconHouse";
+import IconArrowLeft from "./IconArrowLeft";
+import IconArrowRight from "./IconArrowRight";
 export {
   IconCaret,
   IconPeople,
@@ -28,5 +33,10 @@ export {
   IconEyeClose,
   IconSuccessOTP,
   IconError,
-  IconSpeaker
+  IconSpeaker,
+  IconSound,
+  IconVolume,
+  IconHouse,
+  IconArrowLeft,
+  IconArrowRight
 };

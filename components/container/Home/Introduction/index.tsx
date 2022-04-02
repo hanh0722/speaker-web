@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "../../../core";
+import Heading from "../Heading";
 import BoxIntroduction from "./BoxIntroduction";
 import styles from "./styles.module.scss";
 
@@ -40,13 +41,10 @@ const Introduction = () => {
   return (
     <div className={styles.introduction}>
       <div className={`text-center ${styles.header}`}>
-        <p className={`text-uppercase lh-32 f-20 weight-500`}>
-          SIGNATURE SOUND, ALL AROUND
-        </p>
-        <h3 className="f-36 lh-48 weight-500">
-          Find the right connected <br />
-          speaker for you
-        </h3>
+        <Heading
+          title="Find the right connected speaker for you"
+          subtitle="SIGNATURE SOUND, ALL AROUND"
+        />
         <Grid cols={5} className={styles.grid}>
           {DEMO_CONTENT.map((item, index) => {
             return (

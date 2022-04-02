@@ -1,19 +1,27 @@
-.background{
+.background {
   background-position: center center;
   background-size: cover !important;
   background-repeat: no-repeat;
-  background: url('/image/bg-1.webp');
+  background: url("/image/bg-1.webp");
   padding-top: calc(1998px / 3840px * 100%);
   height: 0;
-  margin-top: 100px;
+  margin-top: 80px;
   position: relative;
+  @include basic-desktop {
+    padding-top: 0 !important;
+    height: auto !important;
+  }
 }
 .container {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  @include padding(60, 52);
+  @include padding(48, 32);
+  @include basic-desktop {
+    position: relative;
+    inset: unset;
+  }
 }
 .header {
   h6 {
@@ -23,4 +31,19 @@
     max-width: 700px;
     margin: 0 auto;
   }
+  padding-bottom: 50px;
+  @include tablet {
+    h6 {
+      padding-bottom: 16px;
+    }
+    p {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+    padding-bottom: 50px;
+  }
+}
+.grid {
+  max-width: 400px;
+  gap: 32px;
 }

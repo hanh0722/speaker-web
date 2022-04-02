@@ -2,14 +2,14 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
-import { SearchFieldProps } from "../../../types/component";
+import { SearchFieldProps } from "../../../../types/component";
 import styles from "./styles.module.scss";
-import { classList } from "../../../utils/string";
-import Modal from "../../common/Modal";
-import { Container, Image, Input } from "../../core";
-import { IconCart, IconClose, IconPeople, IconStar } from "../../core/Icons";
-import { RootState } from "../../../store";
-import { IconSearch } from "../../core/Icons";
+import { classList } from "../../../../utils/string";
+import Modal from "../../Modal";
+import { Container, Image, Input } from "../../../core";
+import { IconCart, IconClose, IconPeople, IconStar } from "../../../core/Icons";
+import { RootState } from "../../../../store";
+import { IconSearch } from "../../../core/Icons";
 
 const SearchField: FC<SearchFieldProps> = (props) => {
   const isMobileSCreen = useSelector<RootState>(

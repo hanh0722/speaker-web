@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
-import { Link, Container, Image, Button } from "../core";
-import { Cart } from "../container";
+import { Link, Container, Image, Button } from "../../core";
+import { Cart } from "../../container";
 import styles from "./styles.module.scss";
 import {
   IconCaret,
@@ -12,7 +12,7 @@ import {
   IconPeople,
   IconSearch,
   IconStar,
-} from "../core/Icons";
+} from "../../core/Icons";
 import {
   BLOGS,
   FEATURES,
@@ -22,13 +22,13 @@ import {
   SHOP,
   WISHLIST,
   REGISTER
-} from "../../constants/path";
-import Hamburger from "../common/Hamburger";
-import useDropdown from "../../hook/useDropdown";
-import Modal from "../common/Modal";
+} from "../../../constants/path";
+import Hamburger from "../Hamburger";
+import useDropdown from "../../../hook/useDropdown";
+import Modal from "../Modal";
 import SearchField from "./SearchField";
-import { AppDispatch, RootState } from "../../store";
-import { cartActions } from "../../store/slices/cart";
+import { AppDispatch, RootState } from "../../../store";
+import { cartActions } from "../../../store/slices/cart";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;

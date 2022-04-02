@@ -1,0 +1,15 @@
+.box {
+  .content {
+    padding-left: 32px;
+    width: calc(100% - 32px);
+  }
+  @include mobile {
+    h4 {
+      font-size: 20px;
+      line-height: 32px;
+    }
+    .content {
+      padding-left: 24px;
+    }
+  }
+}

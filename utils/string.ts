@@ -34,3 +34,19 @@ export const convertToOTP = (array: Array<number | null>) => {
     return null;
   }
 }
+
+export const toCurrency = (value: number, position?: string) => {
+  if (!value) {
+    return value;
+  }
+  try{
+    const format = new Intl.NumberFormat(position || 'en-US', {
+      style: 'currency',
+      currency: 'USD',
+      currencyDisplay: 'narrowSymbol'
+    }).format(value);
+    return format;
+  }catch(err) {
+    return value;
+  }
+}

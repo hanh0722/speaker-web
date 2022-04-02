@@ -1,7 +1,10 @@
 import React, { CSSProperties, useEffect, useMemo, useState } from "react";
+import { STATICS_LANDING } from "../../../../constants/static";
 import useImage from "../../../../hook/useImage";
 import { PremiumLandingState } from "../../../../types/components/PremiumLanding";
-import { Container } from "../../../core";
+import { Container, Grid } from "../../../core";
+import Heading from "../Heading";
+import Introduction from "./Introduction";
 import styles from "./styles.module.scss";
 
 const PremiumLanding = () => {
@@ -32,10 +35,12 @@ const PremiumLanding = () => {
   return (
     <div style={{ ...getStyleBackground }} className={styles.background}>
       <Container className={styles.container}>
-        <div className={`text-center ${styles.header}`}>
-          <h6 className="f-18 weight-500 text-uppercase">a premium sound.</h6>
-          <p className="f-40 lh-56 weight-500">A wireless speaker with a dynamic acoustic performance</p>
-        </div>
+        <Heading className={styles.header} title="A wireless speaker with a dynamic acoustic performance" subtitle="a premium sound."/>
+        <Grid cols={1} className={styles.grid}>
+          {STATICS_LANDING.map((item, index) => {
+            return <Introduction key={index} title={item.title} description={item.content} iconName={item.icon}/>
+          })}
+        </Grid>
       </Container>
     </div>
   );
