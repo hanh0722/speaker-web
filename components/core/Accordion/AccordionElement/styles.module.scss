@@ -1,7 +1,50 @@
 .title {
   padding-bottom: 10px;
   border-bottom: 1px solid $border;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+  @include mobile {
+    p{
+      font-size: 16px;
+    }
+  }
 }
 .container {
-  height: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+@mixin enter {
+  opacity: .65;
+  max-height: 0;
+}
+@mixin active {
+  opacity: 1;
+  max-height: 100vh;
+}
+.enter {
+  @include enter();
+}
+.enter-active {
+  @include active();
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.exit {
+  @include active();
+}
+.exit-active {
+  @include enter();
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.active {
+  .title {
+    border-color: $black;
+    margin-bottom: 10px;
+  }
+}
+.description {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  @include mobile {
+    font-size: 14px;
+  }
 }

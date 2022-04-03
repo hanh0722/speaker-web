@@ -4,10 +4,10 @@
   @include flex(center, center);
   cursor: pointer;
   div {
-    width: 16px;
+    width: 14px;
     height: 2px;
     background: $black;
-    transition: all .3s ease-in-out;
+    transition: all .5s ease-in-out;
     &:last-child {
       transform: rotate(90deg) translateX(-2px);
     }

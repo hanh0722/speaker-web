@@ -18,6 +18,7 @@ import IconVolume from "./IconVolume";
 import IconHouse from "./IconHouse";
 import IconArrowLeft from "./IconArrowLeft";
 import IconArrowRight from "./IconArrowRight";
+import IconInstagram from "./IconInstagram";
 export {
   IconCaret,
   IconPeople,
@@ -38,5 +39,6 @@ export {
   IconVolume,
   IconHouse,
   IconArrowLeft,
-  IconArrowRight
+  IconArrowRight,
+  IconInstagram
 };

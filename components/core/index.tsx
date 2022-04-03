@@ -10,7 +10,7 @@ import Grid from "./Grid";
 import LoadingCore from "./LoadingCore";
 import Carousel from "./Carousel";
 import IconGroup from "./IconGroup";
-import Accordion from "./Accordion/AccordionContainer";
+import Accordion from "./Accordion";
 
 export {
   Image,

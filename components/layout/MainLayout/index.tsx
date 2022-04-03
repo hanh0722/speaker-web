@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import usePrevious from "../../../hook/usePrevious";
+import { Footer } from "../../common";
 import Navigation from "../../common/Navigation";
 
 const MainLayout: FC<{}> = (props) => {
@@ -30,6 +31,7 @@ const MainLayout: FC<{}> = (props) => {
     <>
       <Navigation isActive={isActive} />
       <div className="app-container">{props.children}</div>
+      <Footer/>
     </>
   );
 };

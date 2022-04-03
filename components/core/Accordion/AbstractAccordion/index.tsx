@@ -1,21 +1,28 @@
-import React, { createContext, FC, useState } from "react";
+import React, { createContext, FC, useCallback, useState } from "react";
 
 interface AccordionContextProps {
-  isActive: boolean;
-  onHide: () => void
+  idActive: number | null;
+  onChangeAccordion: (id: number) => void
 }
 
 export const AccordionContext = createContext<AccordionContextProps>({
-  isActive: false,
-  onHide: () => {}
+  idActive: 0,
+  onChangeAccordion: (id: number) => {}
 })
 
 const AccordionProvider: FC = (props) => {
-  const [isActive, setIsActive] = useState(false);
+  const [idActive, setIdActive] = useState<number | null>(null);
+
+  const onHandleAccordion = useCallback((id: number) => {
+    if (id === idActive) {
+      return setIdActive(null);
+    }
+    setIdActive(id);
+  }, [idActive]);
   return (
     <AccordionContext.Provider value={{
-      isActive: isActive,
-      onHide: () => null
+      idActive: idActive,
+      onChangeAccordion: onHandleAccordion
     }}>
       {props.children}
     </AccordionContext.Provider>

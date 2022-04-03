@@ -10,6 +10,7 @@ import {
   ProductHome,
   StaticLanding,
   Question,
+  Download,
 } from "../components/container/Home";
 import { Container } from "../components/core";
 import MainLayout from "../components/layout/MainLayout";
@@ -17,7 +18,7 @@ import { CREATION_TIME } from "../constants/request";
 import { onFetchProducts } from "../service/class/products";
 import { NextPageWithLayout } from "../types/layout";
 
-const Home: NextPageWithLayout = ({ products, }: any) => {
+const Home: NextPageWithLayout = ({ products }: any) => {
   return (
     <>
       <HeadGeneral title="Home | Store" />
@@ -29,10 +30,11 @@ const Home: NextPageWithLayout = ({ products, }: any) => {
       </Container>
       <PremiumLanding />
       <Container>
-        <ProductHome data={products}/>
-        <StaticLanding/>
-        <Question/>
+        <ProductHome data={products} />
+        <StaticLanding />
+        <Question />
       </Container>
+      <Download />
     </>
   );
 };

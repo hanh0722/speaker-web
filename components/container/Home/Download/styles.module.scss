@@ -1,0 +1,32 @@
+.download {
+  background: url('/image/bg-3_3350x.webp');
+  background-size: cover;
+  @include padding(96, 65);
+  background-repeat: no-repeat;
+  margin-top: 80px;
+  .box {
+    @include padding(70, 55);
+    background: $white;
+    max-width: 500px;
+    border-radius: 8px;
+  }
+  .container {
+    display: flex !important;
+    padding: 0 !important;
+  }
+  .intro {
+    padding-top: 16px;
+  }
+  .btn {
+    margin-top: 16px !important;
+  }
+  @include tablet {
+    .container {
+      justify-content: center;
+    }
+    .box {
+      @include padding(40, 16);
+    }
+    @include padding(32, 16);
+  }
+}

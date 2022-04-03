@@ -1,26 +1,42 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
+import { classList } from "../../../../utils/string";
+import { AccordionElementProps } from "../../../../types/components/Accordion";
 import { AccordionContext } from "../AbstractAccordion";
 import PlusAccordion from "../PlusAccordion";
 import styles from "./styles.module.scss";
 
-const AccordionElement = () => {
-  const element = useContext(AccordionContext);
-  console.log(element);
+const AccordionElement: FC<AccordionElementProps> = (props) => {
+  const { idActive, onChangeAccordion } = useContext(AccordionContext);
+  const { id, title, className, children, ...restProps } = props;
+
+  const onHandleAccordion = () => {
+    onChangeAccordion(id);
+  };
   return (
-    <div className={styles.container}>
-      <div className={`d-flex justify-between align-center ${styles.title}`}>
-        <p>How did my package ship?</p>
-        <PlusAccordion />
+    <div {...restProps} className={classList(styles.container, idActive === id ? styles.active : '', className)}>
+      <div
+        onClick={onHandleAccordion}
+        className={`d-flex justify-between align-center ${styles.title}`}
+      >
+        <p className="f-18 lh-24">{title}</p>
+        <PlusAccordion isActive={idActive === id}/>
       </div>
-      <CSSTransition in timeout={300} unmountOnExit mountOnEnter>
-        <>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum,
-          autem molestiae enim facilis quidem, saepe, blanditiis fugiat odit
-          aspernatur numquam animi sunt placeat esse dicta ut adipisci
-          dignissimos obcaecati. Impedit odit porro, eum dolore ut error magni
-          dolores modi. Ipsam?
-        </>
+      <CSSTransition
+        in={idActive === id}
+        timeout={1000}
+        unmountOnExit
+        mountOnEnter
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles["enter-active"],
+          exit: styles.exit,
+          exitActive: styles["exit-active"],
+        }}
+      >
+        <div className={`lh-24 f-16 ${styles.description}`}>
+          {children}
+        </div>
       </CSSTransition>
     </div>
   );

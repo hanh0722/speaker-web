@@ -1,0 +1,66 @@
+.footer {
+  margin-top: 80px;
+  gap: 100px;
+  @include tablet {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    .email {
+      grid-column: span 1;
+      text-align: center;
+      h4 {
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
+    .cols {
+      a {
+        font-size: 16px;
+        &:first-child {
+          padding-bottom: 10px;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
+.email {
+  grid-column: span 2;
+  p {
+    @include padding(12, 0);
+  }
+}
+.cols {
+  font-size: 16px;
+  line-height: 24px;
+  a {
+    display: block;
+    color: $footer-link;
+    position: relative;
+    margin-bottom: 8px;
+    transition: all .15s ease-in-out;
+    &:not(:first-child):hover {
+      color: $black;
+    }
+    &:first-child {
+      color: $black;
+      padding-bottom: 24px;
+      margin: 0;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+}
+.content {
+  @include padding(32, 0);
+  background: $black;
+  margin-top: 32px;
+}
+.contain {
+  display: flex !important;
+  .icons {
+    path, svg {
+      fill: $white;
+    }
+  }
+}
