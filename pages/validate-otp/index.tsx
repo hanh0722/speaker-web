@@ -11,6 +11,7 @@ import { useAuthenticate, useCheckOTPService } from "../../service/auth";
 import ModalOTP from "./ModalOTP";
 import { Button } from "../../components/core";
 import { convertToOTP } from "../../utils/string";
+import { Alert } from "@mui/material";
 
 const ValidateOTP = () => {
   const {
@@ -88,9 +89,9 @@ const ValidateOTP = () => {
             </span>
           </p>
           {(error || errorCheck) && (
-            <p className={`text-center ${styles.error}`}>
+            <Alert severity="error" className={`text-center ${styles.error}`}>
               {error?.message || errorCheck?.message}
-            </p>
+            </Alert>
           )}
           <div className={styles.button}>
             <Button

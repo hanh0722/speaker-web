@@ -34,6 +34,15 @@
   @include opacity(1);
   @include translate($direction-X, 0);
 }
+
+@mixin fade-image {
+  @include opacity(0);
+  transform: scale(.7);
+}
+@mixin fade-image-active {
+  @include opacity(1);
+  transform: scale(1);
+}
 .fade-left-enter {
   @include fade-left-enter();
 }

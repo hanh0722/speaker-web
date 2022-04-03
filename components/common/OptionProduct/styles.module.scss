@@ -1,0 +1,55 @@
+@mixin enter-start ($valueX, $valueY) {
+  opacity: 0;
+  transform: translate($valueX, $valueY);
+}
+
+@mixin enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.enter-{
+  &left {
+    @include enter-start(-50%, 0);
+  }
+  &right {
+    @include enter-start(50%, 0);
+  }
+  &bottom {
+    @include enter-start(0, 50%);
+  }
+  &top {
+    @include enter-start(0, -50%);
+  }
+}
+
+.enter-active- {
+  &left, &right, &bottom, &top {
+    @include enter-active();
+    transition: all .35s ease-in-out;
+  }
+}
+
+.exit- {
+  &left, &right, &bottom, &top {
+    @include enter-active();
+  }
+}
+.exit-active- {
+  &left {
+    @include enter-start(-50%, 0);
+    transition: all .35s ease-in-out
+  }
+  &right {
+    @include enter-start(50%, 0);
+    transition: all .35s ease-in-out
+  }
+  &bottom {
+    @include enter-start(0, 50%);
+    transition: all .35s ease-in-out
+  }
+  &top {
+    @include enter-start(0, -50%);
+    transition: all .35s ease-in-out
+  }
+}

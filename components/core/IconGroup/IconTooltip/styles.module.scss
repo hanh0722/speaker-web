@@ -1,0 +1,70 @@
+@mixin enter {
+  opacity: 0;
+  transform: translateY(-30%);
+}
+@mixin active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.icon {
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    color: $white;
+    background: $black;
+  }
+  cursor: pointer;
+  span {
+    position: absolute;
+    top: -100%;
+    color: $white;
+    @include padding(5, 10);
+    background: $black;
+    border-radius: 4px;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $black;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+.icon- {
+  &sm {
+    width: 35px;
+    height: 35px;
+  }
+  &md {
+    width: 45px;
+    height: 45px;
+  }
+  &lg {
+    width: 50px;
+    height: 50px;
+  }
+  &xl {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.enter {
+  @include enter();
+}
+.enter-active {
+  @include active();
+  transition: all .3s ease-in-out;
+}
+.exit {
+  @include active();
+}
+.exit-active {
+  @include enter();
+  transition: all .3s ease-in-out;
+}

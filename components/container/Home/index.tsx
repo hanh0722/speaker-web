@@ -4,6 +4,8 @@ import IntroLanding from "./IntroLanding";
 import Landing from "./Landing";
 import PremiumLanding from "./PremiumLanding";
 import ProductHome from "./ProductHome";
+import StaticLanding from "./StaticLanding";
+import Question from "./Questions";
 
 export {
   SwiperBanner,
@@ -11,5 +13,7 @@ export {
   IntroLanding,
   Landing,
   PremiumLanding,
-  ProductHome
+  ProductHome,
+  StaticLanding,
+  Question
 }

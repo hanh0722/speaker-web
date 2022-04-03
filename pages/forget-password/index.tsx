@@ -26,8 +26,8 @@ const ForgotPassword = () => {
             error={!isValid && isTouched}
             label="Username..."
             placeholder="Enter Username..."
+            errorMessage="Username must be filled!"
           />
-          {!isValid && isTouched && <p className={styles.error}>Username must be filled!</p>}
           <Button
             className={styles.button}
             fullWidth

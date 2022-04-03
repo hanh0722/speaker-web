@@ -1,0 +1,23 @@
+.plus {
+  width: 24px;
+  height: 24px;
+  @include flex(center, center);
+  cursor: pointer;
+  div {
+    width: 16px;
+    height: 2px;
+    background: $black;
+    transition: all .3s ease-in-out;
+    &:last-child {
+      transform: rotate(90deg) translateX(-2px);
+    }
+  }
+}
+.active {
+  div {
+    &:last-child {
+      transform: rotate(0) translateX(0);
+      opacity: 0;
+    }
+  }
+}

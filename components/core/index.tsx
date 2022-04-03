@@ -9,6 +9,8 @@ import Modal from "./Modal";
 import Grid from "./Grid";
 import LoadingCore from "./LoadingCore";
 import Carousel from "./Carousel";
+import IconGroup from "./IconGroup";
+import Accordion from "./Accordion/AccordionContainer";
 
 export {
   Image,
@@ -22,4 +24,6 @@ export {
   Grid,
   LoadingCore,
   Carousel,
+  IconGroup,
+  Accordion
 };

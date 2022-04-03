@@ -129,3 +129,18 @@ export interface SwiperCoreProps extends ClassNameProps, SwiperProps {
 export interface SwiperSlideCoreProps extends SwiperSlideProps, ClassNameProps {
   children: ReactNode
 };
+
+export interface IconGroupProps extends ClassNameProps {
+  prefix?: 'left' | 'right' | 'bottom' | 'top'
+}
+
+export interface IconTooltipGroupProps extends ClassNameProps {
+  tooltip?: string;
+  variant?: 'sm' | 'md' | 'lg' | 'xl';
+  iconName: ElementType;
+  onClick?: () => void
+}
+
+export interface OptionProductsProps extends ClassNameProps, IconGroupProps {
+  isActive: boolean;
+}

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, forwardRef, useEffect, useState } from "react";
-import { ButtonBase, TextField } from "@mui/material";
+import { Alert, ButtonBase, TextField } from "@mui/material";
 import styles from "./styles.module.scss";
 import { InputProps } from "../../../types/component";
 import { classList } from "../../../utils/string";
@@ -63,7 +63,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props: InputProps, ref) 
           </div>
         )}
       </div>
-      {errorMessage && error && <p className={styles.error}>{errorMessage}</p>}
+      {errorMessage && error && <Alert severity="error" className={styles.error}>{errorMessage}</Alert>}
     </div>
   );
 });

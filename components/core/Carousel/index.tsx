@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { SwiperCoreProps } from "../../../types/component";
 import { IconArrowLeft, IconArrowRight } from "../Icons";
+import { ButtonBase } from "@mui/material";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -26,12 +27,16 @@ const Carousel: FC<SwiperCoreProps> = (props) => {
         <div
           className={`d-flex justify-end align-center ${styles.container} container-arrow`}
         >
-          <div className={`${styles.left} arrow-prev`} ref={prevRef}>
-            <IconArrowLeft variant="md" />
-          </div>
-          <div className={`${styles.right} arrow-next`} ref={nextRef}>
-            <IconArrowRight variant="md" />
-          </div>
+          <ButtonBase className={`${styles["btn-ripple"]} ${styles.margin}`}>
+            <div className={`${styles.left} arrow-prev`} ref={prevRef}>
+              <IconArrowLeft variant="md" />
+            </div>
+          </ButtonBase>
+          <ButtonBase className={styles['btn-ripple']}>
+            <div className={`${styles.right} arrow-next`} ref={nextRef}>
+              <IconArrowRight variant="md" />
+            </div>
+          </ButtonBase>
         </div>
       </>
     );
@@ -48,7 +53,7 @@ const Carousel: FC<SwiperCoreProps> = (props) => {
 
   return (
     <>
-    {renderNavigation()}
+      {renderNavigation()}
       <Swiper
         className={classList(styles.swiper, className)}
         onInit={onHandlerInit}

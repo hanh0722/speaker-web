@@ -19,7 +19,10 @@
     border-radius: 50%;
     cursor: pointer;
   }
-  .left {
-    margin-right: 20px;
-  }
+}
+.btn-ripple {
+  border-radius: 50% !important;
+}
+.margin {
+  margin-right: 20px !important;
 }

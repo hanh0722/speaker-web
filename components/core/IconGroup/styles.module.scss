@@ -1,0 +1,29 @@
+$default: 12px;
+@mixin center-column {
+  flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+.icon {
+  position: absolute;
+  width: 100%;
+  gap: 16px;
+}
+.name- {
+  &bottom {
+    bottom: $default;
+    justify-content: center;
+  }
+  &left {
+    left: $default;
+    @include center-column();
+  }
+  &right {
+    @include center-column();
+    right: $default;
+  }
+  &top {
+    top: $default;
+    justify-content: center;
+  }
+}

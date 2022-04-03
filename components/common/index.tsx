@@ -5,12 +5,16 @@ import Hamburger from "./Hamburger";
 import CheckBox from "./CheckBox";
 import LoadingSpinner from "./LoadingSpinner";
 import InputOTP from "./InputOTP";
+import OptionProduct from "./OptionProduct";
+import ProductPremium from "./ProductPremium";
 export {
-    HeadGeneral,
-    Modal,
-    Hamburger,
-    BreadCrumb,
-    CheckBox,
-    LoadingSpinner,
-    InputOTP
-}
+  HeadGeneral,
+  Modal,
+  Hamburger,
+  BreadCrumb,
+  CheckBox,
+  LoadingSpinner,
+  InputOTP,
+  OptionProduct,
+  ProductPremium,
+};

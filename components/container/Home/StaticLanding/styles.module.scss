@@ -1,0 +1,27 @@
+.landing {
+  background: url('/image/bg-2.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include padding(96, 52);
+  margin-top: 80px;
+  min-height: 62vh;
+  max-height: 62vh;
+  @include flex(flex-start, center);
+  .content {
+    max-width: 400px;
+    color: $white;
+    height: 100%;
+  }
+  .header {
+    text-align: start;
+    padding-bottom: 25px;
+  }
+  @include tablet {
+    @include flex(center, center);
+    text-align: center;
+    .header {
+      text-align: center;
+    }
+  }
+  border-radius: 15px;
+}

@@ -17,6 +17,7 @@ import { UserResponse } from "../../../../types/request";
 import { RootState } from "../../../../store";
 import { onLoginUser } from "../../../../utils/login";
 import ModalValidate from "../ModalValidate";
+import { Alert } from "@mui/material";
 
 class FormLogin extends Component<LoginFormProps, FormLoginState> {
   constructor(props: LoginFormProps) {
@@ -144,9 +145,7 @@ class FormLogin extends Component<LoginFormProps, FormLoginState> {
                 <p>Forgot password?</p>
               </Link>
             </div>
-            {error && (
-              <p className={`text-center ${styles.error}`}>{error?.message}</p>
-            )}
+            {error && <Alert className={styles.error} severity="error">{error?.message}</Alert>}
             <Button
               isLoading={isLoading}
               disabled={!username || !isValidPassword(password)}
