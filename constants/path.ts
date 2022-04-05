@@ -1,5 +1,5 @@
 export const HOME = '/';
-export const SHOP = '/shop';
+export const SHOP = '/collections';
 export const PRODUCTS = '/products';
 export const BLOGS = '/blogs';
 export const FEATURES = '/features';

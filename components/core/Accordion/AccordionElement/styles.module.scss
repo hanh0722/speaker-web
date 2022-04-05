@@ -27,14 +27,14 @@
 }
 .enter-active {
   @include active();
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s ease-in-out;
 }
 .exit {
   @include active();
 }
 .exit-active {
   @include enter();
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s ease-in-out;
 }
 .active {
   .title {
@@ -43,7 +43,7 @@
   }
 }
 .description {
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s ease-in-out;
   @include mobile {
     font-size: 14px;
   }
