@@ -1,5 +1,9 @@
 import { REGEX_PASSWORD } from "../constants/string";
 
+export const isString = (value: Array<string> | string | any) => {
+  return typeof value === 'string';
+}
+
 export const classList = (...args: Array<any>) => {
     return args.filter(item => !!item).join(' ');
 }

@@ -1,0 +1,20 @@
+.breadcrumb {
+  padding-top: $pd-container;
+  padding-bottom: $pd-container-bt;
+  p {
+    color: $sub-text-gray;
+    padding-top: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  @include tablet {
+    @include padding($pd-mobile-breadcrumb, 0);
+    h3 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}

@@ -6,6 +6,7 @@ export interface Collection {
   image_url?: string;
   title: string;
   updatedAt: string;
+  seo_id: string;
   _id: string
 }
 

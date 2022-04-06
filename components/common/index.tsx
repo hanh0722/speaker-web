@@ -7,6 +7,7 @@ import InputOTP from "./InputOTP";
 import OptionProduct from "./OptionProduct";
 import ProductPremium from "./ProductPremium";
 import Footer from "./Footer";
+import ImageTransition from "./ImageTransition";
 export {
   HeadGeneral,
   Modal,
@@ -16,5 +17,6 @@ export {
   InputOTP,
   OptionProduct,
   ProductPremium,
-  Footer
+  Footer,
+  ImageTransition
 };

@@ -11,6 +11,8 @@ import LoadingCore from "./LoadingCore";
 import Carousel from "./Carousel";
 import IconGroup from "./IconGroup";
 import Accordion from "./Accordion";
+import BreadCrumb from "./BreadCrumb";
+import Pagination from "./Pagination";
 
 export {
   Image,
@@ -25,5 +27,7 @@ export {
   LoadingCore,
   Carousel,
   IconGroup,
-  Accordion
+  Accordion,
+  BreadCrumb,
+  Pagination
 };

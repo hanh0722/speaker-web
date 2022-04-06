@@ -2,6 +2,9 @@
   .image {
     padding-top: 100%;
     position: relative;
+    border: 1px solid $border;
+    border-radius: 8px;
+    overflow: hidden;
     img {
       position: absolute;
       inset: 0;
@@ -12,6 +15,6 @@
     background: $gray;
   }
   p {
-    padding-top: 16px;
+    padding-top: 8px;
   }
 }

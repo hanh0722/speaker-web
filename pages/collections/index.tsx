@@ -6,7 +6,8 @@ import { TITLE } from "../../constants/request";
 import { getCollections } from "../../service/class/collections";
 import { NextPageWithLayout } from "../../types/layout";
 import { ListCollections } from "../../components/container/Collection";
-import { Container } from "../../components/core";
+import { BreadCrumb, Container, Pagination } from "../../components/core";
+import { PER_PAGE_COLLECTIONS } from "../../constants/sort";
 
 const Collections: NextPageWithLayout = ({
   data,
@@ -15,9 +16,14 @@ const Collections: NextPageWithLayout = ({
 }: any) => {
   return (
     <>
-      <HeadGeneral title="Shop" />
+      <HeadGeneral title="Collection" />
       <Container>
+        <BreadCrumb
+          title="All Collection"
+          description="Posuere in netus a eu varius adipiscing suspendisse elementum vitae tempor suspendisse ullamcorper aenean taciti morbi potenti."
+        />
         <ListCollections data={data} />
+        <Pagination totalItems={total_collections} itemPerPage={1}/>
       </Container>
     </>
   );
@@ -35,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   try {
     const response = await getCollections({
       page: page ? +page : 1,
-      page_size: 5,
+      page_size: 1,
       key: TITLE,
       sort: "asc",
     });

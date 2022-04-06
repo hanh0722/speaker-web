@@ -31,7 +31,7 @@ const MainLayout: FC<{}> = (props) => {
     <>
       <Navigation isActive={isActive} />
       <div className="app-container">{props.children}</div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
