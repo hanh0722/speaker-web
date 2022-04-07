@@ -1,5 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
@@ -55,19 +56,19 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
           <li>Home</li>
           <IconCaret variant="sm" />
         </Link>
-        <Link href={SHOP}>
-          <li>Shop</li>
+        <Link activeClassname={styles.active} href={SHOP}>
+          <li>Collections</li>
           <IconCaret variant="sm" />
         </Link>
-        <Link href={PRODUCTS}>
+        <Link activeClassname={styles.active} href={PRODUCTS}>
           <li>Products</li>
           <IconCaret variant="sm" />
         </Link>
-        <Link href={BLOGS}>
+        <Link activeClassname={styles.active} href={BLOGS}>
           <li>Blogs</li>
           <IconCaret variant="sm" />
         </Link>
-        <Link href={FEATURES}>
+        <Link activeClassname={styles.active} href={FEATURES}>
           <li>Features</li>
           <IconCaret variant="sm" />
         </Link>
@@ -160,5 +161,13 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
     </>
   );
 };
+
+Navigation.defaultProps = {
+  isActive: false
+}
+
+Navigation.propTypes = {
+  isActive: PropTypes.bool.isRequired
+}
 
 export default Navigation;

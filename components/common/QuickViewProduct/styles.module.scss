@@ -1,0 +1,49 @@
+.main {
+  padding: 0;
+}
+.body {
+  .left {
+    padding-top: 100%;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    overflow: hidden;
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain
+    }
+  }
+  .right {
+    @include padding(20);
+    h3 {
+      padding-bottom: 16px;
+    }
+    .description {
+      @include show-n-line(2);
+      @include padding(16, 0);
+    }
+  }
+  .link {
+    text-decoration: underline;
+  }
+}
+.btn {
+  margin-top: 16px !important;
+}
+.loading {
+  height: 100%;
+  .skeleton {
+    height: 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+}
+.image-loading {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}

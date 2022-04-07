@@ -8,6 +8,8 @@ import OptionProduct from "./OptionProduct";
 import ProductPremium from "./ProductPremium";
 import Footer from "./Footer";
 import ImageTransition from "./ImageTransition";
+import QuickViewProduct from "./QuickViewProduct";
+import ButtonQuantity from "./ButtonQuantity";
 export {
   HeadGeneral,
   Modal,
@@ -18,5 +20,7 @@ export {
   OptionProduct,
   ProductPremium,
   Footer,
-  ImageTransition
+  ImageTransition,
+  QuickViewProduct,
+  ButtonQuantity
 };

@@ -13,4 +13,4 @@ export const onFetchProducts = (params?: CorePaginationParams, token?: string) =
       ...(params || {})
     }
   });
-}
+};

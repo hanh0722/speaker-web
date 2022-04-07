@@ -10,3 +10,18 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+.loading {
+  .loading-image {
+    height: 300px;
+    border-radius: 8px;
+  }
+  @include tablet {
+    .loading-image {
+      height: 250px;
+    }
+  }
+  .text {
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+}

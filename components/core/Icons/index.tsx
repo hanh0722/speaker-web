@@ -20,7 +20,11 @@ import IconArrowLeft from "./IconArrowLeft";
 import IconArrowRight from "./IconArrowRight";
 import IconInstagram from "./IconInstagram";
 import IconCaretRight from "./IconCaretRight";
+import IconMinus from "./IconMinus";
+import IconPlus from "./IconPlus";
 export {
+  IconPlus,
+  IconMinus,
   IconCaret,
   IconPeople,
   IconSearch,

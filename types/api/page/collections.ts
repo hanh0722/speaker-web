@@ -11,7 +11,8 @@ export interface Collection {
 }
 
 export interface ListCollection {
-  data: Array<Collection>
+  data: Array<Collection>;
+  isLoading: boolean;
 }
 
 export interface CollectionItem extends ClassNameProps {

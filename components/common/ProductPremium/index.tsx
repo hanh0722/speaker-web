@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import PropTypes from 'prop-types';
 import { PRODUCT } from "../../../constants/path";
 import { ProductPremiumProps } from "../../../types/components/ProductPremium";
 import { classList, toCurrency } from "../../../utils/string";
@@ -31,7 +32,7 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
             return <Image src={item} alt="" key={index} />;
           })}
         </Link>
-        <OptionProduct isActive={isActive}/>
+        <OptionProduct id={items?._id} isActive={isActive}/>
       </div>
       <div className={styles.info}>
         <p className={`f-12 lh-20 text-uppercase color-gray ${styles.brand}`}>
@@ -55,5 +56,9 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
     </div>
   );
 };
+
+ProductPremium.propTypes = {
+  items: PropTypes.any
+}
 
 export default ProductPremium;

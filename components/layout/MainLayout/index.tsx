@@ -22,7 +22,7 @@ const MainLayout: FC<{}> = (props) => {
   }, [onHandleScroll]);
 
   const isActive = useMemo(() => {
-    if (valueBefore < scroll && scroll > 50) {
+    if ((valueBefore || 0) < scroll && scroll > 50) {
       return false;
     }
     return true;

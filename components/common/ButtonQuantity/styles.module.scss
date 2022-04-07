@@ -1,0 +1,30 @@
+.input-container {
+  padding-top: 16px;
+}
+.button {
+  border: 1px solid $border;
+  height: 46px;
+  border-radius: 4px;
+  button {
+    width: 46px;
+    height: 100%;
+  }
+  .input {
+    margin-bottom: 0;
+    max-width: 46px;
+    height: 100%;
+    div {
+      height: 100%;
+    }
+    input {
+      padding: 0;
+      height: 100%;
+      text-align: center;
+      border: 1px solid $border;
+      font-weight: 500;
+    }
+    fieldset {
+      display: none;
+    }
+  }
+}

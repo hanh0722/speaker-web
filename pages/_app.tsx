@@ -7,7 +7,6 @@ import "../styles/globals.scss";
 import { HeadGeneral } from "../components/common";
 import WrapperOptions from "../components/helper/WrapperOptions";
 import { AppPropsWithLayout } from "../types/layout";
-import WrapperTransition from "../components/helper/WrapperTranstition";
 import UserWrapper from "../components/helper/UserWrapper";
 
 const persistor = persistStore(store);

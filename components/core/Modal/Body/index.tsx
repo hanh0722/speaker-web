@@ -1,18 +1,20 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import PropTypes from "prop-types";
 import { PieceModalProps } from "../../../../types/component";
 import { classList } from "../../../../utils/string";
 import styles from "../styles.module.scss";
 import { IconClose } from "../../Icons";
+import { ModalContext } from "..";
 
 const ModalBody: FC<PieceModalProps> = (props) => {
   const { className, children, style, closeBody } = props;
+  const { onHide } = useContext(ModalContext);
   return (
     <div
       style={{ ...style }}
       className={classList(styles.body, className, "body")}
     >
-      {closeBody && <IconClose className={styles.close}/>}
+      {closeBody && <IconClose onClick={onHide} className={styles.close} />}
       {children}
     </div>
   );

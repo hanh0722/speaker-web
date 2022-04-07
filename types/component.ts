@@ -29,6 +29,7 @@ export interface InputProps extends ClassNameProps {
   value?: string;
   inputProps?: ObjectProps;
   onKeyDown?: (event: any) => void;
+  maxLength?: number
 }
 
 export interface ImageProps extends ClassNameProps {
@@ -143,4 +144,5 @@ export interface IconTooltipGroupProps extends ClassNameProps {
 
 export interface OptionProductsProps extends ClassNameProps, IconGroupProps {
   isActive: boolean;
+  id: string
 }

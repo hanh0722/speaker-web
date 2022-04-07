@@ -23,7 +23,7 @@ const usePagination = ({ itemPerPage, totalItems, numberPagination = DEFAULT_SHO
     return queryParsed;
   }
   const numPage = useMemo(() => {
-    return Math.round(totalItems / (itemPerPage || PAGE_DEFAULT));
+    return Math.ceil(totalItems / (itemPerPage || PAGE_DEFAULT));
   }, [totalItems, itemPerPage]);
 
   const onIncrementPage = () => {
