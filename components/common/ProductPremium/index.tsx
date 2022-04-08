@@ -6,6 +6,7 @@ import { classList, toCurrency } from "../../../utils/string";
 import { Button, Image, Link } from "../../core";
 import OptionProduct from "../OptionProduct";
 import styles from "./styles.module.scss";
+import ImageTransition from "../ImageTransition";
 
 const ProductPremium: FC<ProductPremiumProps> = (props) => {
   const [isActive, setIsActive] = useState(false);
@@ -28,9 +29,7 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
         className={styles.image}
       >
         <Link href={`${PRODUCT}/${items._id}`}>
-          {items.images.slice(0, 2).map((item, index) => {
-            return <Image src={item} alt="" key={index} />;
-          })}
+          <ImageTransition images={items.images}/>
         </Link>
         <OptionProduct id={items?._id} isActive={isActive}/>
       </div>

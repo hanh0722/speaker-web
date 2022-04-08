@@ -13,6 +13,7 @@ import { AppDispatch, RootState } from "../../../store";
 import { cartActions, CartStoreState } from "../../../store/slices/cart";
 import { Button, Link } from "../../core";
 import { CART } from "../../../constants/path";
+import { isClient } from "../../../utils/server";
 
 const Cart: FC<CartProps> = (props) => {
   const { className } = props;
@@ -24,6 +25,10 @@ const Cart: FC<CartProps> = (props) => {
   const onDispatchCart = () => {
     dispatch(cartActions.onChangeActiveCart());
   };
+
+  if (!isClient()) {
+    return null;
+  }
   return (
     <>
       {ReactDOM.createPortal(

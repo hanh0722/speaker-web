@@ -2,6 +2,10 @@
   width: 20px;
   height: 20px;
   @include flex(center, center);
+  &.xs {
+    width: 10px;
+    height: 10px;
+  }
   &.md {
     width: 16px;
     height: 16px;

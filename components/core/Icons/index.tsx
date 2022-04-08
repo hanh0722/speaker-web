@@ -22,6 +22,7 @@ import IconInstagram from "./IconInstagram";
 import IconCaretRight from "./IconCaretRight";
 import IconMinus from "./IconMinus";
 import IconPlus from "./IconPlus";
+import IconCaretLightRight from "./IconCaretRightLight";
 export {
   IconPlus,
   IconMinus,
@@ -46,5 +47,6 @@ export {
   IconArrowLeft,
   IconArrowRight,
   IconInstagram,
+  IconCaretLightRight,
   IconCaretRight
 };

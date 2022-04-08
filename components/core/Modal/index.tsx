@@ -10,6 +10,7 @@ import ModalHeader from "./Header";
 import ModalBody from "./Body";
 import ModalFooter from "./Footer";
 import { TIME_TRANSITION_MODAL } from "../../../constants/base";
+import { isClient } from "../../../utils/server";
 
 export const ModalContext = createContext<{ onHide?: () => void }>({
   onHide: () => {},
@@ -17,6 +18,10 @@ export const ModalContext = createContext<{ onHide?: () => void }>({
 
 const Modal: FC<ModalExtendsProps> = (props) => {
   const { show, children, onHide, variant, scrollable, center } = props;
+
+  if (!isClient()) {
+    return null;
+  }
   return (
     <>
       <ModalContext.Provider

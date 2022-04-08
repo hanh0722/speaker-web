@@ -93,11 +93,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
         isOpenSearchField={isOpenSearchField}
       />
       <Cart />
-      <nav
-        className={`bg-white shadow-sm ${!isActive && styles.hide} ${
-          styles.nav
-        }`}
-      >
+      <nav className={`bg-white shadow-sm ${!isActive && styles.hide} ${styles.nav}`}>
         <Container className={styles.navigation}>
           {isMobile && (
             <Hamburger ref={targetRef} onClick={onChangeToggle} variant={3} />

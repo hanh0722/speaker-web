@@ -1,0 +1,14 @@
+.breadcrumb {
+  padding-top: $pd-container;
+  padding-bottom: $pd-container-bt;
+  h4 {
+    padding-bottom: 16px;
+  }
+  @include tablet {
+    h4 {
+      font-size: 24px;
+      padding-bottom: 10px;
+      line-height: 36px;
+    }
+  }
+}

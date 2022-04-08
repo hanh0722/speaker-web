@@ -48,12 +48,12 @@ export interface SkeletonLoadingProps extends ClassNameProps {
 export interface LinkProps extends ClassNameProps, NextLinkProps {
   blank?: boolean;
   onClick?: () => void;
-  activeClassname?: string
+  activeClassname?: string;
 }
 
 export interface IconWrapperProps extends ClassNameProps {
   icon?: ElementType;
-  variant?: "sm" | "md" | "lg" | "xl" | "xxl" | "unset";
+  variant?: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "unset";
   onClick?: () => void;
 }
 

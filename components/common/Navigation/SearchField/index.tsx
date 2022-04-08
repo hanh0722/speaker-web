@@ -10,12 +10,16 @@ import { Container, Image, Input } from "../../../core";
 import { IconCart, IconClose, IconPeople, IconStar } from "../../../core/Icons";
 import { RootState } from "../../../../store";
 import { IconSearch } from "../../../core/Icons";
+import { isClient } from "../../../../utils/server";
 
 const SearchField: FC<SearchFieldProps> = (props) => {
   const isMobileSCreen = useSelector<RootState>(
     (state) => state.ui.isMobileScreen
   );
   const { className, onClick, isOpenSearchField } = props;
+  if (!isClient()) {
+    return null;
+  }
   return (
     <>
       {ReactDOM.createPortal(

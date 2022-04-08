@@ -8,23 +8,32 @@ import { HeadGeneral } from "../components/common";
 import WrapperOptions from "../components/helper/WrapperOptions";
 import { AppPropsWithLayout } from "../types/layout";
 import UserWrapper from "../components/helper/UserWrapper";
+import { isClient } from "../utils/server";
 
 const persistor = persistStore(store);
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page: ReactNode) => page);
+
+  const renderMainClient = () => {
+    return (
+      <UserWrapper>
+        <WrapperOptions>
+          {/* <WrapperTransition> */}
+          {getLayout(<Component {...pageProps} />)}
+          {/* </WrapperTransition> */}
+        </WrapperOptions>
+      </UserWrapper>
+    );
+  };
   return (
     <>
       <HeadGeneral />
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <UserWrapper>
-            <WrapperOptions>
-              {/* <WrapperTransition> */}
-              {getLayout(<Component {...pageProps} />)}
-              {/* </WrapperTransition> */}
-            </WrapperOptions>
-          </UserWrapper>
-        </PersistGate>
+        {!isClient() ? (
+          <PersistGate loading={null} persistor={persistor}>
+            {renderMainClient()}
+          </PersistGate>
+        ) : renderMainClient()}
       </Provider>
     </>
   );

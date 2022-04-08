@@ -1,0 +1,9 @@
+.sidebar {
+  min-width: 340px;
+  max-width: 340px;
+  padding-right: 32px;
+  @include tablet {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
