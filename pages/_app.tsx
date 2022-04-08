@@ -14,7 +14,7 @@ const persistor = persistStore(store);
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout || ((page: ReactNode) => page);
 
-  const renderMainClient = () => {
+  const renderComponentClient = () => {
     return (
       <UserWrapper>
         <WrapperOptions>
@@ -29,11 +29,13 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     <>
       <HeadGeneral />
       <Provider store={store}>
-        {!isClient() ? (
+        {isClient() ? (
           <PersistGate loading={null} persistor={persistor}>
-            {renderMainClient()}
+            {renderComponentClient()}
           </PersistGate>
-        ) : renderMainClient()}
+        ) : (
+          renderComponentClient()
+        )}
       </Provider>
     </>
   );
