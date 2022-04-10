@@ -13,6 +13,7 @@ import ButtonQuantity from "./ButtonQuantity";
 import RowLineProducts from "./RowLineProducts";
 import ParserElement from "../core/ParserElement";
 import ListElement from "./ListElement";
+import ButtonQuantitySystem from "./ButtonQuantitySystemAPI";
 export {
   HeadGeneral,
   Modal,
@@ -28,5 +29,6 @@ export {
   ButtonQuantity,
   RowLineProducts,
   ParserElement,
-  ListElement
+  ListElement,
+  ButtonQuantitySystem
 };

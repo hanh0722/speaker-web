@@ -2,16 +2,12 @@ import React, { FC, useState } from "react";
 import PropTypes from 'prop-types';
 import { CartItem } from "../../../../types/components/Cart";
 import { classList, toCurrency } from "../../../../utils/string";
-import { ButtonQuantity, ImageTransition } from "../../../common";
+import { ButtonQuantitySystem, ImageTransition } from "../../../common";
 import styles from "./styles.module.scss";
 import { Button } from "../../../core";
 
 const CartItem: FC<CartItem> = (props) => {
   const { className, data, quantity, ...restProps } = props;
-  const [prodQuantity, setProdQuantity] = useState(quantity);
-  const onChangeQuantity = (value: number) => {
-    setProdQuantity(value);
-  }
   const onDeleteItem = () => {
     
   }
@@ -21,7 +17,7 @@ const CartItem: FC<CartItem> = (props) => {
       <div className={styles.description}>
         <p className={`f-16 weight-500 ${styles.title}`}>{data.title}</p>
         <p className={`${styles.price}`}>{toCurrency(data.price)}</p>
-        <ButtonQuantity onChange={onChangeQuantity} className={styles.quantity} defaultValue={quantity.toString()}/>
+        <ButtonQuantitySystem productId={data._id} initialValue={quantity}/>
         <div className={`d-flex align-center ${styles.btn}`}>
           <Button onClick={onDeleteItem} variant="outlined" color="warning" prefix="normal">Delete</Button>
         </div>
@@ -31,13 +27,14 @@ const CartItem: FC<CartItem> = (props) => {
 };
 
 CartItem.defaultProps = {
-
+  className: '',
+  children: null
 }
 
 CartItem.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.any,
-
+  data: PropTypes.any.isRequired,
+  quantity: PropTypes.number.isRequired
 }
 
 export default CartItem;

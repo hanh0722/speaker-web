@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { onAddCartUser } from "../service/class/cart";
 import { AppDispatch } from "../store";
@@ -17,6 +17,7 @@ export const useAddCartService = () => {
     setIsLoading(false);
   }, []);
   const onAddItemToCart = useCallback(async (productId: string, quantity?: number) => {
+    onResetAsync();
     setIsLoading(true);
     try{
       const response = await onAddCartUser(productId, quantity);
@@ -33,7 +34,8 @@ export const useAddCartService = () => {
       setError(err?.message);
       setIsLoading(false);
     }
-  }, [dispatch]);
+  }, [dispatch, onResetAsync]);
+
 
   return {
     onAddItemToCart,
@@ -43,7 +45,3 @@ export const useAddCartService = () => {
     onResetAsync
   }
 };
-
-export const useDeleteItemService = () => {
-  
-}

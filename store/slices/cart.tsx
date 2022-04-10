@@ -1,7 +1,6 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import { onFetchCartUser } from "../../service/class/cart";
 import { CartResponse, CartItemProps } from "../../types/api/page/cart";
-import { BaseProductProps } from "../../types/request";
 import { onChangeItemCart } from "../../utils/cart";
 
 export interface CartStoreState {
