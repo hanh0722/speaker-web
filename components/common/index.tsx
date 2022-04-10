@@ -10,6 +10,9 @@ import Footer from "./Footer";
 import ImageTransition from "./ImageTransition";
 import QuickViewProduct from "./QuickViewProduct";
 import ButtonQuantity from "./ButtonQuantity";
+import RowLineProducts from "./RowLineProducts";
+import ParserElement from "../core/ParserElement";
+import ListElement from "./ListElement";
 export {
   HeadGeneral,
   Modal,
@@ -22,5 +25,8 @@ export {
   Footer,
   ImageTransition,
   QuickViewProduct,
-  ButtonQuantity
+  ButtonQuantity,
+  RowLineProducts,
+  ParserElement,
+  ListElement
 };

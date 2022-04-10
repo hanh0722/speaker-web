@@ -13,6 +13,7 @@ import IconGroup from "./IconGroup";
 import Accordion from "./Accordion";
 import BreadCrumb from "./BreadCrumb";
 import Pagination from "./Pagination";
+import ParserElement from "./ParserElement";
 
 export {
   Image,
@@ -29,5 +30,6 @@ export {
   IconGroup,
   Accordion,
   BreadCrumb,
-  Pagination
+  Pagination,
+  ParserElement
 };

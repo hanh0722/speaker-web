@@ -52,7 +52,7 @@ const OptionProduct: FC<OptionProductsProps> = (props) => {
       >
         <IconGroup {...restProps} className={classList(className)}>
           <IconGroup.ElementIcon
-            tooltip="Add To Wishlist"
+            tooltip="Add Wishlist"
             iconName={IconStar}
           />
           <IconGroup.ElementIcon tooltip="Compare" iconName={IconCompare} />

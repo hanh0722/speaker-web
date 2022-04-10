@@ -1,0 +1,42 @@
+.header {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.accordion {
+  margin-bottom: 30px;
+}
+
+.list {
+  background: red;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+@mixin transition {
+  transition: opacity .3s, max-height .3s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+
+@mixin enter {
+  opacity: 1;
+  // max-height: 0;
+}
+
+@mixin active {
+  opacity: 1;
+  // max-height: 300px; 
+}
+
+.enter {
+  @include enter();
+}
+.enter-active {
+  @include active();
+  @include transition();
+}
+.exit {
+  @include active();
+}
+.exit-active {
+  @include enter();
+  @include transition();
+}

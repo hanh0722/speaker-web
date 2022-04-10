@@ -16,6 +16,7 @@
 }
 .image {
   position: relative;
+  overflow: hidden;
   img {
     width: 100%;
     height: 100%;
@@ -62,4 +63,10 @@
 .btn {
   width: 80%;
   margin-top: 20px !important;
+}
+.description {
+  padding-top: 8px;
+  font-size: 16px;
+  color: $color-secondary;
+  @include show-n-line(1);
 }

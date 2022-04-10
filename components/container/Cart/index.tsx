@@ -14,13 +14,17 @@ import { cartActions, CartStoreState } from "../../../store/slices/cart";
 import { Button, Link } from "../../core";
 import { CART } from "../../../constants/path";
 import { isClient } from "../../../utils/server";
+import CartLoading from "./CartLoading";
+import { generateArray } from "../../../utils/array";
+import CartItem from "./CartItem";
 
 const Cart: FC<CartProps> = (props) => {
   const { className } = props;
   const dispatch = useDispatch<AppDispatch>();
-  const { isOpenCart, cart } = useSelector<RootState, CartStoreState>(
-    (state) => state.cart
-  );
+  const { isOpenCart, cart, isLoadingCart } = useSelector<
+    RootState,
+    CartStoreState
+  >((state) => state.cart);
 
   const onDispatchCart = () => {
     dispatch(cartActions.onChangeActiveCart());
@@ -29,6 +33,7 @@ const Cart: FC<CartProps> = (props) => {
   if (!isClient()) {
     return null;
   }
+
   return (
     <>
       {ReactDOM.createPortal(
@@ -62,11 +67,28 @@ const Cart: FC<CartProps> = (props) => {
                   </div>
                 </ScrollView.Header>
                 <ScrollView.Body>
-                  {cart.length === 0 && (
+                  {isLoadingCart && (
+                    <div className={styles.loading}>
+                      {generateArray(3).map((item) => (
+                        <CartLoading key={item} />
+                      ))}
+                    </div>
+                  )}
+                  {!isLoadingCart && cart.length === 0 ? (
                     <p className="f-16">Your cart is empty</p>
+                  ) : (
+                    cart.map((item) => {
+                      return (
+                        <CartItem
+                          quantity={item.quantity}
+                          data={item?.productId}
+                          key={item?.productId?._id}
+                        />
+                      );
+                    })
                   )}
                 </ScrollView.Body>
-                {cart.length > 0 && (
+                {!isLoadingCart && cart.length > 0 && (
                   <ScrollView.Footer className={styles.footer}>
                     <p>
                       <span>Shipping:</span>

@@ -5,3 +5,7 @@ export interface ErrorProps extends Error {
   code?: number;
   message: string
 }
+
+export interface UIProps {
+  isMobileScreen?: boolean
+}

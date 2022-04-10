@@ -9,6 +9,7 @@ import WrapperOptions from "../components/helper/WrapperOptions";
 import { AppPropsWithLayout } from "../types/layout";
 import UserWrapper from "../components/helper/UserWrapper";
 import { isClient } from "../utils/server";
+import CartWrapper from "../components/helper/CartWrapper";
 
 const persistor = persistStore(store);
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
@@ -17,11 +18,13 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const renderComponentClient = () => {
     return (
       <UserWrapper>
-        <WrapperOptions>
-          {/* <WrapperTransition> */}
-          {getLayout(<Component {...pageProps} />)}
-          {/* </WrapperTransition> */}
-        </WrapperOptions>
+        <CartWrapper>
+          <WrapperOptions>
+            {/* <WrapperTransition> */}
+            {getLayout(<Component {...pageProps} />)}
+            {/* </WrapperTransition> */}
+          </WrapperOptions>
+        </CartWrapper>
       </UserWrapper>
     );
   };

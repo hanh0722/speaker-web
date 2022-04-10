@@ -50,7 +50,7 @@ const reducerFetchingFunction = <
       return state;
   }
 };
-const useFetch = <T extends ObjectProps>() => {
+const useFetch = <T extends ObjectProps, U extends Promise<U>>() => {
   const [state, dispatch] = useReducer<React.Reducer<UseFetchState<any, any>, UseFetchActions>>(reducerFetchingFunction, initialState);
   const token = useSelector<RootState>((state) => state.user.token);
 

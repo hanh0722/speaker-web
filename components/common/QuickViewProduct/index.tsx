@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { toCurrency } from "../../../utils/string";
 import { Button, Grid, Link, Modal, SkeletonLoading } from "../../core";
@@ -7,10 +7,28 @@ import styles from "./styles.module.scss";
 import { QuickViewProductProps } from "../../../types/components/QuickViewProduct";
 import { classList } from "../../../utils/string";
 import { generateArray } from "../../../utils/array";
+import { Alert } from "@mui/material";
+import { useAddCartService } from "../../../hook/useCart";
 
 const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
+  const { isLoading: isLoadingAddCart, data: dataAddCart, error, onAddItemToCart, onResetAsync } = useAddCartService();
+  
   const { show, onHide, className, data, isLoading, ...restProps } = props;
   const quantityRef = useRef<HTMLInputElement>(null);
+
+  const onAddItem = () => {
+    const quantity = +(quantityRef.current?.value || 1);
+    onAddItemToCart(data!.data._id, quantity);
+  }
+
+  useEffect(() => {
+    if (!show) {
+      onResetAsync();
+    }
+    return () => {
+      onResetAsync();
+    }
+  }, [onResetAsync, show]);
   return (
     <Modal {...restProps} variant="lg" show={show} onHide={onHide}>
       <Modal.Body className={classList(styles.main, className)} closeBody>
@@ -30,7 +48,9 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
           </div>
           <div className={styles.right}>
             {isLoading ? (
-              <div className={`d-flex flex-column align-center justify-center ${styles.loading}`}>
+              <div
+                className={`d-flex flex-column align-center justify-center ${styles.loading}`}
+              >
                 {generateArray(6).map((item) => {
                   return (
                     <SkeletonLoading
@@ -54,9 +74,20 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
                   View Details
                 </Link>
                 <ButtonQuantity ref={quantityRef} />
-                <Button fullWidth size="medium" className={styles.btn}>
+                <Button
+                  isLoading={isLoadingAddCart}
+                  onClick={onAddItem}
+                  fullWidth
+                  size="medium"
+                  className={styles.btn}
+                >
                   Add To Cart
                 </Button>
+                {!isLoadingAddCart && (dataAddCart || error) && (
+                  <Alert className={styles.message} severity={(dataAddCart && !error) ? "success" : "error"}>
+                    {error ? error : "Add to cart successfully"}
+                  </Alert>
+                )}
               </>
             )}
           </div>

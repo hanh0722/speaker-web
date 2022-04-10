@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   try {
     const products = await onFetchProducts({
       page: page ? +page : 1,
-      page_size: DEFAULT_PAGE_SIZE,
+      page_size: 1,
     });
     if (products.status >= 400 || products?.data?.code >= 400) {
       return {

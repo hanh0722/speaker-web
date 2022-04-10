@@ -14,4 +14,37 @@
   @include tablet {
     padding-top: 32px;
   }
+  width: 100%;
+}
+
+@for $var from 1 to 3 {
+  .grid-#{$var} {
+    @if $var == 1 {
+      .product {
+        display: flex;
+        align-items: center;
+        :global {
+          .image-product {
+            min-width: 300px;
+            max-width: 300px;
+            padding-top: 50%;
+            margin-right: 32px;
+            @include mobile {
+              min-width: 250px;
+              max-width: 250px;
+              padding-top: 0;
+              height: 100%;
+            }
+          }
+          .info-product {
+            text-align: left;
+          }
+          .price-item {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+    grid-template-columns: repeat($var, 1fr);
+  }
 }
