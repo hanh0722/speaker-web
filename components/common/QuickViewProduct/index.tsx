@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { toCurrency } from "../../../utils/string";
 import { Button, Grid, Link, Modal, SkeletonLoading } from "../../core";
@@ -9,8 +10,10 @@ import { classList } from "../../../utils/string";
 import { generateArray } from "../../../utils/array";
 import { Alert } from "@mui/material";
 import { useAddCartService } from "../../../hook/useCart";
+import { RootState } from "../../../store";
 
 const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
+  const isMobileScreen = useSelector<RootState>(state => state.ui.isMobileScreen);
   const { isLoading: isLoadingAddCart, data: dataAddCart, error, onAddItemToCart, onResetAsync } = useAddCartService();
   
   const { show, onHide, className, data, isLoading, ...restProps } = props;
@@ -30,9 +33,9 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
     }
   }, [onResetAsync, show]);
   return (
-    <Modal {...restProps} variant="lg" show={show} onHide={onHide}>
+    <Modal scrollable {...restProps} variant="lg" show={show} onHide={onHide}>
       <Modal.Body className={classList(styles.main, className)} closeBody>
-        <Grid className={styles.body} cols={2}>
+        <Grid className={styles.body} cols={isMobileScreen ? 1 : 2}>
           <div className={styles.left}>
             {isLoading ? (
               <SkeletonLoading

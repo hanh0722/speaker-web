@@ -23,3 +23,15 @@ export const onAddCartUser = (productId: string, quantity?: number) => {
     }
   });
 }
+
+export const onDeleteItemCart = (productId: string, quantity?: number) => {
+  return request.delete<BaseResponse>(`${CART_API}/delete`, {
+    headers: {
+      authorization: 'Bearer ' + getCookie('token')
+    },
+    params: {
+      id: productId,
+      quantity: quantity
+    }
+  })
+}

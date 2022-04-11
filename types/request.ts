@@ -35,8 +35,12 @@ export interface ProductResponse extends BaseResponse, BasePaginationResponse {
   data: BaseProductProps;
 }
 
+export interface BaseQueryRequest {
+  value?: string;
+  query?: string
+}
 
-export interface BaseSortRequest {
+export interface BaseSortRequest extends BaseQueryRequest {
   page_size?: number;
   page?: number;
   key?: any;

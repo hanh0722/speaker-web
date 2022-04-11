@@ -3,5 +3,6 @@ import { ClassNameProps } from "../../string";
 
 export interface ProductPremiumProps extends ClassNameProps {
   items: BaseProductProps;
-  isShowDescription?: boolean
+  isShowDescription?: boolean;
+  isHiddenOptions?: boolean
 }

@@ -1,5 +1,7 @@
 .search {
     min-height: 15vh;
+    max-height: 90vh;
+    overflow-y: scroll;
     position: fixed;
     top: 0;
     width: 100%;
@@ -7,7 +9,7 @@
     background: $white;
     z-index: 20;
     @include tablet {
-        min-height: 90vh;
+        min-height: 50vh;
     }
 }
 .container {

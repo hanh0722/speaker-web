@@ -1,3 +1,5 @@
+import { BaseProductProps } from "./request";
+
 export interface ObjectProps {
   [props: string | number]: any;
 }
@@ -8,4 +10,9 @@ export interface ErrorProps extends Error {
 
 export interface UIProps {
   isMobileScreen?: boolean
+}
+
+export interface ProductBaseProps {
+  data?: Array<BaseProductProps>;
+  total_products?: number
 }

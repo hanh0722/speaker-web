@@ -35,13 +35,14 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
-    onResetUser(state, action) {
+    onResetUser(state) {
       state.user = null;
       state.timeout = null;
       state.error = null;
       state.token = null;
       state.isLoggedIn = false;
       state.expiration = false;
+      state.isLoading = false;
     },
     onExpiration(state, action) {
       state.expiration = action.payload;
@@ -92,4 +93,11 @@ export const onLoginUser = (username?: string, password?: string) => {
     }
   };
 };
+
+export const onLogoutUser = () => {
+  return (dispatch: Dispatch) => {
+    dispatch(userActions.onResetUser());
+    deleteCookie('token');
+  }
+}
 export default userSlice;

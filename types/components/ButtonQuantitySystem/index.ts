@@ -1,5 +1,6 @@
 import { ClassNameProps } from "../../string";
 
 export interface ButtonQuantitySystemProps extends ClassNameProps {
-  initialValue?: number
+  initialValue?: number;
+  productId: string
 }

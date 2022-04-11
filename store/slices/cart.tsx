@@ -1,7 +1,11 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import { onFetchCartUser } from "../../service/class/cart";
-import { CartResponse, CartItemProps } from "../../types/api/page/cart";
-import { onChangeItemCart } from "../../utils/cart";
+import {
+  CartResponse,
+  CartItemProps,
+  CartItem,
+} from "../../types/api/page/cart";
+import { onChangeItemCart, updateTotalPrice } from "../../utils/cart";
 
 export interface CartStoreState {
   isOpenCart: boolean;
@@ -28,9 +32,7 @@ const cartSlice = createSlice({
     onAddItemToCart(state, action) {
       const { data } = action.payload as CartResponse;
       state.cart = data;
-      state.total = data.reduce((acc, { quantity, productId }) => {
-        return acc + quantity * productId.price;
-      }, 0);
+      state.total = updateTotalPrice(data);
     },
     onChangeActiveCart(state) {
       state.isOpenCart = !state.isOpenCart;
@@ -48,7 +50,22 @@ const cartSlice = createSlice({
     },
     onChangeCart(state, action) {
       const { data, quantity } = action.payload;
-      state.cart = onChangeItemCart(state.cart, data, quantity);
+      const newCart = onChangeItemCart(state.cart, data, quantity);
+      state.cart = newCart;
+      state.total = updateTotalPrice(newCart);
+    },
+    onDeleteItemCart(state, action: { payload: CartItem }) {
+      const { id, quantity } = action.payload as CartItem;
+      let newCart = [...state.cart];
+      const itemIndex = newCart.findIndex((item) => item.productId._id === id);
+      const product = newCart[itemIndex];
+      if (product.quantity - quantity <= 0 || quantity === -1) {
+        newCart = newCart.filter((item) => item.productId._id !== id);
+      } else {
+        newCart[itemIndex].quantity -= quantity;
+      }
+      state.cart = [...newCart];
+      state.total = updateTotalPrice(newCart);
     },
   },
 });

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { onAddCartUser } from "../service/class/cart";
+import { onAddCartUser, onDeleteItemCart } from "../service/class/cart";
 import { AppDispatch } from "../store";
 import { cartActions } from "../store/slices/cart";
 import { BaseResponse } from "../types/request";
@@ -45,3 +45,43 @@ export const useAddCartService = () => {
     onResetAsync
   }
 };
+
+export const useDeleleItemCart = () => {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<null | BaseResponse>(null);
+  const [error, setError] = useState(null);
+
+  const onResetAsync = useCallback(() => {
+    setIsLoading(false);
+    setData(null);
+    setError(null);
+  }, []);
+  const onDeleteItemInCart = useCallback(async (productId: string, quantity?: number) => {
+    onResetAsync();
+    setIsLoading(true);
+    try{
+      const response = await onDeleteItemCart(productId, quantity);
+      if (response.status >= 400 || response.data?.code >= 400) {
+        throw new Error(response?.data?.message || 'Cannot delete item!');
+      };
+      setData(response.data);
+      setIsLoading(false);
+      dispatch(cartActions.onDeleteItemCart({
+        id: productId,
+        quantity: quantity || 1
+      }))
+    }catch(err: any) {
+      setIsLoading(false);
+      setError(err?.message || "Server Internal Error");
+    }
+  }, [onResetAsync, dispatch]);
+
+  return {
+    isLoading,
+    data,
+    error,
+    onDeleteItemInCart,
+    onResetAsync
+  }
+}

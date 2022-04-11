@@ -1,7 +1,10 @@
 import React, { FC, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import useMedia from "../../hook/useMedia";
 import { uiActions } from "../../store/slices/ui";
+import { DEFAULT_SETTINGS } from "../../constants/toast";
+import 'react-toastify/dist/ReactToastify.css';
 
 const WrapperOptions: FC<{}> = (props) => {
   const dispatch = useDispatch();
@@ -10,7 +13,12 @@ const WrapperOptions: FC<{}> = (props) => {
     dispatch(uiActions.onChangeScreen(isMobileScreen));
   }, [dispatch, isMobileScreen]);
 
-  return <>{props.children}</>;
+  return (
+    <>
+      <ToastContainer {...DEFAULT_SETTINGS}/>
+      {props.children}
+    </>
+  );
 };
 
 export default WrapperOptions;

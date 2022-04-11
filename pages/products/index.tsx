@@ -8,7 +8,6 @@ import BreadCrumbDirection from "../../components/core/BreadCrumbDirection";
 import { HOME, PRODUCTS } from "../../constants/path";
 import { onFetchProducts } from "../../service/class/products";
 import { HeadGeneral } from "../../components/common";
-import { DEFAULT_PAGE_SIZE } from "../../constants/products";
 
 const Products: NextPageWithLayout = ({ products, total_products }: any) => {
   return (

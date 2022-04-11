@@ -44,7 +44,10 @@ const reducerFetchingFunction = <
       };
     case UseFetchSerialize.RESET:
       return {
-        ...initialState,
+        ...state,
+        isLoading: false,
+        data: null,
+        error: null
       };
     default:
       return state;

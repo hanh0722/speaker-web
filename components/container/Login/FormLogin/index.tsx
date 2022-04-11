@@ -3,7 +3,7 @@ import { withRouter } from "next/router";
 import { connect } from "react-redux";
 import { FORGET_PASSWORD, REGISTER } from "../../../../constants/path";
 import { CheckBox } from "../../../common";
-import { Button, Input, Link } from "../../../core";
+import { Button, Input, Link, ToastNotification } from "../../../core";
 import { IconEye } from "../../../core/Icons";
 import { FormAuth } from "../../../layout";
 import styles from "./styles.module.scss";
@@ -83,8 +83,11 @@ class FormLogin extends Component<LoginFormProps, FormLoginState> {
       });
       const { token, user } = response as UserResponse;
       onSetUser(user, token);
+
       router.push("/");
+      ToastNotification.success('Sign In Successfully');
     } catch (err: any) {
+      ToastNotification.error(err?.message || "Server Internal Error");
       this.setState({
         isLoading: false,
         error: err || err?.message || "Server Internal Error",

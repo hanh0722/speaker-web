@@ -39,6 +39,8 @@
   display: flex !important;
   justify-content: space-between;
   align-items: center;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   ul {
     list-style: none;
     height: 100%;
@@ -74,10 +76,16 @@
   }
 }
 .right {
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   li {
     cursor: pointer;
     @include flex(center, center);
     position: relative;
+    height: 100%;
     &:hover {
       &::before,
       &::after {
@@ -89,7 +97,7 @@
     &::before {
       content: attr(data-hover);
       position: absolute;
-      bottom: -45px;
+      bottom: -50px;
       @extend .f-12;
       @extend .bg-black;
       @include padding(8, 8);
@@ -104,10 +112,15 @@
       height: 0;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      bottom: -13px;
+      bottom: -10px;
       border-bottom: 6px solid $black;
       @include hover-tooltip();
     }
+  }
+  a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .hide {

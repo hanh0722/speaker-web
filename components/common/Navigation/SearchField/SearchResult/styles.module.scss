@@ -1,0 +1,22 @@
+.grid {
+  @include basic-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  overflow-y: scroll;
+}
+.error {
+  padding-bottom: 20px;
+  @include tablet {
+    padding-bottom: 0;
+    padding-top: 20px;
+  }
+}
+.container {
+  @include padding(20, 0);
+}

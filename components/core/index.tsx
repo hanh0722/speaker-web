@@ -14,6 +14,7 @@ import Accordion from "./Accordion";
 import BreadCrumb from "./BreadCrumb";
 import Pagination from "./Pagination";
 import ParserElement from "./ParserElement";
+import ToastNotification from "./ToastNotification";
 
 export {
   Image,
@@ -31,5 +32,6 @@ export {
   Accordion,
   BreadCrumb,
   Pagination,
-  ParserElement
+  ParserElement,
+  ToastNotification
 };

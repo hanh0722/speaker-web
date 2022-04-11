@@ -8,6 +8,12 @@
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     overflow: hidden;
+    @include tablet {
+      padding-top: 60%;
+    }
+    @include mobile {
+      padding-top: 80%;
+    }
     img {
       position: absolute;
       inset: 0;
@@ -24,6 +30,11 @@
     .description {
       @include show-n-line(2);
       @include padding(16, 0);
+    }
+    @include tablet {
+      h3 {
+        font-size: 20px;
+      }
     }
   }
   .link {

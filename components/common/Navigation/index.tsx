@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { useRouter } from "next/router";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ReactDOM from "react-dom";
@@ -22,7 +22,7 @@ import {
   PRODUCTS,
   SHOP,
   WISHLIST,
-  REGISTER
+  REGISTER,
 } from "../../../constants/path";
 import Hamburger from "../Hamburger";
 import useDropdown from "../../../hook/useDropdown";
@@ -30,6 +30,7 @@ import Modal from "../Modal";
 import SearchField from "./SearchField";
 import { AppDispatch, RootState } from "../../../store";
 import { cartActions } from "../../../store/slices/cart";
+import { onLogoutUser } from "../../../store/slices/user";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;
@@ -45,10 +46,10 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
     router.push({
       pathname: LOGIN,
       query: {
-        welcome: true
-      }
-    })
-  }
+        welcome: true,
+      },
+    });
+  };
   const renderListItem = () => {
     return (
       <ul ref={listRef} className={`d-flex ${styles.list}`}>
@@ -72,11 +73,25 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
           <li>Features</li>
           <IconCaret variant="sm" />
         </Link>
-        {isMobile && !user && <div className={`d-flex flex-column justify-end ${styles.login}`}>
-          <p>My Account</p>
-          <Button onClick={onMoveLogin} fullWidth size="large">Log In</Button>
-          <Link href={REGISTER}><Button fullWidth size="large" variant="outlined" prefix="normal" color="inherit" >Register</Button></Link>
-          </div>}
+        {isMobile && !user && (
+          <div className={`d-flex flex-column justify-end ${styles.login}`}>
+            <p>My Account</p>
+            <Button onClick={onMoveLogin} fullWidth size="large">
+              Log In
+            </Button>
+            <Link href={REGISTER}>
+              <Button
+                fullWidth
+                size="large"
+                variant="outlined"
+                prefix="normal"
+                color="inherit"
+              >
+                Register
+              </Button>
+            </Link>
+          </div>
+        )}
       </ul>
     );
   };
@@ -86,6 +101,9 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
   const onDispatchCart = () => {
     dispatch(cartActions.onChangeActiveCart());
   };
+  const onLogout = () => {
+    dispatch(onLogoutUser());
+  }
   return (
     <>
       <SearchField
@@ -93,7 +111,11 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
         isOpenSearchField={isOpenSearchField}
       />
       <Cart />
-      <nav className={`bg-white shadow-sm ${!isActive && styles.hide} ${styles.nav}`}>
+      <nav
+        className={`bg-white shadow-sm ${!isActive && styles.hide} ${
+          styles.nav
+        }`}
+      >
         <Container className={styles.navigation}>
           {isMobile && (
             <Hamburger ref={targetRef} onClick={onChangeToggle} variant={3} />
@@ -132,11 +154,13 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
               </li>
               {!isMobile && (
                 <>
-                  {!user && <Link href={`${LOGIN}?welcome=true`}>
-                    <li data-hover="Account">
-                      <IconPeople variant={isMobile ? "md" : "lg"} />
-                    </li>
-                  </Link>}
+                  {!user && (
+                    <Link href={`${LOGIN}?welcome=true`}>
+                      <li data-hover="Account">
+                        <IconPeople variant={isMobile ? "md" : "sm"} />
+                      </li>
+                    </Link>
+                  )}
                   <Link href={WISHLIST}>
                     <li data-hover="Wishlist">
                       <IconStar variant={isMobile ? "md" : "lg"} />
@@ -150,6 +174,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                   variant={isMobile ? "md" : "lg"}
                 />
               </li>
+              {user && !isMobile && <Button onClick={onLogout} prefix="normal" variant="outlined" color="inherit">Log out</Button>}
             </ul>
           </div>
         </Container>
@@ -159,11 +184,11 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
 };
 
 Navigation.defaultProps = {
-  isActive: false
-}
+  isActive: false,
+};
 
 Navigation.propTypes = {
-  isActive: PropTypes.bool.isRequired
-}
+  isActive: PropTypes.bool.isRequired,
+};
 
 export default Navigation;

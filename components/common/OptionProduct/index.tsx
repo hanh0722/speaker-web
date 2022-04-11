@@ -35,6 +35,7 @@ const OptionProduct: FC<OptionProductsProps> = (props) => {
       }
     }
   }, [timeoutClose]);
+  
   return (
     <>
       <QuickViewProduct data={data} isLoading={isLoading} show={isOpen} onHide={onClose} />

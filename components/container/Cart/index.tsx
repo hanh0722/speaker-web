@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { CartProps } from "../../../types/component";
 import { Modal } from "../../common";
 import styles from "./styles.module.scss";
-import { classList } from "../../../utils/string";
+import { classList, toCurrency } from "../../../utils/string";
 import { CSSTransition } from "react-transition-group";
 import ScrollView from "../../common/ScrollView";
 import { IconClose } from "../../core/Icons";
@@ -21,7 +21,7 @@ import CartItem from "./CartItem";
 const Cart: FC<CartProps> = (props) => {
   const { className } = props;
   const dispatch = useDispatch<AppDispatch>();
-  const { isOpenCart, cart, isLoadingCart } = useSelector<
+  const { isOpenCart, cart, isLoadingCart, total } = useSelector<
     RootState,
     CartStoreState
   >((state) => state.cart);
@@ -96,7 +96,7 @@ const Cart: FC<CartProps> = (props) => {
                     </p>
                     <p>
                       <span>Subtotal:</span>
-                      <span>$1000</span>
+                      <span>{toCurrency(total)}</span>
                     </p>
                     <Button fullWidth size="large">
                       Checkout

@@ -10,7 +10,7 @@ import ImageTransition from "../ImageTransition";
 
 const ProductPremium: FC<ProductPremiumProps> = (props) => {
   const [isActive, setIsActive] = useState(false);
-  const { items, className, isShowDescription, ...restProps } = props;
+  const { items, className, isShowDescription, isHiddenOptions, ...restProps } = props;
 
   const onEnter = () => {
     setIsActive(true);
@@ -31,7 +31,7 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
         <Link href={`${PRODUCT}/${items._id}`}>
           <ImageTransition images={items.images}/>
         </Link>
-        <OptionProduct id={items?._id} isActive={isActive}/>
+        {!isHiddenOptions && <OptionProduct id={items?._id} isActive={isActive}/>}
       </div>
       <div className={`${styles.info} info-product`}>
         <p className={`f-12 lh-20 text-uppercase color-gray ${styles.brand}`}>
@@ -57,8 +57,13 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
   );
 };
 
+ProductPremium.defaultProps = {
+  isHiddenOptions: false
+}
+
 ProductPremium.propTypes = {
-  items: PropTypes.any
+  items: PropTypes.any,
+  isHiddenOptions: PropTypes.bool
 }
 
 export default ProductPremium;
