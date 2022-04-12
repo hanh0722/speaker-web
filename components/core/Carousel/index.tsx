@@ -1,6 +1,6 @@
 import React, { FC, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import SwiperCore, { FreeMode, Navigation, Pagination } from "swiper";
 import { classList } from "../../../utils/string";
 import styles from "./styles.module.scss";
 import "swiper/css";
@@ -11,12 +11,11 @@ import { SwiperCoreProps } from "../../../types/component";
 import { IconArrowLeft, IconArrowRight } from "../Icons";
 import { ButtonBase } from "@mui/material";
 
-SwiperCore.use([Navigation, Pagination]);
-
 const Carousel: FC<SwiperCoreProps> = (props) => {
   const prevRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
-  const { children, className, navigation, ...pProps } = props;
+  const { children, className, navigation, isCustomNavigation, ...pProps } =
+    props;
 
   const renderNavigation = () => {
     if (!navigation) {
@@ -32,7 +31,7 @@ const Carousel: FC<SwiperCoreProps> = (props) => {
               <IconArrowLeft variant="md" />
             </div>
           </ButtonBase>
-          <ButtonBase className={styles['btn-ripple']}>
+          <ButtonBase className={styles["btn-ripple"]}>
             <div className={`${styles.right} arrow-next`} ref={nextRef}>
               <IconArrowRight variant="md" />
             </div>
@@ -43,22 +42,26 @@ const Carousel: FC<SwiperCoreProps> = (props) => {
   };
 
   const onHandlerInit = (swiper: SwiperCore) => {
-    // @ts-ignore
-    swiper.params.navigation.prevEl = prevRef.current;
-    // @ts-ignore
-    swiper.params.navigation.nextEl = nextRef.current;
-    swiper.navigation.init();
-    swiper.navigation.update();
+    if (isCustomNavigation) {
+      // @ts-ignore
+      swiper.params.navigation.prevEl = prevRef.current;
+      // @ts-ignore
+      swiper.params.navigation.nextEl = nextRef.current;
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
   };
 
   return (
     <>
-      {renderNavigation()}
+      {isCustomNavigation && renderNavigation()}
       <Swiper
         className={classList(styles.swiper, className)}
         onInit={onHandlerInit}
+        modules={[Navigation, Pagination]}
         spaceBetween={30}
         slidesPerView={1}
+        navigation={(isCustomNavigation || !navigation) ? false : true}
         {...pProps}
       >
         {children}

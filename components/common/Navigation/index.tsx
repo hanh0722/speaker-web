@@ -31,13 +31,19 @@ import SearchField from "./SearchField";
 import { AppDispatch, RootState } from "../../../store";
 import { cartActions } from "../../../store/slices/cart";
 import { onLogoutUser } from "../../../store/slices/user";
+import { CartItemProps } from "../../../types/api/page/cart";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
+  const totalProducts = useSelector<RootState, number>(
+    (state) => state.cart.totalProducts
+  );
   const user = useSelector<RootState>((state) => state.user.user);
-  const isMobile = useSelector<RootState>((state) => state.ui.isMobileScreen);
+  const isMobile = useSelector<RootState, boolean>(
+    (state) => state.ui.isMobileScreen
+  );
   const [isOpenSearchField, setIsOpenSearchField] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
@@ -103,7 +109,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
   };
   const onLogout = () => {
     dispatch(onLogoutUser());
-  }
+  };
   return (
     <>
       <SearchField
@@ -157,7 +163,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                   {!user && (
                     <Link href={`${LOGIN}?welcome=true`}>
                       <li data-hover="Account">
-                        <IconPeople variant={isMobile ? "md" : "sm"} />
+                        <IconPeople variant={isMobile ? "md" : "lg"} />
                       </li>
                     </Link>
                   )}
@@ -169,12 +175,24 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                 </>
               )}
               <li data-hover="Cart">
+                {totalProducts > 0 && (
+                  <span className={styles.dot}>{totalProducts.toString().length > 2 ? '99+' : totalProducts}</span>
+                )}
                 <IconCart
                   onClick={onDispatchCart}
                   variant={isMobile ? "md" : "lg"}
                 />
               </li>
-              {user && !isMobile && <Button onClick={onLogout} prefix="normal" variant="outlined" color="inherit">Log out</Button>}
+              {user && !isMobile && (
+                <Button
+                  onClick={onLogout}
+                  prefix="normal"
+                  variant="outlined"
+                  color="inherit"
+                >
+                  Log out
+                </Button>
+              )}
             </ul>
           </div>
         </Container>

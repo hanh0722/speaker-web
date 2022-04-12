@@ -1,0 +1,23 @@
+.swiper {
+  width: 50%;
+  padding-right: 50px;
+}
+.description {
+  width: 50%;
+  padding-top: 64px;
+}
+.main {
+  display: flex;
+  @include tablet {
+    display: block;
+    .swiper, .description {
+      width: 100%;
+    }
+    .swiper {
+      padding-right: 0;
+    }
+  }
+}
+.container {
+  max-width: 1200px !important;
+}

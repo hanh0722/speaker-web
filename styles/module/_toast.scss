@@ -1,0 +1,10 @@
+.Toastify__toast-container--top-right {
+  top: 5rem !important;
+}
+
+@each $var, $value in $toast {
+  .Toastify__toast--#{$var} {
+    background: $value !important;
+    border-radius: 10px !important;
+  }
+}

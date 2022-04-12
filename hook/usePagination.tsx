@@ -10,10 +10,6 @@ const usePagination = ({ itemPerPage, totalItems, numberPagination = DEFAULT_SHO
   const page = router.query['page'];
   const [pageCurrent, setPageCurrent] = useState(page ? +page : 1);
 
-  // useEffect(() => {
-  //   setPageCurrent(page ? +page : 1);
-  // }, [page]);
-
   const getQuery = (numberChange: number) => {
     const query = router.query;
     const queryParsed = querystring.stringify({
@@ -31,7 +27,10 @@ const usePagination = ({ itemPerPage, totalItems, numberPagination = DEFAULT_SHO
       return;
     }
     const queryParsed = getQuery(1);
-    router.push(`?${queryParsed}`)
+    router.push(`?${queryParsed}`, undefined, {
+      shallow: true,
+      scroll: false
+    })
     setPageCurrent(prevState => prevState + 1);
   }
 
@@ -40,7 +39,10 @@ const usePagination = ({ itemPerPage, totalItems, numberPagination = DEFAULT_SHO
       return;
     }
     const queryParsed = getQuery(-1);
-    router.push(`?${queryParsed}`);
+    router.push(`?${queryParsed}`, undefined, {
+      shallow: true,
+      scroll: false
+    });
     setPageCurrent(prevState => prevState - 1);
   }
 

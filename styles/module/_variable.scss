@@ -11,7 +11,6 @@ $color: (
   blue: #0066ff
 ) !default;
 $weight: (300, 400, 500, 600, 700, bold) !default;
-
 $black: #000000;
 $l-black: #191010;
 $white: #fff;
@@ -34,11 +33,20 @@ $device: 16/9;
 $pd-container: 64px;
 $pd-container-bt: 40px;
 $pd-mobile-breadcrumb: 32;
+$red-primary: #F1403C;
 
 $position: (relative, absolute, static, fixed, sticky, unset) !default;
 
 $text-transform: (uppercase, lowercase, capitalize, unset, inherit) !default;
 $text-position: (center, start, inherit, unset, end, none) !default;
+
+$toast: (
+  success: #edf7ed,
+  info: #e5f6fd,
+  warning: #fff4e5,
+  error: #fdeded
+) !default;
+
 @each $c, $value in $color {
   .color-#{$c} {
     color: $c;

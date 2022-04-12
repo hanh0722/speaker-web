@@ -31,7 +31,8 @@ const Pagination: FC<PaginationProps> = (props) => {
   });
   const onChangeRoute = (value: number) => {
     router.push(`?page=${value}`, undefined, {
-      scroll: false
+      scroll: false,
+      shallow: true
     });
     onSetPage(value);
   };

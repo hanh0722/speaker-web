@@ -46,7 +46,7 @@ const Products: FC<ProductsProps> = (props) => {
       {!isMobileScreen && <RowLineProducts onChange={onChangeRow}/>}
       <div className={`d-flex justify-between ${styles.container}`}>
         <SideBar />
-        <ListProducts
+        <ListProducts 
           rows={rows}
           isLoading={isLoading}
           data={dataFetchingProducts?.data || data}

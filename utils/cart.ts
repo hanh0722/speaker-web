@@ -28,3 +28,9 @@ export const updateTotalPrice = (cart: Array<CartItemProps>) => {
     return acc + productId.price * quantity;
   }, 0);
 };
+
+export const updateTotalQuantity = (cart: Array<CartItemProps>) => {
+  return cart.reduce((acc, { productId, quantity }) => {
+    return acc + quantity
+  }, 0);
+};

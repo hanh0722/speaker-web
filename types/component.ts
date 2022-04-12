@@ -85,6 +85,8 @@ export interface RefElement<T> extends ClassNameProps {
 export interface ButtonComponentProps extends ButtonProps {
   prefix?: "basic" | "normal";
   isLoading?: boolean;
+  requiredAuth?: boolean;
+  isActive?: boolean
 }
 
 export interface BreadCrumbProps extends ClassNameProps {
@@ -124,7 +126,7 @@ export interface GridProps extends ClassNameProps {
 }
 
 export interface SwiperCoreProps extends ClassNameProps, SwiperProps {
-
+  isCustomNavigation?: boolean
 }
 
 export interface SwiperSlideCoreProps extends SwiperSlideProps, ClassNameProps {

@@ -1,0 +1,51 @@
+.container {
+  line-height: 32px;
+  .header {
+    padding-bottom: 20px;
+    h3 {
+      @include padding(16, 0);
+    }
+  }
+  .price {
+    .discount {
+      padding-right: 12px;
+    }
+    .underline {
+      text-decoration: line-through;
+    }
+  }
+  .brand {
+    letter-spacing: 1px;
+  }
+}
+.input {
+  padding-top: 0;
+  background: $gray;
+}
+.cart {
+  padding-top: 12px;
+  .btn {
+    line-height: 30px !important;
+    width: 65%;
+  }
+}
+.short-description {
+  padding-bottom: 24px;
+  .description {
+    @include show-n-line(1);
+    line-height: normal;
+  }
+  .title {
+    padding-bottom: 8px;
+    line-height: 24px;
+  }
+}
+.button {
+  padding-top: 24px;
+}
+.footer {
+  padding-top: 32px;
+  @include tablet {
+    text-align: center;
+  }
+}

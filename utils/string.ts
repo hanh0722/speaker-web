@@ -39,7 +39,7 @@ export const convertToOTP = (array: Array<number | null>) => {
   }
 }
 
-export const toCurrency = (value: number, position?: string) => {
+export const toCurrency = (value?: number, position?: string) => {
   if (!value) {
     return value;
   }

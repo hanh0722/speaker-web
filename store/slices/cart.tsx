@@ -5,7 +5,7 @@ import {
   CartItemProps,
   CartItem,
 } from "../../types/api/page/cart";
-import { onChangeItemCart, updateTotalPrice } from "../../utils/cart";
+import { onChangeItemCart, updateTotalPrice, updateTotalQuantity } from "../../utils/cart";
 
 export interface CartStoreState {
   isOpenCart: boolean;
@@ -13,6 +13,7 @@ export interface CartStoreState {
   isLoadingCart: boolean;
   error: null | string;
   total: number;
+  totalProducts: number
 }
 const initialState: CartStoreState = {
   isOpenCart: false,
@@ -20,6 +21,7 @@ const initialState: CartStoreState = {
   isLoadingCart: false,
   error: null,
   total: 0,
+  totalProducts: 0
 };
 
 const cartSlice = createSlice({
@@ -33,6 +35,8 @@ const cartSlice = createSlice({
       const { data } = action.payload as CartResponse;
       state.cart = data;
       state.total = updateTotalPrice(data);
+      state.totalProducts = updateTotalQuantity(data);
+      
     },
     onChangeActiveCart(state) {
       state.isOpenCart = !state.isOpenCart;
@@ -53,6 +57,7 @@ const cartSlice = createSlice({
       const newCart = onChangeItemCart(state.cart, data, quantity);
       state.cart = newCart;
       state.total = updateTotalPrice(newCart);
+      state.totalProducts = updateTotalQuantity(newCart);
     },
     onDeleteItemCart(state, action: { payload: CartItem }) {
       const { id, quantity } = action.payload as CartItem;
@@ -66,6 +71,7 @@ const cartSlice = createSlice({
       }
       state.cart = [...newCart];
       state.total = updateTotalPrice(newCart);
+      state.totalProducts = updateTotalQuantity(newCart);
     },
   },
 });

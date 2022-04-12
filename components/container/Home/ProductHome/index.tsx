@@ -12,6 +12,7 @@ const ProductHome: FC<ProductHomeProps> = (props) => {
       <Heading title="Choose your style" subtitle="Beautiful design" />
       <div className={styles.swiper}>
         <Carousel
+          isCustomNavigation
           loop
           navigation
           breakpoints={{

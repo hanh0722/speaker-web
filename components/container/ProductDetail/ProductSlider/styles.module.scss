@@ -1,0 +1,85 @@
+.container {
+  position: relative;
+  :global {
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 48px;
+      height: 48px;
+      background: rgba(29, 29, 29, 0.6);
+      border-radius: 50%;
+      transition: all 0.35s ease-in-out;
+      @include flex(center, center);
+      &::after {
+        font-size: 16px;
+        color: $white;
+      }
+    }
+    .swiper-button-prev {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    .swiper-button-next {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  &:hover {
+    :global {
+      .swiper-button-next,
+      .swiper-button-prev {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  }
+  .main {
+    width: 100%;
+    img {
+      width: 100%;
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+      z-index: 100;
+    }
+    .slider {
+      height: 0;
+      padding-top: 80%;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      @include tablet {
+        padding-top: 56.25%;
+      }
+      @include mobile {
+        padding-top: 100%;
+      }
+    }
+  }
+  .swiper {
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide {
+      height: 100%;
+      position: relative;
+      opacity: .45;
+      transition: all .15s ease-in-out;
+      overflow: hidden;
+      border: 1px solid $border;
+      cursor: pointer;
+    }
+    :global {
+      .swiper-slide-thumb-active {
+        opacity: 1;
+        border-radius: 8px;
+        border-color: $black;
+      }
+    }
+  }
+}

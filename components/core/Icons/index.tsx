@@ -26,6 +26,9 @@ import IconCaretLightRight from "./IconCaretRightLight";
 import IconList from "./IconList";
 import IconTwoLine from "./IconTwoLine";
 import IconThreeLine from "./IconThreeLine";
+import IconQuestion from "./IconQuestion";
+import IconShare from "./IconShare";
+import IconCompare from "./IconCompare";
 export {
   IconPlus,
   IconMinus,
@@ -54,5 +57,8 @@ export {
   IconCaretRight,
   IconList,
   IconTwoLine,
-  IconThreeLine
+  IconThreeLine,
+  IconQuestion,
+  IconShare,
+  IconCompare
 };

@@ -14,3 +14,11 @@ export const onFetchProducts = (params?: CorePaginationParams, token?: string) =
     }
   });
 };
+
+export const getProductById = (id: string, token?: string) => {
+  return request.get<ProductResponse>(`${PRODUCT_URL}/get/${id}`, {
+    headers: token ? {
+      authorization: 'Bearer ' + token
+    } : {}
+  });
+};

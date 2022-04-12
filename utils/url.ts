@@ -7,4 +7,3 @@ export const urlIsInternal = (url: string) => {
     return false;
   }
 };
-
