@@ -15,6 +15,7 @@ import BreadCrumb from "./BreadCrumb";
 import Pagination from "./Pagination";
 import ParserElement from "./ParserElement";
 import ToastNotification from "./ToastNotification";
+import Tabs from "./Tabs";
 
 export {
   Image,
@@ -33,5 +34,6 @@ export {
   BreadCrumb,
   Pagination,
   ParserElement,
-  ToastNotification
+  ToastNotification,
+  Tabs
 };
