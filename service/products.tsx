@@ -40,4 +40,25 @@ export const useFetchProducts = () => {
     onResetAsync,
     onFetchProductsByParams
   }
+};
+
+export const useSuggestProducts = () => {
+  const {data, error, isLoading, onResetAsync, request} = useFetch();
+  const onFetchSuggestProducts = useCallback((productId: string, params?: BaseSortRequest) => {
+    request({
+      url: `${PRODUCT_URL}/suggest/${productId}`,
+      params: {
+        ...(params || {})
+      },
+
+    })
+  }, [request]);
+
+  return {
+    data,
+    error,
+    isLoading,
+    onResetAsync,
+    onFetchSuggestProducts
+  }
 }

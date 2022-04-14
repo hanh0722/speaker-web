@@ -53,12 +53,12 @@ const SearchField: FC<SearchFieldProps> = (props) => {
 
   useEffect(() => {
     let timeout: any;
-    if (!isOpenSearchField && router.query["q"] !== undefined) {
+    if (!isOpenSearchField) {
       timeout = setTimeout(() => {
         setValue(null);
-        router.push("", undefined, {
-          shallow: true,
-        });
+        // router.push("", undefined, {
+        //   shallow: true,
+        // });
       }, 500)
     }
     return () => {
@@ -72,13 +72,13 @@ const SearchField: FC<SearchFieldProps> = (props) => {
   }
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const trimResult = event.target.value.trim();
-    const query = querystring.stringify({
-      ...router.query,
-      q: trimResult,
-    });
-    router.push(`?${query}`, undefined, {
-      shallow: true,
-    });
+    // const query = querystring.stringify({
+    //   ...router.query,
+    //   q: trimResult,
+    // });
+    // router.push(`?${query}`, undefined, {
+    //   shallow: true,
+    // });
     setValue(trimResult);
   };
 

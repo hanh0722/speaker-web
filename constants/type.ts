@@ -1,16 +1,23 @@
 export const WELCOME = 'welcome';
 
+export const DESCRIPTION = 'description';
+
+export const SHIPPING = 'shipping';
+
+export const REVIEWS = 'reviews';
+
 export const TAB_DESCRIPTION = [
   {
-    key: 'description',
+    key: DESCRIPTION,
     value: 'Product Description'
   },
   {
-    key: 'shipping',
+    key: SHIPPING,
     value: 'Shipping & Return'
   },
   {
-    key: 'reviews',
+    key: REVIEWS,
     value: 'Product Reviews'
   }
 ];
+

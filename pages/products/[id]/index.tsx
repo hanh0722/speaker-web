@@ -6,6 +6,7 @@ import {
   ProductDescriptionContent,
   ProductSlider,
 } from "../../../components/container/ProductDetail";
+import SliderOtherProducts from "../../../components/container/ProductDetail/SliderOtherProducts";
 import { Container } from "../../../components/core";
 import BreadCrumbDirection from "../../../components/core/BreadCrumbDirection";
 import MainLayout from "../../../components/layout/MainLayout";
@@ -35,7 +36,8 @@ const ProductDetail: NextPageWithLayout = ({ data }: any) => {
           <ProductSlider className={styles.swiper} data={data} />
           <ProductDescription data={data} className={styles.description} />
         </div>
-        <ProductDescriptionContent />
+        <ProductDescriptionContent data={data}/>
+        <SliderOtherProducts/>
       </Container>
     </>
   );
