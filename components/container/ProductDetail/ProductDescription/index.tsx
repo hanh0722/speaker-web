@@ -92,7 +92,7 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
           Buy it now
         </Button>
       </div>
-      <ProductFooter className={styles.footer} productId={data?._id} />
+      <ProductFooter isCompare={data?.is_compared} className={styles.footer} productId={data?._id} />
     </div>
   );
 };

@@ -29,6 +29,7 @@ import IconThreeLine from "./IconThreeLine";
 import IconQuestion from "./IconQuestion";
 import IconShare from "./IconShare";
 import IconCompare from "./IconCompare";
+import IconDoubleArrow from "./IconDoubleArrow";
 export {
   IconPlus,
   IconMinus,
@@ -60,5 +61,6 @@ export {
   IconThreeLine,
   IconQuestion,
   IconShare,
-  IconCompare
+  IconCompare,
+  IconDoubleArrow
 };

@@ -22,3 +22,7 @@ export const getProductById = (id: string, token?: string) => {
     } : {}
   });
 };
+
+export const onCompareProduct = (id: string) => {
+  return request.put
+}

@@ -10,3 +10,9 @@
     background: $disabled !important;
   }
 }
+.active {
+  color: $blue;
+  svg, path {
+    fill: $blue;
+  }
+}

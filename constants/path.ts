@@ -13,3 +13,5 @@ export const FORGET_PASSWORD = '/forget-password';
 export const VALIDATE_OTP = '/validate-otp';
 
 export const ROUTE_ACTIVE_TRANSITION = ['/register'];
+
+export const DASH_BOARD = '/dashboard';

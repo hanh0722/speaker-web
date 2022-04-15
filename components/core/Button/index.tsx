@@ -13,8 +13,21 @@ import { LOGIN } from "../../../constants/path";
 
 const Button: FC<ButtonComponentProps> = (props) => {
   const router = useRouter();
-  const { isLoggedIn, user } = useSelector<RootState>(state => state.user) as UserState;
-  const { children, variant, onClick, requiredAuth, className, prefix, isLoading, disabled, ...Props } = props;
+  const { isLoggedIn, user } = useSelector<RootState>(
+    (state) => state.user
+  ) as UserState;
+  const {
+    children,
+    variant,
+    isActive,
+    onClick,
+    requiredAuth,
+    className,
+    prefix,
+    isLoading,
+    disabled,
+    ...Props
+  } = props;
 
   const onHandleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (requiredAuth && (!isLoggedIn || !user)) {
@@ -24,11 +37,11 @@ const Button: FC<ButtonComponentProps> = (props) => {
     if (onClick) {
       onClick(event);
     }
-  }
+  };
   return (
     <ButtonComponent
       {...Props}
-      className={classList(styles.btn, styles[`btn-${prefix}`], className)}
+      className={classList(styles.btn, styles[`btn-${prefix}`], isActive && styles.active, className)}
       onClick={onHandleClick}
       variant={variant}
       disabled={disabled || isLoading}
@@ -45,7 +58,8 @@ Button.defaultProps = {
   className: "",
   prefix: "basic",
   disabled: false,
-  requiredAuth: false
+  requiredAuth: false,
+  isActive: false
 };
 
 Button.propTypes = {
@@ -58,7 +72,8 @@ Button.propTypes = {
   className: PropTypes.string,
   prefix: PropTypes.oneOf(["basic", "normal"]),
   disabled: PropTypes.bool,
-  requiredAuth: PropTypes.bool
+  requiredAuth: PropTypes.bool,
+  isActive: PropTypes.bool
 };
 
 export default Button;

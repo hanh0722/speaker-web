@@ -10,6 +10,7 @@ export interface BaseProductProps {
   creation_time: number;
   discount_price?: number;
   _id: string;
+  is_compared?: boolean
 }
 
 export interface BasePaginationResponse {

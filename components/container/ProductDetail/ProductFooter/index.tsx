@@ -1,15 +1,20 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import PropTypes from 'prop-types';
 import { ProductFooterProps } from "../../../../types/components/ProductDetail";
 import styles from './styles.module.scss';
 import { IconQuestion, IconShare, IconCompare } from "../../../core/Icons";
 import { classList } from "../../../../utils/string";
 import { Button } from "../../../core";
+import useCallApi from "../../../../hook/useCallApi";
 const ProductFooter: FC<ProductFooterProps> = (props) => {
-  const { productId, className, ...restProps } = props;
+  // const {} = useCallApi({
+  //   request: onHandleRequest
+  // })
+  const { productId, className, isCompare, ...restProps } = props;
+  const [isCompared, setIsCompared] = useState(isCompare || false);
   return (
     <div {...restProps} className={classList(styles.footer, className)}>
-      <Button size="large" variant="text" prefix="normal" color="inherit">
+      <Button isActive={isCompared} size="large" variant="text" prefix="normal" color="inherit">
         <IconCompare className="icon-append-left"/>
         <span>Compare</span>
       </Button>

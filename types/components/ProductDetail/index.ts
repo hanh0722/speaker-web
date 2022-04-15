@@ -6,4 +6,5 @@ export interface ProductDetailProps extends ClassNameProps {
 }
 export interface ProductFooterProps extends ClassNameProps {
   productId?: string;
+  isCompare?: boolean
 }

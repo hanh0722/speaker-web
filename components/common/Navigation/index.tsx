@@ -23,6 +23,7 @@ import {
   SHOP,
   WISHLIST,
   REGISTER,
+  DASH_BOARD,
 } from "../../../constants/path";
 import Hamburger from "../Hamburger";
 import useDropdown from "../../../hook/useDropdown";
@@ -31,7 +32,7 @@ import SearchField from "./SearchField";
 import { AppDispatch, RootState } from "../../../store";
 import { cartActions } from "../../../store/slices/cart";
 import { onLogoutUser } from "../../../store/slices/user";
-import { CartItemProps } from "../../../types/api/page/cart";
+import { User } from "../../../types/redux";
 
 const Navigation: FC<{ isActive: boolean }> = (props) => {
   const { isActive } = props;
@@ -40,7 +41,7 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
   const totalProducts = useSelector<RootState, number>(
     (state) => state.cart.totalProducts
   );
-  const user = useSelector<RootState>((state) => state.user.user);
+  const user = useSelector<RootState, User | null>((state) => state.user.user);
   const isMobile = useSelector<RootState, boolean>(
     (state) => state.ui.isMobileScreen
   );
@@ -79,8 +80,11 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
           <li>Features</li>
           <IconCaret variant="sm" />
         </Link>
-        {isMobile && !user && (
+        {isMobile && (
           <div className={`d-flex flex-column justify-end ${styles.login}`}>
+            {
+              !user ? 
+              <>
             <p>My Account</p>
             <Button onClick={onMoveLogin} fullWidth size="large">
               Log In
@@ -96,6 +100,10 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                 Register
               </Button>
             </Link>
+            </>
+            :
+            <Button variant="outlined" prefix="normal" color="inherit" fullWidth size="large">Dashboard </Button>
+            }
           </div>
         )}
       </ul>
@@ -172,11 +180,22 @@ const Navigation: FC<{ isActive: boolean }> = (props) => {
                       <IconStar variant={isMobile ? "md" : "lg"} />
                     </li>
                   </Link>
+                  {user && (
+                    <Link href={DASH_BOARD}>
+                      <li data-hover="Dashboard">
+                        <IconPeople />
+                      </li>
+                    </Link>
+                  )}
                 </>
               )}
               <li data-hover="Cart">
                 {totalProducts > 0 && (
-                  <span className={styles.dot}>{totalProducts.toString().length > 2 ? '99+' : totalProducts}</span>
+                  <span className={styles.dot}>
+                    {totalProducts.toString().length > 2
+                      ? "99+"
+                      : totalProducts}
+                  </span>
                 )}
                 <IconCart
                   onClick={onDispatchCart}
