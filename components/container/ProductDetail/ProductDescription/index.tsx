@@ -12,7 +12,9 @@ import { RootState } from "../../../../store";
 
 const ProductDescription: FC<ProductDetailProps> = (props) => {
   const quantityRef = useRef<HTMLInputElement>(null);
-  const isMobileScreen = useSelector<RootState>(state => state.ui.isMobileScreen);
+  const isMobileScreen = useSelector<RootState>(
+    (state) => state.ui.isMobileScreen
+  );
   const {
     isLoading,
     data: dataAddProduct,
@@ -21,7 +23,6 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
     onResetAsync,
   } = useAddCartService();
   const { className, data, ...restProps } = props;
-
   const onAddCart = () => {
     if (!data) {
       return;
@@ -31,8 +32,8 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
   };
   useEffect(() => {
     if (!isLoading && dataAddProduct && !error) {
-      ToastNotification.success('Add Item Successfully', {
-        position: isMobileScreen ? 'top-center' : 'top-right'
+      ToastNotification.success("Add Item Successfully", {
+        position: isMobileScreen ? "top-center" : "top-right",
       });
     }
   }, [isLoading, dataAddProduct, error, isMobileScreen]);
@@ -40,8 +41,8 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
   useEffect(() => {
     return () => {
       onResetAsync();
-    }
-  }, [onResetAsync]); 
+    };
+  }, [onResetAsync]);
   return (
     <div {...restProps} className={classList(styles.container, className)}>
       <div className={styles.header}>
@@ -50,9 +51,11 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
         </p>
         <h3 className="f-28 weight-400 lh-40">{data?.title}</h3>
         <div className={`d-flex align-center ${styles.price}`}>
-          <span className={`${styles.discount} weight-500 f-16`}>
-            {toCurrency(data?.discount_price)}
-          </span>
+          {data?.discount_price && (
+            <span className={`${styles.discount} weight-500 f-16`}>
+              {toCurrency(data?.discount_price)}
+            </span>
+          )}
           <span
             className={classList(
               `weight-500 ${styles.price}`,
@@ -92,7 +95,11 @@ const ProductDescription: FC<ProductDetailProps> = (props) => {
           Buy it now
         </Button>
       </div>
-      <ProductFooter isCompare={data?.is_compared} className={styles.footer} productId={data?._id} />
+      <ProductFooter
+        isCompare={data?.is_compared}
+        className={styles.footer}
+        productId={data?._id}
+      />
     </div>
   );
 };

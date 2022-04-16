@@ -1,25 +1,26 @@
 import axios, { AxiosResponse } from "axios";
 import { useCallback, useState } from "react";
+import { ToastNotification } from "../components/core";
 import { BaseResponse } from "../types/request";
 
 interface UseCallApiProps<T> {
-  request: () => Promise<T>;
+  request?: () => Promise<AxiosResponse<T>>;
   onSuccess?: (data: T) => void;
   onError?: (err: any) => void;
   isToastNotification?: boolean 
 }
 
-interface ResponseCallApi<T> extends AxiosResponse<T> {
-
-}
-const useCallApi = <T extends AxiosResponse>({request, onSuccess, onError, isToastNotification = false}: UseCallApiProps<T>) => {
+const useCallApi = <T extends BaseResponse>({request, onSuccess, onError, isToastNotification = false}: UseCallApiProps<T>) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSendRequest = useCallback(async () => {
+  const onSendRequest = async () => {
     try{
+      if (!request) {
+        return;
+      }
       setIsLoading(true);
       const response = await request();
-      if (response.data.status >= 400 || response.data?.code >= 400) {
+      if (response.status >= 400 || response.data.code >= 400) {
         if (onError) {
           setIsLoading(false);
           onError(response);
@@ -27,15 +28,19 @@ const useCallApi = <T extends AxiosResponse>({request, onSuccess, onError, isToa
       };
       if (onSuccess) {
         setIsLoading(false);
-        onSuccess(response);
+        onSuccess(response.data);
       }
     }catch(err: any) {
+      if (isToastNotification) {
+        ToastNotification.error(err?.message || "Server Internal Error");
+      }
       if (onError) {
         onError(err);
         setIsLoading(false);
       }
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
 
   return {
     isLoading,

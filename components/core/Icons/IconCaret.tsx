@@ -4,9 +4,9 @@ import CaretSvg from "./assets/caret.svg";
 import { IconWrapperProps } from "../../../types/component";
 
 const IconCaret: FC<IconWrapperProps> = (props) => {
-    const {variant} = props;
+    const {variant, ...restProps} = props;
     return (
-       <IconWrapper variant={variant}  icon={CaretSvg}/>
+       <IconWrapper {...restProps} variant={variant} icon={CaretSvg}/>
     )
 }
 

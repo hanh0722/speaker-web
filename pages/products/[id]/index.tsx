@@ -43,7 +43,7 @@ const ProductDetail: NextPageWithLayout = ({ data }: any) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
   const productId = params?.id as string;
   if (!productId) {
     return {
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
-  const product = await getProductById(productId);
+  const product = await getProductById(productId, req.cookies['token']);
   if (product.data?.code >= 400 || product.status >= 400) {
     return {
       notFound: true,
