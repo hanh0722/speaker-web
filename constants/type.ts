@@ -21,3 +21,4 @@ export const TAB_DESCRIPTION = [
   }
 ];
 
+export const KEY_UPLOAD = 'file_upload';

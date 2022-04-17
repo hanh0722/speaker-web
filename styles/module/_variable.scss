@@ -8,8 +8,11 @@ $color: (
   white: #fff,
   gray: #f8f8f8,
   red: red,
-  blue: #0066ff
+  blue: #0066ff,
+  green: #00ab55,
+  light-green: #00ab5514
 ) !default;
+
 $weight: (300, 400, 500, 600, 700, bold) !default;
 $black: #000000;
 $l-black: #191010;
@@ -23,6 +26,8 @@ $color-secondary: #666666;
 $gray-secondary: #919eab1f;
 $border: #ddd;
 $disabled: rgba(0, 0, 0, 0.12);
+$light-green-primary: #00ab5514;
+$green-primary: #00ab55;
 $direction-X: X;
 $direction-Y: Y;
 $direction-Z: Z;
@@ -35,6 +40,7 @@ $pd-container: 64px;
 $pd-container-bt: 40px;
 $pd-mobile-breadcrumb: 32;
 $red-primary: #F1403C;
+$sidebar-width-primary: 280px;
 
 $position: (relative, absolute, static, fixed, sticky, unset) !default;
 

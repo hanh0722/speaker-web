@@ -1,0 +1,8 @@
+.container {
+  @include padding(16);
+  border-radius: 8px;
+  border: 1px solid $border;
+}
+.title {
+  padding-bottom: 16px;
+}

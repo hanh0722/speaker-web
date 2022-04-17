@@ -1,5 +1,5 @@
 .sidebar {
-  width: 280px;
+  width: $sidebar-width-primary;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,4 +18,9 @@
 }
 .box {
   margin-top: 24px;
+}
+.main {
+  width: $sidebar-width-primary;
+  position: relative;
+  height: 100%;
 }

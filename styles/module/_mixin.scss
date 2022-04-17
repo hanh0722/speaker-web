@@ -3,6 +3,13 @@
     font-size: #{$var}px;
   }
 }
+@mixin editor {
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 16px;
+  } 
+}
 
 @mixin basic-desktop {
   @media screen and (max-width: $desktop-mw) {

@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import HeadGeneral from "./HeadGeneral";
 import Modal from "./Modal";
 import Hamburger from "./Hamburger";
@@ -15,6 +16,11 @@ import ParserElement from "../core/ParserElement";
 import ListElement from "./ListElement";
 import ButtonQuantitySystem from "./ButtonQuantitySystemAPI";
 import LoadingProducts from "./LoadingProducts";
+
+const Editor = dynamic(() => import('./Editor'), {
+  ssr: false
+});
+
 export {
   HeadGeneral,
   Modal,
@@ -32,5 +38,6 @@ export {
   ParserElement,
   ListElement,
   ButtonQuantitySystem,
-  LoadingProducts
+  LoadingProducts,
+  Editor
 };

@@ -1,9 +1,25 @@
 .list {
-  svg {
+  .icon {
     transition: all .15s ease-in-out;
     transform: rotate(-90deg);
   }
   .active {
     transform: rotate(0);
+  }
+}
+.button {
+  border-radius: 4px !important;
+  margin-top: 8px;
+}
+.list-title {
+  border-radius: 4px !important;
+}
+.active-path {
+  .button {
+    background: $light-green-primary !important;
+    color: $green-primary;
+    svg {
+      fill: $green-primary;
+    }
   }
 }

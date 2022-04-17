@@ -51,3 +51,7 @@ export interface BaseSortRequest extends BaseQueryRequest {
 export interface CollectionResponse extends BaseResponse, PaginationResponse {
   data: Array<Collection>;
 }
+
+export interface FileResponse extends BaseResponse {
+  urls: Array<string>
+}

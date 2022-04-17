@@ -4,13 +4,13 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  ListSubheader,
 } from "@mui/material";
 import React, { useState } from "react";
+import { MANAGEMENT } from "../../../../../constants/path";
 import { classList } from "../../../../../utils/string";
+import { Link } from "../../../../core";
 import { IconCaret, IconCart } from "../../../../core/Icons";
-import IconEdit from "../../../../core/Icons/IconEdit";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 const ListManagement = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,21 +19,30 @@ const ListManagement = () => {
   };
   return (
     <List className={styles.list} component={"ul"} id="nested-list-subheader">
-      <ListItemButton onClick={onChangeList}>
+      <ListItemButton className={styles['list-title']} onClick={onChangeList}>
         <ListItemIcon>
           <IconCart />
         </ListItemIcon>
         <ListItemText primary="Management" />
-        <IconCaret className={classList(isOpen && styles.active)} variant="sm"/>
+        <IconCaret
+          className={classList(styles.icon, isOpen && styles.active)}
+          variant="sm"
+        />
       </ListItemButton>
       <Collapse in={isOpen} unmountOnExit mountOnEnter timeout="auto">
         <List component={"div"} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <IconEdit />
-            </ListItemIcon>
-            <ListItemText>Create</ListItemText>
-          </ListItemButton>
+          {MANAGEMENT.map(({ href, icon: Component, title }, index) => {
+            return (
+              <Link activeClassname={styles['active-path']} key={index} href={href}>
+                <ListItemButton className={styles.button}>
+                  <ListItemIcon>
+                    <Component />
+                  </ListItemIcon>
+                  <ListItemText>{title}</ListItemText>
+                </ListItemButton>
+              </Link>
+            );
+          })}
         </List>
       </Collapse>
     </List>

@@ -12,5 +12,6 @@ export interface BreadCrumbElementProps extends ClassNameProps, LinkProps {
 };
 
 export interface BreadCrumbDirection extends ClassNameProps {
-  title?: string
+  title?: string;
+  left?: boolean
 }
