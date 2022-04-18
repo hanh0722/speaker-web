@@ -1,6 +1,9 @@
-.container {
+.right {
   @include box-dashboard();
 }
-.title {
+.btn {
   padding-bottom: 16px;
+  span {
+    padding-left: 12px;
+  }
 }

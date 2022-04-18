@@ -1,0 +1,32 @@
+.button {
+  width: 50px;
+  height: 18px;
+  border-radius: 12px;
+  position: relative;
+  background: $light-gray-secondary;
+  transition: all .3s ease-in-out;
+  .stroke {
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: $white;
+    border: 1px solid $border;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(-15%);
+    transition: all .3s ease-in-out;
+  }
+}
+.active {
+  .stroke {
+    transform: translateX(115%) translateY(-50%);
+    background: $green-primary;
+    border-color: $green-primary;
+  }
+  background: $light-green-primary;
+}
+.container {
+  width: 100%;
+}
