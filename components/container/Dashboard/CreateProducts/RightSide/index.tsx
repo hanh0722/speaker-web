@@ -13,7 +13,14 @@ const RightSide: FC<RightSideCreateProductsProps> = (props) => {
         <ButtonToggle className={`d-flex align-center ${styles.btn}`}>
           <span className="f-14 lh-20">In Stock</span>
         </ButtonToggle>
-        <Input label="Product Quantity"/>
+        <Input className={styles.hide} label="Product Quantity"/>
+      </div>
+      <div className={`${styles.right} ${styles.price}`}>
+        <Input label="Regular Price ($)" type="number" placeholder="$0.00"/>
+        <Input label="Sale Price" type="number" placeholder="$0.00"/>
+        <ButtonToggle className={`d-flex align-center ${styles.button}`}>
+          <span className="f-14 lh-20">Price includes taxes</span>
+        </ButtonToggle>
       </div>
     </div>
   );

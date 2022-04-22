@@ -16,6 +16,7 @@ import Pagination from "./Pagination";
 import ParserElement from "./ParserElement";
 import ToastNotification from "./ToastNotification";
 import Tabs from "./Tabs";
+import Dropzone from "./Dropzone";
 
 export {
   Image,
@@ -35,5 +36,6 @@ export {
   Pagination,
   ParserElement,
   ToastNotification,
-  Tabs
+  Tabs,
+  Dropzone
 };

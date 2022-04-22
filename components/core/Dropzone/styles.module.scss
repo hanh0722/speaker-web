@@ -1,0 +1,94 @@
+.container {
+  @include padding(40, 8);
+  background: $gray-tertiary;
+  border-radius: 8px;
+  border: 1px dashed $border;
+  transition: all .15s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    opacity: .75;
+  }
+}
+.description {
+  .image {
+    width: 220px;
+  }
+  .content {
+    @include padding(24);
+    flex-grow: 1;
+    h4 {
+      font-size: 20px;
+      font-weight: 500;
+      padding-bottom: 12px;
+      line-height: 32px;
+    }
+    p {
+      span {
+        color: $green-primary;
+      }
+    }
+  }
+}
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  .img {
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid $border;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .single {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  min-width: auto;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba($color: $black, $alpha: .5);
+  &:hover {
+    background: rgba($color: $black, $alpha: .6);
+  }
+  svg {
+    color: $white;
+  }
+}
+.files, .btn-file {
+  padding-top: 20px;
+}
+.spinner {
+  z-index: 100;
+}
+.loading {
+  &::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: $black, $alpha: .3);
+    z-index: 1;
+  }
+}

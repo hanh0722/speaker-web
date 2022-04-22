@@ -4,7 +4,7 @@ import { ToastNotification } from "../components/core";
 import { BaseResponse } from "../types/request";
 
 interface UseCallApiProps<T> {
-  request?: () => Promise<AxiosResponse<T>>;
+  request?: () => Promise<AxiosResponse<T>> | undefined;
   onSuccess?: (data: T) => void;
   onError?: (err: any) => void;
   isToastNotification?: boolean 
@@ -20,6 +20,9 @@ const useCallApi = <T extends BaseResponse>({request, onSuccess, onError, isToas
       }
       setIsLoading(true);
       const response = await request();
+      if (!response) {
+        return;
+      }
       if (response.status >= 400 || response.data.code >= 400) {
         if (onError) {
           setIsLoading(false);

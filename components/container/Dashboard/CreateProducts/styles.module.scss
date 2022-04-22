@@ -5,3 +5,8 @@
   flex-grow: 1;
   padding-left: 32px;
 }
+.container {
+  fieldset {
+    border-color: $border;
+  }
+}
