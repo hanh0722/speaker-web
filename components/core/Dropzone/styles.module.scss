@@ -80,6 +80,7 @@
 }
 .spinner {
   z-index: 100;
+  margin: 0;
 }
 .loading {
   &::before{
@@ -91,4 +92,8 @@
     background: rgba($color: $black, $alpha: .3);
     z-index: 1;
   }
+}
+.loading-container {
+  pointer-events: none;
+  cursor: not-allowed;
 }

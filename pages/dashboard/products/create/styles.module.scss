@@ -3,3 +3,6 @@
     font-size: 14px;
   }
 }
+.dashboard {
+  @include dashboard-layout();
+}

@@ -1,10 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { useCallback, useState } from "react";
 import { ToastNotification } from "../components/core";
+import { ErrorProps } from "../types/base";
 import { BaseResponse } from "../types/request";
 
 interface UseCallApiProps<T> {
-  request?: () => Promise<AxiosResponse<T>> | undefined;
+  request?: (params?: any) => Promise<AxiosResponse<T>> | undefined;
   onSuccess?: (data: T) => void;
   onError?: (err: any) => void;
   isToastNotification?: boolean 
@@ -13,36 +14,36 @@ interface UseCallApiProps<T> {
 const useCallApi = <T extends BaseResponse>({request, onSuccess, onError, isToastNotification = false}: UseCallApiProps<T>) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSendRequest = async () => {
+  const onSendRequest = async (params?: any) => {
     try{
       if (!request) {
         return;
       }
       setIsLoading(true);
-      const response = await request();
+      const response = await request(params);
       if (!response) {
         return;
       }
       if (response.status >= 400 || response.data.code >= 400) {
-        if (onError) {
-          setIsLoading(false);
-          onError(response);
-        }
+        const message = response?.data?.message || "Server Internal Error"
+        const error: ErrorProps = new Error(message);
+        error.code = response?.status || response?.data?.code || 500;
+        throw error;
+        
       };
       if (onSuccess) {
-        setIsLoading(false);
         onSuccess(response.data);
       }
+      setIsLoading(false);
     }catch(err: any) {
       if (isToastNotification) {
-        ToastNotification.error(err?.message || "Server Internal Error");
+        ToastNotification.error( err?.response?.data?.message || err?.message || "Server Internal Error");
       }
       if (onError) {
         onError(err);
-        setIsLoading(false);
       }
+      setIsLoading(false);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   return {

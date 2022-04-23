@@ -1,4 +1,5 @@
 import { BaseProductProps } from "./request";
+import { ClassNameProps } from "./string";
 
 export interface ObjectProps {
   [props: string | number]: any;
@@ -15,4 +16,9 @@ export interface UIProps {
 export interface ProductBaseProps {
   data?: Array<BaseProductProps>;
   total_products?: number
+}
+
+export interface ModalCoreProps extends ClassNameProps {
+  onHide?: () => void;
+  show?: boolean
 }

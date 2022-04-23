@@ -17,6 +17,10 @@
   box-shadow: 0px 2px 4px rgba($color: $black, $alpha: .12);
 }
 
+@mixin dashboard-layout {
+  @include padding(116, 40);
+}
+
 @mixin basic-desktop {
   @media screen and (max-width: $desktop-mw) {
     @content;

@@ -59,7 +59,8 @@ Button.defaultProps = {
   prefix: "basic",
   disabled: false,
   requiredAuth: false,
-  isActive: false
+  isActive: false,
+  type: 'button'
 };
 
 Button.propTypes = {
@@ -73,7 +74,8 @@ Button.propTypes = {
   prefix: PropTypes.oneOf(["basic", "normal"]),
   disabled: PropTypes.bool,
   requiredAuth: PropTypes.bool,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  type: PropTypes.oneOf(['button', 'submit'])
 };
 
 export default Button;

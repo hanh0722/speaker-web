@@ -1,5 +1,6 @@
 import { CorePaginationParams } from "../../types/api/core";
-import { BaseResponse, ProductResponse } from "../../types/request";
+import { CreateProductState } from "../../types/components/CreateProduct";
+import { BaseResponse, ProductCreationResponse, ProductResponse } from "../../types/request";
 import { BASE_URL } from "../../utils/config";
 import { getCookie } from "../../utils/cookies";
 import { request } from "./auth";
@@ -41,3 +42,11 @@ export const deleteCompareProduct = (id: string) => {
     }
   })
 }
+
+export const createProduct = (data: CreateProductState) => {
+  return request.post<ProductCreationResponse>(`${PRODUCT_URL}/create`, data, {
+    headers: {
+      authorization: 'Bearer ' + getCookie('token')
+    }
+  });
+};

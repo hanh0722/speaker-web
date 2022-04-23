@@ -86,7 +86,7 @@ export interface ButtonComponentProps extends ButtonProps {
   prefix?: "basic" | "normal";
   isLoading?: boolean;
   requiredAuth?: boolean;
-  isActive?: boolean
+  isActive?: boolean;
 }
 
 export interface BreadCrumbProps extends ClassNameProps {

@@ -32,7 +32,7 @@ const CreateProduct: NextPageWithLayout = () => {
 };
 
 CreateProduct.getLayout = function getLayout(page: ReactElement) {
-  return <DashboardLayout>{page}</DashboardLayout>;
+  return <DashboardLayout className={styles.dashboard}>{page}</DashboardLayout>;
 };
 
 export default CreateProduct;

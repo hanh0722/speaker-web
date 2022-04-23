@@ -3,5 +3,4 @@
 }
 .right {
   width: calc(100% - $sidebar-width-primary);
-  @include padding(116, 40);
 }

@@ -1,4 +1,5 @@
 import { ChangeEvent, useReducer, Reducer, useMemo } from "react";
+import { isString } from "../utils/string";
 import {
   UseInputActions,
   UseInputState,
@@ -40,11 +41,10 @@ const useInput = (type?: 'or' | 'and' | null, ...args: Array<(value: string) => 
     }
     return args.every(functionValidate => functionValidate(state.value));
   }, [state.value, args, type]);
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement> | string) => {
     dispatch({
       type: UseInputSerialize.CHANGE,
-      payload: value,
+      payload: isString(event) ? event : event.target.value,
     });
   };
 

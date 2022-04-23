@@ -1,0 +1,22 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .search {
+    min-width: 0;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  padding-left: 32px;
+  height: 60px;
+  background: rgba($color: $white, $alpha: .8);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  transition: all .15s ease-in-out;
+}
+.active {
+  box-shadow: 0px 2px 8px rgba($color: $black, $alpha: .05);
+}

@@ -1,7 +1,18 @@
 import { REGEX_PASSWORD } from "../constants/string";
 
-export const isString = (value: Array<string> | string | any) => {
+export const isString = (value: Array<string> | string | any): value is string => {
   return typeof value === 'string';
+}
+
+export const isObject = (value: any): value is Object => {
+  return value instanceof Object
+}
+
+export const isRequiredEditor = (value?: string): value is string => {
+  if (!value) {
+    return false;
+  }
+  return value.replace(/<(.|\n)*?>/g, '').trim().length > 0;
 }
 
 export const classList = (...args: Array<any>) => {

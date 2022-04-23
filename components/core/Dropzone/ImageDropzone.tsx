@@ -13,8 +13,8 @@ const ImageDropzone: FC<ImageDropzoneProps> = (props) => {
   const onDeleteImage = () => {
     if (onDelete) {
       onDelete(id)
-    }
-  }
+    };
+  };
   return (
     <div className={classList('d-flex justify-center align-center', styles.img, isLoading && styles.loading, className)}>
       {isLoading && <LoadingSpinner className={styles.spinner}/>}
@@ -30,10 +30,15 @@ const ImageDropzone: FC<ImageDropzoneProps> = (props) => {
 
 ImageDropzone.defaultProps = {
   className: "",
+  onDelete: (id) => {},
+  isLoading: false,
 };
 ImageDropzone.propTypes = {
   src: PropTypes.string.isRequired,
   className: PropTypes.string,
+  onDelete: PropTypes.func,
+  isLoading: PropTypes.bool,
+  id: PropTypes.string.isRequired
 };
 
 export default ImageDropzone;

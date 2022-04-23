@@ -1,14 +1,21 @@
-import { useState, SyntheticEvent, useCallback } from "react";
+import { useState, SyntheticEvent, useCallback, useEffect } from "react";
 import { DEFAULT_IMAGE } from "../constants/string";
+import usePrevious from "./usePrevious";
 
 const useImage = (url: string) => {
-  const [imageProprety, setImageProperty] = useState({});
   const [srcImage, setSrcImage] = useState<string | null>(url);
+  const previousURL = usePrevious(url);
   const [isLoading, setIsLoading] = useState(true);
 
   const onHandleErrorImage = () => {
     setSrcImage(DEFAULT_IMAGE);
   };
+
+  useEffect(() => {
+    if (previousURL !== url && previousURL) {
+      setSrcImage(url);
+    }
+  }, [previousURL, url]);
 
   const onLoadImage = (event: SyntheticEvent<HTMLImageElement>) => {
     if (srcImage === DEFAULT_IMAGE) {

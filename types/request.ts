@@ -52,6 +52,11 @@ export interface CollectionResponse extends BaseResponse, PaginationResponse {
   data: Array<Collection>;
 }
 
+export type FileReponseBasic = Array<string>
 export interface FileResponse extends BaseResponse {
   urls: Array<string>
+}
+
+export interface ProductCreationResponse extends BaseResponse {
+  data: BaseProductProps
 }

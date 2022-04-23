@@ -15,7 +15,6 @@ const SideBar = () => {
   const onHidden = () => {
     setIsOpen((prevState) => !prevState);
   };
-  console.log(user?.role)
   return (
     <>
       <div className={styles.main}>

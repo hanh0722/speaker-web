@@ -1,5 +1,5 @@
 import React, { FC, useRef } from "react";
-import { classList } from "../../../utils/string";
+import { classList, isString } from "../../../utils/string";
 import { DropzoneProps } from "../../../types/components/Dropzone";
 import styles from "./styles.module.scss";
 import { IconDropzone } from "../Icons";
@@ -12,7 +12,7 @@ const Dropzone: FC<DropzoneProps> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { className, onGetFile, options, ...restProps } = props;
 
-  const { getRootProps, getInputProps, files, onOpenFile, onFilterFile, onClearFile, onSendRequest } =
+  const { getRootProps, isLoading, getInputProps, files, onOpenFile, onFilterFile, onClearFile } =
     useDropzoneController({
       ref: inputRef,
       ...props,
@@ -23,7 +23,7 @@ const Dropzone: FC<DropzoneProps> = (props) => {
       <div
         {...restProps}
         onClick={onOpenFile}
-        className={classList(styles.container, className)}
+        className={classList(styles.container, isLoading && styles['loading-container'], className)}
       >
         <div {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} ref={inputRef} />
@@ -48,17 +48,17 @@ const Dropzone: FC<DropzoneProps> = (props) => {
             {files.map((item) => {
               return (
                 <ImageDropzone
+                  isLoading={item.isLoading}
                   onDelete={onFilterFile}
                   id={item.id}
                   key={item.id}
-                  src={fileToImage(item.file as File)}
+                  src={isString(item.file) ? (item.file as string) : fileToImage(item.file as File)}
                 />
               );
             })}
           </div>
           <div className={`d-flex justify-end align-center gap-16 ${styles['btn-file']}`}>
             <Button onClick={onClearFile} variant="outlined" color="inherit" prefix="normal">Remove All</Button>
-            <Button onClick={onSendRequest} variant="contained" color="inherit">Upload Files</Button>
           </div>
         </div>
       )}

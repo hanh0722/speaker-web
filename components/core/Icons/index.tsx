@@ -32,6 +32,7 @@ import IconCompare from "./IconCompare";
 import IconDoubleArrow from "./IconDoubleArrow";
 import IconDollar from "./IconDollar";
 import IconDropzone from "./IconDropzone";
+import IconLoveSuccess from "./IconLoveSuccess";
 export {
   IconPlus,
   IconMinus,
@@ -66,5 +67,6 @@ export {
   IconCompare,
   IconDoubleArrow,
   IconDollar,
-  IconDropzone
+  IconDropzone,
+  IconLoveSuccess
 };

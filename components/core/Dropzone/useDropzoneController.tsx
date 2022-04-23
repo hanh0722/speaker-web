@@ -1,10 +1,10 @@
-import { RefObject, useState } from "react";
+import { RefObject, useCallback, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { FileWithPath, useDropzone } from "react-dropzone";
 import { DropzoneProps } from "../../../types/components/Dropzone";
 import useCallApi from "../../../hook/useCallApi";
 import { uploadFile } from "../../../service/upload";
-import { isFile } from "../../../utils/string";
+import { FileResponse, FileReponseBasic } from "../../../types/request";
 
 interface DropzoneController extends DropzoneProps {
   ref: RefObject<HTMLInputElement>;
@@ -17,55 +17,82 @@ interface FilePath {
 }
 
 const useDropzoneController = (props: DropzoneController) => {
+  const [urls, setUrls] = useState<FileReponseBasic | null>(null);
   const [files, setFiles] = useState<Array<FilePath>>([]);
   const { ref, options, onGetFile, ...restProps } = props;
 
-  const getFileNotUploaded = () => {
-    const filterFile = files.filter((item) => {
-      return isFile(item.file);
-    });
-    return filterFile;
-  };
-  const getFile = () => {
-    const filterFile = getFileNotUploaded();
-    return filterFile.map(item => item.file);
+  const onGetNameFile = (array: Array<FilePath>) => {
+    return array.map(item => item.file);
   }
-  const onHandleUploadFile = () => {
-    const fileNotUploaded = getFileNotUploaded();
-    const fileNeedUpload = getFile() as Array<File>;
-    if (fileNotUploaded.length === 0) {
+  const onFinishedLoading = useCallback(() => {
+    let index = 0;
+    if (!urls) {
       return;
-    };
-    const setLoadingFiles: Array<FilePath> = files.map(item => {
-      const isIncluded = fileNotUploaded.some(value => value.id === item.id);
-      return {
-        file: item.file,
-        id: item.id,
-        isLoading: isIncluded
+    }
+    const mapFiles = files.map((item) => {
+      if (item.isLoading) {
+        const setUrlObject = {
+          ...item,
+          file: urls[index],
+          isLoading: false
+        };
+        index++;
+        return {
+          ...setUrlObject,
+        };
       }
+      return {
+        ...item,
+        isLoading: false,
+      };
     });
-    
-    return uploadFile(fileNeedUpload);
+    setUrls(null);
+    setFiles(mapFiles);
+  }, [files, urls]);
+
+  const onHandleError = () => {
+    const removeFiles = files.filter(item => !item.isLoading);
+    setFiles(removeFiles);
   };
-  const onHandleSuccess = (data: any) => {
-    console.log(data);
+
+  const onHandleUploadFile = (params: Array<FileWithPath>) => {
+    return uploadFile(params as Array<File>);
   };
-  const { isLoading, onSendRequest } = useCallApi({
+
+
+  const onHandleurls = (data: FileResponse) => {
+    const mapURL = onGetNameFile(files) as Array<string>;
+    const mergeFiles = [...mapURL, ...data.urls];
+    if (onGetFile) {
+      onGetFile(mergeFiles);
+    }
+    setUrls(data.urls);
+  };
+  const { isLoading, onSendRequest } = useCallApi<FileResponse>({
     request: onHandleUploadFile,
-    onSuccess: onHandleSuccess,
+    onSuccess: onHandleurls,
+    onError: onHandleError,
+    isToastNotification: true
   });
+
+  useEffect(() => {
+    if (urls && !isLoading) {
+      onFinishedLoading();
+    }
+  }, [urls, isLoading, onFinishedLoading]);
 
   const onGetFileDrop = (file: Array<FileWithPath>) => {
     const addKeyToFiles: Array<FilePath> = file.map((item) => {
       return {
         file: item,
         id: v4(),
-        isLoading: false,
+        isLoading: true,
       };
     });
     setFiles((prevState) => {
       return [...prevState, ...addKeyToFiles];
     });
+    onSendRequest(file);
   };
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 10,
@@ -81,11 +108,18 @@ const useDropzoneController = (props: DropzoneController) => {
     const filterImage = files.filter((item) => {
       return item.id !== id;
     });
+    if (onGetFile) {
+      onGetFile(onGetNameFile(filterImage) as Array<string>);
+    }
     setFiles(filterImage);
   };
 
   const onClearFile = () => {
     setFiles([]);
+    if (onGetFile) {
+      onGetFile([]);
+    }
+    setUrls(null);
   };
 
   return {
@@ -95,7 +129,8 @@ const useDropzoneController = (props: DropzoneController) => {
     files,
     onFilterFile,
     onClearFile,
-    onSendRequest
+    onSendRequest,
+    isLoading
   };
 };
 
