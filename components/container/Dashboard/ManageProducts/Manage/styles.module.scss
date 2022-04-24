@@ -1,0 +1,33 @@
+.container {
+  @include box-dashboard();
+}
+.table {
+  margin-top: 32px;
+  width: 100%;
+  overflow-x: scroll;
+  .table-core {
+    box-shadow: none;
+    min-width: 800px;
+  }
+  .heading {
+    background: $gray-tertiary;
+  }
+}
+.pagination {
+  justify-content: flex-end;
+  padding-top: 32px;
+  :global {
+    .prev, .next {
+      width: 35px;
+      height: 35px;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    .element {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}

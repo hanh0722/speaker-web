@@ -9,4 +9,14 @@
   fieldset {
     border-color: $border;
   }
+  @include tablet {
+    display: block !important;
+    .create {
+      width: 100%;
+      margin-bottom: 32px;
+    }
+    .option {
+      padding-left: 0;
+    }
+  }
 }

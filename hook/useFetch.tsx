@@ -28,6 +28,8 @@ const reducerFetchingFunction = <
     case UseFetchSerialize.ISLOADING:
       return {
         ...state,
+        data: null,
+        error: null,
         isLoading: true,
       };
     case UseFetchSerialize.ERROR:

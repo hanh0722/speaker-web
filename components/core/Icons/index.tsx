@@ -33,8 +33,14 @@ import IconDoubleArrow from "./IconDoubleArrow";
 import IconDollar from "./IconDollar";
 import IconDropzone from "./IconDropzone";
 import IconLoveSuccess from "./IconLoveSuccess";
+import IconNav from "./IconNav";
+import IconOLList from "./IconOLList";
+import IconThreeDot from "./IconThreeDot";
+import IconTrash from "./IconTrash";
 export {
+  IconThreeDot,
   IconPlus,
+  IconNav,
   IconMinus,
   IconCaret,
   IconPeople,
@@ -68,5 +74,7 @@ export {
   IconDoubleArrow,
   IconDollar,
   IconDropzone,
-  IconLoveSuccess
+  IconLoveSuccess,
+  IconOLList,
+  IconTrash
 };

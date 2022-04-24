@@ -1,6 +1,12 @@
 .layout {
   width: 100%;
+  @include secondary-desktop {
+    display: block;
+  }
 }
 .right {
   width: calc(100% - $sidebar-width-primary);
+  @include secondary-desktop {
+    width: 100%;
+  }
 }

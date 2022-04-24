@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
+import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
 import { useSelector } from "react-redux";
 import { ADMIN } from "../../../../constants/roles";
 import { RootState } from "../../../../store";
@@ -8,15 +10,18 @@ import { IconDoubleArrow } from "../../../core/Icons";
 import BoxUser from "./BoxUser";
 import ListManagement from "./ListManagement";
 import styles from "./styles.module.scss";
+import { SideBarProps } from "../../../../types/components/Dashboard";
+import { Modal } from "../../../common";
 
-const SideBar = () => {
+const SideBar: FC<SideBarProps> = (props) => {
+  const { in: when, isMobileScreen, className, onHide, ...restProps } = props;
   const [isOpen, setIsOpen] = useState(true);
   const user = useSelector<RootState, User | null>((state) => state.user.user);
   const onHidden = () => {
     setIsOpen((prevState) => !prevState);
   };
-  return (
-    <>
+  const renderSideBar = () => {
+    return (
       <div className={styles.main}>
         <div className={styles.sidebar}>
           <div
@@ -29,8 +34,25 @@ const SideBar = () => {
           {user?.role === ADMIN && <ListManagement />}
         </div>
       </div>
-    </>
-  );
+    );
+  };
+  return isMobileScreen
+    ? ReactDOM.createPortal(
+        <CSSTransition
+          in={when}
+          timeout={500}
+          unmountOnExit
+          mountOnEnter
+          classNames="fade-right"
+        >
+          <>
+            {renderSideBar()}
+            <Modal className={styles.modal} onClick={onHide} />
+          </>
+        </CSSTransition>,
+        document.getElementById("portal")!
+      )
+    : renderSideBar();
 };
 
 export default SideBar;

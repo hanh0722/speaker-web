@@ -23,7 +23,7 @@ const CheckBox: FC<CheckBoxProps> = (props) => {
       )}
       onClick={onChange}
     >
-      {isCheck && <IconCheck variant="sm"/>}
+      {inputIsCheck && <IconCheck variant="sm"/>}
     </div>
   );
 };

@@ -1,0 +1,29 @@
+.td {
+  @include padding(16);
+  display: table-cell;
+}
+.table {
+  border-collapse: collapse;
+  border-color: $border;
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 8px rgba($color: $black, $alpha: .05);
+  overflow-x: auto;
+  width: 100%;
+  color: $black;
+}
+.row {
+  display: table-row;
+  outline: 0px;
+}
+.tbody {
+  display: table-row-group;
+}
+.head {
+  display: table-header-group;
+  background: $gray-tertiary;
+}
+.th {
+  font-weight: 500;
+  color: $dark-gray-primary;
+}

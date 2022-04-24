@@ -1,0 +1,11 @@
+.breadcrumb {
+  & > div {
+    justify-content: flex-start;
+  }
+  p {
+    font-size: 14px
+  }
+}
+.box {
+  @include dashboard-layout();
+}

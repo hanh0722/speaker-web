@@ -18,11 +18,20 @@
 }
 
 @mixin dashboard-layout {
-  @include padding(116, 40);
+  @include padding(116, 60);
+  @include basic-desktop {
+    @include padding(60, 16);
+  }
 }
 
 @mixin basic-desktop {
   @media screen and (max-width: $desktop-mw) {
+    @content;
+  }
+}
+
+@mixin secondary-desktop {
+  @media screen and (max-width: $desktop-md) {
     @content;
   }
 }

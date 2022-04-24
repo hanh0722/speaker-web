@@ -45,13 +45,13 @@ const Pagination: FC<PaginationProps> = (props) => {
         className
       )}
     >
-      <ButtonBase onClick={onDecrementPage} className={classList(styles.prev, isFirstPage && styles.disabled)}>
+      <ButtonBase onClick={onDecrementPage} className={classList(styles.prev, 'prev', isFirstPage && styles.disabled)}>
         <IconCaretLeft />
       </ButtonBase>
       {getPagination.map((item) => {
         return (
           <div
-            className={classList(styles.element, pageCurrent === item && styles.active)}
+            className={classList(styles.element, 'element', pageCurrent === item && styles.active)}
             key={item}
             onClick={() => onChangeRoute(item)}
           >
@@ -59,7 +59,7 @@ const Pagination: FC<PaginationProps> = (props) => {
           </div>
         );
       })}
-      <ButtonBase onClick={onIncrementPage} className={classList(styles.next, isLastPage && styles.disabled)}>
+      <ButtonBase onClick={onIncrementPage} className={classList(styles.next, 'next', isLastPage && styles.disabled)}>
         <IconCaretRight />
       </ButtonBase>
     </div>

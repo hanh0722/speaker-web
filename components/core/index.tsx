@@ -17,6 +17,8 @@ import ParserElement from "./ParserElement";
 import ToastNotification from "./ToastNotification";
 import Tabs from "./Tabs";
 import Dropzone from "./Dropzone";
+import Table from "./Table";
+import Menu from "./Menu";
 
 export {
   Image,
@@ -37,5 +39,7 @@ export {
   ParserElement,
   ToastNotification,
   Tabs,
-  Dropzone
+  Dropzone,
+  Table,
+  Menu
 };

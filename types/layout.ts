@@ -19,3 +19,8 @@ export interface FormAuthLayoutProps extends ClassNameProps {
 export interface AuthBasicLayoutProps extends ClassNameProps {
   title?: string
 }
+
+export interface NavigationDashboardProps extends ClassNameProps {
+  isMobileScreen?: boolean;
+  onClick?: () => void
+}

@@ -1,4 +1,5 @@
 $desktop-mw: 1500px;
+$desktop-md: 1200px;
 $tablet-mw: 991px;
 $mobile-mw: 768px;
 $sm-mobile-mw: 576px;
@@ -21,10 +22,12 @@ $gray: #f8f8f8;
 $dark-gray: #8590a6;
 $footer-link: #9b9b9b;
 $light-gray: #F6F6F6;
+$dark-gray-primary: #637381;
 $sub-text-gray: #696969;
 $color-secondary: #666666;
 $gray-secondary: #919eab1f;
 $light-gray-secondary: #909eab;
+$light-gray-tertiary: #919eab14;
 $border: #ddd;
 $disabled: rgba(0, 0, 0, 0.12);
 $light-green-primary: #00ab5514;
@@ -42,6 +45,7 @@ $pd-container-bt: 40px;
 $pd-mobile-breadcrumb: 32;
 $red-primary: #F1403C;
 $sidebar-width-primary: 280px;
+$side-bar-mb-primary: 250px;
 $gray-tertiary: #f4f6f8;
 
 $position: (relative, absolute, static, fixed, sticky, unset) !default;

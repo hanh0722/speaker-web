@@ -16,6 +16,9 @@
   backdrop-filter: blur(6px);
   z-index: 100;
   transition: all .15s ease-in-out;
+  @include secondary-desktop {
+    padding-left: 16px;
+  }
 }
 .active {
   box-shadow: 0px 2px 8px rgba($color: $black, $alpha: .05);

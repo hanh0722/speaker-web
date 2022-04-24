@@ -8,6 +8,7 @@ const Document = () => {
         <div id="destination"></div>
         <div id="portal"></div>
         <div id="modal"></div>
+        <div id="tooltip"></div>
         <Main />
         <NextScript />
       </body>
