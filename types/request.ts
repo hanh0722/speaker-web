@@ -60,3 +60,7 @@ export interface FileResponse extends BaseResponse {
 export interface ProductCreationResponse extends BaseResponse {
   data: BaseProductProps
 }
+
+export interface DeleteProductsResponse extends BaseResponse {
+  items: Array<string> | string;
+}

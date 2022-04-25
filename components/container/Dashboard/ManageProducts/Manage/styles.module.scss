@@ -31,3 +31,14 @@
     }
   }
 }
+.delete {
+  width: 100%;
+  @include padding(16);
+}
+.btn {
+  padding: 0;
+  border-radius: 50%;
+  min-width: auto;
+  width: 24px;
+  height: 24px;
+}

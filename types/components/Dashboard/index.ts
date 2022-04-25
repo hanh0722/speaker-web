@@ -13,6 +13,7 @@ export interface LoadingTableManageProps extends ClassNameProps {
 
 export interface ProductRowProps extends ClassNameProps {
   product: BaseProductProps
+  onTick?: (id: string) => void
 }
 
 export interface StatusProducts extends ClassNameProps {

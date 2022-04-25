@@ -1,9 +1,10 @@
 import React, { FC } from "react";
+import PropTypes from 'prop-types';
 import { ProductRowProps } from "../../../../../types/components/Dashboard";
 import { classList, toCurrency } from "../../../../../utils/string";
 import { getFullDate } from "../../../../../utils/time";
 import { CheckBox } from "../../../../common";
-import { Button, Menu, Table } from "../../../../core";
+import { Button, Image, Menu, Table } from "../../../../core";
 import { IconThreeDot, IconTrash } from "../../../../core/Icons";
 import IconEdit from "../../../../core/Icons/IconEdit";
 import MenuItem from "../../../../core/Menu/MenuItem";
@@ -11,13 +12,19 @@ import StatusProduct from "./StatusProduct";
 import styles from "./styles.module.scss";
 
 const ProductRow: FC<ProductRowProps> = (props) => {
-  const { product, className, ...restProps } = props;
+  const { product, className, onTick, ...restProps } = props;
+  const onCheck = () => {
+    if (onTick) {
+      onTick(product._id);
+    }
+  }
   return (
-    <Table.Row {...restProps} className={classList(className)}>
+    <Table.Row {...restProps} className={classList(styles.row, className)}>
       <Table.Cell>
-        <CheckBox />
+        <CheckBox onChangeCheck={onCheck}/>
       </Table.Cell>
       <Table.Cell className={styles.title} align="start">
+        <Image className={styles.image} src={product?.images[0]} alt=""/>
         {product.title}
       </Table.Cell>
       <Table.Cell align="start">
@@ -52,4 +59,15 @@ const ProductRow: FC<ProductRowProps> = (props) => {
   );
 };
 
+ProductRow.defaultProps = {
+  product: undefined,
+  className: '',
+  onTick: (id) => {}
+};
+
+ProductRow.propTypes = {
+  product: PropTypes.any.isRequired,
+  className: PropTypes.string,
+  onTick: PropTypes.func,
+}
 export default ProductRow;

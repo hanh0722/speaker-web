@@ -8,4 +8,20 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+.image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 16px;
+}
+.row {
+  transition: all .1s ease-in-out;
+  border-radius: 4px;
+  &:hover {
+    background: $gray-tertiary;
+  }
 }
