@@ -50,21 +50,21 @@
   min-height: 100vh;
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 300;
 }
 .backdrop {
   position: absolute;
-  z-index: 100;
+  z-index: 180;
 }
 .main {
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 200;
   background: $white;
   width: 100%;
   border-radius: 8px;
   max-height: calc(100vh - 100px);
-  z-index: 101;
+  z-index: 500;
   @include mobile {
     max-width: 90%!important;
   }

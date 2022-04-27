@@ -41,3 +41,5 @@ export const MANAGEMENT: Array<ManagementDashboard> = [
     icon: IconOLList
   }
 ]
+
+export const EDIT_PRODUCT = (id: string) => `${DASH_BOARD}/products/edit/${id}`;

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import PropTypes from 'prop-types';
+import { useRouter } from "next/router";
 import { ProductRowProps } from "../../../../../types/components/Dashboard";
 import { classList, toCurrency } from "../../../../../utils/string";
 import { getFullDate } from "../../../../../utils/time";
@@ -10,13 +11,24 @@ import IconEdit from "../../../../core/Icons/IconEdit";
 import MenuItem from "../../../../core/Menu/MenuItem";
 import StatusProduct from "./StatusProduct";
 import styles from "./styles.module.scss";
+import { EDIT_PRODUCT } from "../../../../../constants/path";
 
 const ProductRow: FC<ProductRowProps> = (props) => {
-  const { product, className, onTick, ...restProps } = props;
+  const router = useRouter();
+  const { product, className, onTick, onDelete, ...restProps } = props;
+  const id = product?._id;
   const onCheck = () => {
     if (onTick) {
-      onTick(product._id);
+      onTick(id);
     }
+  }
+  const onHandleDelete = () => {
+    if (onDelete) {
+      onDelete(null, id);
+    }
+  }
+  const onEdit = () => {
+    router.push(EDIT_PRODUCT(id));
   }
   return (
     <Table.Row {...restProps} className={classList(styles.row, className)}>
@@ -47,10 +59,10 @@ const ProductRow: FC<ProductRowProps> = (props) => {
             </Button>
           }
         >
-          <MenuItem>
+          <MenuItem onClick={onHandleDelete}>
             <IconTrash /> Delete
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={onEdit}>
             <IconEdit /> Edit
           </MenuItem>
         </Menu>

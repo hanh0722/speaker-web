@@ -104,7 +104,7 @@ const Manage = () => {
     return setListTicked((prevState) => [...prevState, id]);
   };
 
-  const onDelete = (event: MouseEvent<HTMLButtonElement>, id?: string) => {
+  const onDelete = (_?: MouseEvent<HTMLButtonElement>, id?: string) => {
     onSendRequest(id || listTicked);
   }
   return (
@@ -152,6 +152,7 @@ const Manage = () => {
                     onTick={onTickHandler}
                     product={item}
                     key={item._id}
+                    onDelete={onDelete}
                   />
                 );
               })}
