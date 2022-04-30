@@ -22,7 +22,7 @@ const useImage = (url: string) => {
       setIsLoading(false);
       return;
     }
-    const { currentTarget } = event as SyntheticEvent<HTMLImageElement>;
+    const { currentTarget, target } = event as SyntheticEvent<HTMLImageElement>;
     setSrcImage(url);
     setIsLoading(false);
   };

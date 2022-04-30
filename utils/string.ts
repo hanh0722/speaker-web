@@ -1,4 +1,5 @@
 import { REGEX_PASSWORD } from "../constants/string";
+import { isClient } from "./server";
 
 export const isString = (value: Array<string> | string | any): value is string => {
   return typeof value === 'string';
@@ -67,7 +68,14 @@ export const convertToOTP = (array: Array<number | null>) => {
   }
 }
 
-export const toCurrency = (value?: number, position?: string) => {
+export const isMobile = () => {
+  if (isClient()) {
+    return window.innerWidth <= 991;
+  };
+  return false;
+}
+
+export const toCurrency = (value?: number, position?: string, config?: Intl.NumberFormatOptions) => {
   if (!value) {
     return value;
   }
@@ -75,7 +83,8 @@ export const toCurrency = (value?: number, position?: string) => {
     const format = new Intl.NumberFormat(position || 'en-US', {
       style: 'currency',
       currency: 'USD',
-      currencyDisplay: 'narrowSymbol'
+      currencyDisplay: 'narrowSymbol',
+      ...(config || {})
     }).format(value);
     return format;
   }catch(err) {

@@ -1,4 +1,5 @@
 import { BaseProductProps, BaseResponse } from "../../request";
+import { ClassNameProps } from "../../string";
 
 export interface CartItemResponse extends BaseResponse {
   data: BaseProductProps

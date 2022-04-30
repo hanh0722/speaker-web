@@ -1,0 +1,6 @@
+.statistic {
+  display: flex;
+  @include tablet {
+    display: block;
+  }
+}

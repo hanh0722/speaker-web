@@ -1,0 +1,38 @@
+.cart {
+  min-width: 650px;
+}
+.title {
+  padding-bottom: 24px;
+}
+.container {
+  border-radius: 8px;
+  width: 65%;
+  @include tablet {
+    width: 100%;
+  }
+  @include padding(24, 16);
+  border: 1px solid $border;
+}
+.table {
+  overflow-x: scroll;
+  width: 100%;
+  tr {
+    transition: all .15s ease-in-out;
+    &:hover {
+      background: $light-gray;
+    }
+  }
+}
+.heading {
+  max-width: 200px;
+  height: 10px !important;
+  border-radius: 4px;
+}
+.empty {
+  padding-top: 32px;
+  position: relative;
+  min-height: 200px;
+}
+.empty-block {
+  padding-top: 24px;
+}

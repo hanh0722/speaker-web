@@ -59,7 +59,6 @@ const EditProduct: FC<EditProductProps> = (props) => {
     setImagesProduct(images);
   };
   const onChangeQuantity = (value: number) => {
-    console.log(value);
     setStockQuantity(value);
   };
   const onChangePrice = (value: number) => {

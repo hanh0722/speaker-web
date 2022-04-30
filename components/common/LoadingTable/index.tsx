@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import PropTypes from 'prop-types';
-import { LoadingTableManageProps } from "../../../../../types/components/Dashboard";
-import { generateArray } from "../../../../../utils/array";
-import { classList } from "../../../../../utils/string";
-import { SkeletonLoading, Table } from "../../../../core";
+import { LoadingTableManageProps } from "../../../types/components/Dashboard";
+import { generateArray } from "../../../utils/array";
+import { classList } from "../../../utils/string";
+import { SkeletonLoading, Table } from "../../core";
 import styles from "./styles.module.scss";
 
 const LoadingTable: FC<LoadingTableManageProps> = (props) => {

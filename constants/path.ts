@@ -23,6 +23,8 @@ export const DASH_BOARD_PRODUCTS = '/dashboard/products';
 export const CREATE_PRODUCT = '/dashboard/products/create';
 export const MANAGE_PRODUCT = `${DASH_BOARD}/products/manage`;
 
+export const CHECKOUT = '/checkout';
+
 
 interface ManagementDashboard {
   href: string,

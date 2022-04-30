@@ -15,7 +15,7 @@ const BreadCrumbElement: FC<BreadCrumbElementProps> = (props) => {
       <p {...restProps} className={classList(styles.element, className)}>
         {children}
       </p>
-      {showCaret && (
+      {showCaret && pathname !== href && (
         <IconCaretLightRight variant="xs" className={styles.icon} />
       )}
     </Link>

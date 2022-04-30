@@ -1,0 +1,55 @@
+.box {
+  @include padding(24, 16);
+  border-radius: 8px;
+  flex-grow: 1;
+  margin-left: 32px;
+  align-self: baseline;
+  .loading {
+    height: 10px !important;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  border: 1px solid $border;
+
+  @include tablet {
+    margin-left: 0;
+    margin-top: 32px
+  }
+}
+.list {
+  @include padding(24, 0);
+  li {
+    padding-bottom: 16px;
+    @include flex(space-between, center);
+    &:last-child {
+      padding-bottom: 0;
+    }
+    span {
+      &:first-child {
+        color: $dark-gray-primary;
+      }
+      &:last-child {
+        font-weight: 500;
+      }
+    }
+  }
+  border-bottom: 1px solid $border;
+}
+.total {
+  padding-top: 16px;
+  span {
+    &:first-child {
+      font-weight: 500;
+    }
+    &:last-child {
+      color: #ff4842;
+      font-weight: 500;
+    }
+  }
+}
+.title {
+  padding-top: 8px;
+}
+.btn {
+  margin-top: 24px;
+}

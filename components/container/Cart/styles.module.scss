@@ -29,6 +29,7 @@
     text-decoration: underline;
     @extend .weight-300;
   }
+  border-top: 1px solid $border;
 }
 .loading {
   & > div {

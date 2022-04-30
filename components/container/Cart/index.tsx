@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import { CartProps } from "../../../types/component";
 import { Modal } from "../../common";
 import styles from "./styles.module.scss";
@@ -12,7 +13,7 @@ import { IconClose } from "../../core/Icons";
 import { AppDispatch, RootState } from "../../../store";
 import { cartActions, CartStoreState } from "../../../store/slices/cart";
 import { Button, Link } from "../../core";
-import { CART } from "../../../constants/path";
+import { CART, CHECKOUT } from "../../../constants/path";
 import { isClient } from "../../../utils/server";
 import CartLoading from "./CartLoading";
 import { generateArray } from "../../../utils/array";
@@ -20,6 +21,7 @@ import CartItem from "./CartItem";
 
 const Cart: FC<CartProps> = (props) => {
   const { className } = props;
+  const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const { isOpenCart, cart, isLoadingCart, total } = useSelector<
     RootState,
@@ -33,6 +35,11 @@ const Cart: FC<CartProps> = (props) => {
   if (!isClient()) {
     return null;
   }
+
+  const onCheckout = () => {
+    dispatch(cartActions.onChangeActiveCart());
+    router.push(CHECKOUT);
+  };
 
   return (
     <>
@@ -98,7 +105,7 @@ const Cart: FC<CartProps> = (props) => {
                       <span>Subtotal:</span>
                       <span>{toCurrency(total)}</span>
                     </p>
-                    <Button fullWidth size="large">
+                    <Button onClick={onCheckout} fullWidth size="large">
                       Checkout
                     </Button>
                     <Link className="text-center d-block f-14" href={CART}>

@@ -6,20 +6,21 @@ import styles from "./styles.module.scss";
 
 const StatusProduct: FC<StatusProducts> = (props) => {
   const { quantity, className, ...restProps } = props;
-  if (quantity <= 50) {
-    return (
-      <div {...restProps} className={classList(styles.container, styles.low, className)}>
-        Low Stock
-      </div>
-    );
-  }
+  console.log(quantity);
   if (quantity === 0) {
     return (
       <div {...restProps} className={classList(styles.container, styles.out, className)}>
         Out of stock
       </div>
     )
-  }
+  } 
+  if (quantity <= 50) {
+    return (
+      <div {...restProps} className={classList(styles.container, styles.low, className)}>
+        Low Stock
+      </div>
+    );
+    }
   return (
     <div {...restProps} className={classList(styles.container, styles.normal)}>
       In stock

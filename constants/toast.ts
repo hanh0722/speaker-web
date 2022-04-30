@@ -1,5 +1,5 @@
 import { ToastContainerProps, ToastOptions } from "react-toastify";
-
+import { isMobile } from "../utils/string";
 export const TOP_RIGHT = "top-right";
 export const TOP_LEFT = "top-left";
 export const TOP_CENTER = "top-center";
@@ -17,7 +17,7 @@ export const POSITION_TOAST = {
 };
 
 export const DEFAULT_SETTINGS: ToastContainerProps = {
-  position: TOP_RIGHT,
+  position: isMobile() ? TOP_CENTER : TOP_RIGHT,
   autoClose: 3000,
   hideProgressBar: false,
   newestOnTop: true,
@@ -30,7 +30,7 @@ export const DEFAULT_SETTINGS: ToastContainerProps = {
 };
 
 export const TOAST_ELEMENT_SETTINGS: ToastOptions = {
-  position: "top-right",
+  position: isMobile() ? TOP_CENTER : TOP_RIGHT,
   autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
