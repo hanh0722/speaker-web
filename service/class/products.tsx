@@ -61,3 +61,13 @@ export const deleteProducts = (id: Array<string> | string) => {
     }
   })
 }
+
+export const editProduct = (id: string, data: CreateProductState) => {
+  return request.put<BaseResponse>(`${PRODUCT_URL}/edit/${id}`, {
+    ...data
+  }, {
+    headers: {
+      authorization: 'Bearer ' + getCookie('token')
+    }
+  });
+}

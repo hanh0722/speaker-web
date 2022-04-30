@@ -5,7 +5,7 @@ import { ErrorProps } from "../types/base";
 import { BaseResponse } from "../types/request";
 
 interface UseCallApiProps<T> {
-  request?: (params?: any) => Promise<AxiosResponse<T>> | undefined;
+  request: (params?: any) => Promise<AxiosResponse<T>> | undefined;
   onSuccess?: (data: T) => void;
   onError?: (err: any) => void;
   isToastNotification?: boolean 

@@ -28,6 +28,11 @@ const reducerFunction: Reducer<UseInputState, UseInputActions> = (
         ...state,
         isTouched: true,
       };
+    case UseInputSerialize.FORCE_UPDATE:
+      return {
+        ...state,
+        value: payload
+      }
     default:
       return state;
   }
@@ -47,6 +52,13 @@ const useInput = (type?: 'or' | 'and' | null, ...args: Array<(value: string) => 
       payload: isString(event) ? event : event.target.value,
     });
   };
+  
+  const forceUpdateValue = (value: string) => {
+    dispatch({
+      type: UseInputSerialize.FORCE_UPDATE,
+      payload: value
+    })
+  }
 
   const onTouchedHandler = () => {
     dispatch({
@@ -59,6 +71,7 @@ const useInput = (type?: 'or' | 'and' | null, ...args: Array<(value: string) => 
     onChangeHandler,
     onTouchedHandler,
     isValid,
+    forceUpdateValue,
     ...state,
   };
 };

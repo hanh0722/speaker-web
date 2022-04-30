@@ -1,0 +1,10 @@
+.left {
+  width: 65%;
+  @include box-dashboard();
+}
+.label {
+  padding-bottom: 16px;
+}
+.img {
+  padding-top: 20px;
+}

@@ -1,0 +1,29 @@
+.input {
+  @include box-dashboard();
+  .quantity {
+    margin-bottom: 0;
+  }
+}
+.container {
+  padding-left: 32px;
+  flex-grow: 1;
+}
+.box {
+  @include box-dashboard();
+  margin-top: 32px;
+}
+.in-stock {
+  padding-bottom: 28px;
+  .toggle {
+    width: auto;
+  }
+  span {
+    padding-left: 12px;
+  }
+}
+.sale {
+  margin-bottom: 0;
+}
+.btn {
+  margin-top: 32px;
+}

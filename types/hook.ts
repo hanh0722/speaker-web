@@ -8,7 +8,7 @@ export interface UseInputState {
 }
 
 export enum UseInputSerialize {
-    CHANGE, TOUCHED, CHECK_VALID
+    CHANGE, TOUCHED, CHECK_VALID, FORCE_UPDATE
 }
 
 export enum UseFetchSerialize {

@@ -1,6 +1,6 @@
 import React, { FC, useState, forwardRef } from "react";
 import ReactQuill from "react-quill";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import EditorToolbar, { modules, formats } from "./Toolbar";
 import "react-quill/dist/quill.snow.css";
 import { isClient } from "../../../utils/server";
@@ -8,9 +8,9 @@ import styles from "./styles.module.scss";
 import { EditorProps } from "../../../types/components/Editor";
 import { classList } from "../../../utils/string";
 
-export const Editor: FC<EditorProps> = forwardRef((props) => {
-  const { onChange, className, ...restProps } = props;
-  const [state, setState] = useState<string>("");
+export const Editor = forwardRef<ReactQuill, EditorProps>((props, ref) => {
+  const { onChange, className, initialValue, ...restProps } = props;
+  const [state, setState] = useState<string>(initialValue || "");
   const handleChange = (value: string) => {
     setState(value);
     if (onChange) {
@@ -24,6 +24,7 @@ export const Editor: FC<EditorProps> = forwardRef((props) => {
     <div className={classList(className)}>
       <EditorToolbar />
       <ReactQuill
+        ref={ref}
         className={styles.quill}
         theme="snow"
         value={state}
@@ -36,10 +37,10 @@ export const Editor: FC<EditorProps> = forwardRef((props) => {
   );
 });
 
-Editor.displayName = 'Editor';
+Editor.displayName = "Editor";
 
 Editor.propTypes = {
   onChange: PropTypes.func,
-}
+};
 
 export default Editor;

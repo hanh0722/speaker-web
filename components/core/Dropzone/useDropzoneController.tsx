@@ -8,18 +8,19 @@ import { FileResponse, FileReponseBasic } from "../../../types/request";
 
 interface DropzoneController extends DropzoneProps {
   ref: RefObject<HTMLInputElement>;
+  initFiles?: Array<FilePath>
 }
 
-interface FilePath {
+export interface FilePath {
   file: FileWithPath | string;
   id: string;
   isLoading: boolean;
 }
 
 const useDropzoneController = (props: DropzoneController) => {
+  const { ref, options, onGetFile, initFiles, ...restProps } = props;
   const [urls, setUrls] = useState<FileReponseBasic | null>(null);
-  const [files, setFiles] = useState<Array<FilePath>>([]);
-  const { ref, options, onGetFile, ...restProps } = props;
+  const [files, setFiles] = useState<Array<FilePath>>(initFiles || []);
 
   const onGetNameFile = (array: Array<FilePath>) => {
     return array.map(item => item.file);

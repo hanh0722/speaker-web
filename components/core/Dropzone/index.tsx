@@ -10,11 +10,12 @@ import Button from "../Button";
 
 const Dropzone: FC<DropzoneProps> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { className, onGetFile, options, ...restProps } = props;
+  const { className, onGetFile, options, initFiles, ...restProps } = props;
 
   const { getRootProps, isLoading, getInputProps, files, onOpenFile, onFilterFile, onClearFile } =
     useDropzoneController({
       ref: inputRef,
+      initFiles: initFiles,
       ...props,
     });
 

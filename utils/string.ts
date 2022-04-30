@@ -38,6 +38,19 @@ export const isMobilePhone = (value: string) => {
     return true;
 }
 
+export const isNumber = (value: any): value is number => {
+  return value instanceof Number;
+}
+
+export const isPositive = (value: any) => {
+  try{  
+    const parseInt = +value;
+    return parseInt > 0;
+  }catch(err) {
+    return false;
+  }
+}
+
 export const isFile = (file: any) => {
   return file instanceof File;
 }
