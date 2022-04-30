@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { BreadCrumbProps } from "../../../types/components/BreadCrumb";
 import { classList } from "../../../utils/string";
+import BreadCrumbSteps from "./BreadCrumbSteps";
 import styles from './styles.module.scss';
 
 const BreadCrumb: FC<BreadCrumbProps> = (props) => {
@@ -13,4 +14,6 @@ const BreadCrumb: FC<BreadCrumbProps> = (props) => {
   )
 }
 
-export default BreadCrumb;
+export default Object.assign(BreadCrumb, {
+  Steps: BreadCrumbSteps
+});

@@ -1,0 +1,27 @@
+.address {
+  @include padding(24);
+  border-radius: 8px;
+  box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px,
+    rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+  .left {
+    flex-grow: 1;
+  }
+  border: 1px solid $border;
+  .title {
+    display: flex;
+    .des {
+      color: $dark-gray;
+      padding-left: 6px;
+    }
+    .default {
+      margin-left: 6px;
+      color: #0C53B7;
+      background: rgba(24, 144, 255, 0.16);
+      @include padding(4, 8);
+      border-radius: 4px;
+    }
+  }
+  .add {
+    @include padding(8, 0);
+  }
+}

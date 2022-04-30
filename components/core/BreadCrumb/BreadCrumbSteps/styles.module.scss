@@ -1,0 +1,27 @@
+.step {
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $dark-gray;
+  }
+  position: relative;
+  .info {
+    padding-top: 16px;
+    color: $dark-gray;
+    line-height: 20px;
+  }
+}
+.active {
+  .info {
+    font-weight: 500;
+  }
+}
+.line {
+  height: 2px;
+  flex-grow: 1;
+  background: rgba(145, 158, 171, 0.24);
+  align-self: flex-start;
+  position: relative;
+  top: 2px;
+}

@@ -3,18 +3,24 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { CartStoreState } from "../../../../store/slices/cart";
-import { ClassNameProps } from "../../../../types/string";
 import { classList, toCurrency } from "../../../../utils/string";
 import styles from "./styles.module.scss";
-import { Button, Link, SkeletonLoading } from "../../../core";
-import { CHECKOUT } from "../../../../constants/path";
+import { Button, SkeletonLoading } from "../../../core";
 import { generateArray } from "../../../../utils/array";
+import { BoxTotalCartProps } from "../../../../types/components/Cart";
+import { isFunction } from "../../../../types/type";
 
-const BoxTotalCart: FC<ClassNameProps> = (props) => {
-  const { className, ...restProps } = props;
+const BoxTotalCart: FC<BoxTotalCartProps> = (props) => {
+  const { className, onClick, ...restProps } = props;
   const { total, isLoadingCart } = useSelector<RootState, CartStoreState>(
     (state) => state.cart
   );
+
+  const onHandleClick = () => {
+    if (isFunction(onClick)) {
+      onClick();
+    }
+  }
   return (
     <div {...restProps} className={classList("shadow-xs", styles.box, className)}>
       <h4 className="weight-500 f-18">Order Summary</h4>
@@ -45,19 +51,17 @@ const BoxTotalCart: FC<ClassNameProps> = (props) => {
           <p className={`text-end color-gray f-12 ${styles.title}`}>
             (VAT included if applicable)
           </p>
-
-          <Link href={CHECKOUT}>
-            <Button
-              className={styles.btn}
-              prefix="normal"
-              variant="outlined"
-              color="inherit"
-              size="large"
-              fullWidth
-            >
-              Checkout
-            </Button>
-          </Link>
+          <Button
+            onClick={onHandleClick}
+            className={styles.btn}
+            prefix="normal"
+            variant="outlined"
+            color="inherit"
+            size="large"
+            fullWidth
+          >
+            Checkout
+          </Button>
         </>
       )}
     </div>
