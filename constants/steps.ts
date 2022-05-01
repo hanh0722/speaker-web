@@ -1,7 +1,17 @@
+import { IconMasterCard, IconVisa } from "../components/core/Icons";
+import { SingleMethod } from "../types/components/PaymentCheckout";
+
 export enum STEP_CHECKOUT {
   INFOR_CART, ADDRESS, CHECKOUT
 }
 
+export enum PAYMENT_METHODS_VALUE {
+  CREDIT_CARD = 'CREDIT_CARD', CASH = "CASH"
+}
+
+export enum RADIO_ADDRESS_VALUE {
+  HOME = 'HOME', OFFICE = 'OFFICE'
+}
 export const STEP_BREADCRUMB = [
   {
     step: STEP_CHECKOUT.INFOR_CART,
@@ -14,5 +24,33 @@ export const STEP_BREADCRUMB = [
   {
     step: STEP_CHECKOUT.CHECKOUT,
     label: 'Payment'
+  }
+]
+
+export const RADIO_ADDRESS = [
+  {
+    id: RADIO_ADDRESS_VALUE.HOME,
+    value: 'Home'
+  },
+  {
+    id: RADIO_ADDRESS_VALUE.OFFICE,
+    value: 'Office'
+  }
+];
+
+export const PAYMENT_OPTIONS: Array<SingleMethod> = [
+  {
+    title: 'Pay with Credit / Debit card',
+    description: 'We support Mastercard, Visa, Discover and Stripe.',
+    icons: [
+      IconMasterCard,
+      IconVisa
+    ],
+    eventKey: PAYMENT_METHODS_VALUE.CREDIT_CARD
+  },
+  {
+    title: 'Cash on Checkout delivery',
+    description: 'Pay with cash when your order is delivered.',
+    eventKey: PAYMENT_METHODS_VALUE.CASH
   }
 ]

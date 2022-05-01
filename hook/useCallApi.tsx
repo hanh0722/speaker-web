@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import { useCallback, useState } from "react";
+import { AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
 import { ToastNotification } from "../components/core";
 import { ErrorProps } from "../types/base";
 import { BaseResponse } from "../types/request";
@@ -14,6 +14,11 @@ interface UseCallApiProps<T> {
 const useCallApi = <T extends BaseResponse>({request, onSuccess, onError, isToastNotification = false}: UseCallApiProps<T>) => {
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    return () => {
+      setIsLoading(false);
+    }
+  }, []);
   const onSendRequest = async (params?: any) => {
     try{
       if (!request) {

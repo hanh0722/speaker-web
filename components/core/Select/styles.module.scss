@@ -1,0 +1,25 @@
+.select {
+  padding: 16px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  outline: 0;
+  transition: all .1s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    border-color: rgba($color: $black, $alpha: .6);
+  }
+  appearance: none;
+  width: 100%;
+  padding-right: 40px;
+  @include show-n-line(1);
+}
+.container {
+  position: relative;
+  width: 100%;
+  svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

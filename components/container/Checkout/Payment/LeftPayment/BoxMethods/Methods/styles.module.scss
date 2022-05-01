@@ -1,0 +1,24 @@
+.box {
+  @include padding(16);
+  border-radius: 8px;
+  border: 1px solid $border;
+  .content {
+    padding-left: 16px;
+    flex-grow: 1;
+  }
+  transition: all .15s ease-in-out;
+  @include tablet {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    .content {
+      padding-left: 0;
+    }
+    .icons {
+      justify-content: flex-end;
+    }
+  }
+}
+.active {
+  box-shadow: $shadow-secondary;
+}

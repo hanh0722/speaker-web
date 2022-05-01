@@ -5,8 +5,13 @@
     border: 1px solid $border;
     transition: all .3s ease-in-out;
     cursor: pointer;
+    position: relative;
 }
 
 .active {
     background: $black;
+}
+.btn {
+  position: absolute;
+  inset: 0;
 }

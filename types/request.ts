@@ -64,3 +64,55 @@ export interface ProductCreationResponse extends BaseResponse {
 export interface DeleteProductsResponse extends BaseResponse {
   items: Array<string> | string;
 }
+
+export interface CountryState {
+  name: string;
+  state_code: string;
+}
+
+export interface SingleCountryProps {
+  name: string;
+  iso3: string;
+  iso2: string;
+  states: Array<CountryState>
+}
+export interface CountryResponse extends BaseResponse {
+  data: Array<SingleCountryProps>
+}
+
+export interface InfoAddressProps {
+  place: string;
+  full_name: string;
+  phone_number: string;
+  address: string;
+  city: string;
+  zip_code: string;
+  country: string;
+  is_default: boolean
+}
+
+export interface SingleAddressProps {
+  object_id: string;
+  info: InfoAddressProps;
+  _id: string;
+}
+
+export interface AddressResponse extends BaseResponse {
+  total_documents: number,
+  data: Array<SingleAddressProps>
+}
+
+export interface AddressCreateResponse extends BaseResponse {
+  data: SingleAddressProps
+}
+
+export class SingleAddress implements SingleAddressProps {
+  info: InfoAddressProps;
+  object_id: string;
+  _id: string;
+  constructor(request: SingleAddressProps) {
+    this.info = request.info;
+    this.object_id = request.object_id;
+    this._id = request._id;
+  }
+}

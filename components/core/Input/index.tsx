@@ -40,6 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <div
         className={classList(
           styles["form-group"],
+          'form-group',
           IconComponent ? styles["form-icon"] : "",
           className
         )}

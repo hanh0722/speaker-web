@@ -1,0 +1,6 @@
+.block {
+  width: 65%;
+  @include tablet {
+    width: 100%;
+  }
+}

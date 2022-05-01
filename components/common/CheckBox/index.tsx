@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { classList } from "../../../utils/string";
 import { CheckBoxProps } from "../../../types/component";
 import { IconCheck } from "../../core/Icons";
+import { ButtonBase } from "@mui/material";
 
 const CheckBox: FC<CheckBoxProps> = (props) => {
   const { className, isCheck, onChangeCheck } = props;
@@ -23,6 +24,7 @@ const CheckBox: FC<CheckBoxProps> = (props) => {
       )}
       onClick={onChange}
     >
+      <ButtonBase className={styles.btn}/>
       {inputIsCheck && <IconCheck variant="sm"/>}
     </div>
   );

@@ -1,0 +1,30 @@
+.line {
+  .value {
+    padding-left: 8px;
+    font-weight: 500;
+  }
+  padding-bottom: 24px;
+}
+.grid {
+  :global {
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+}
+.default {
+  span {
+    padding-left: 8px;
+  }
+}
+.loading {
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  div {
+    width: 35px;
+    height: 35px;
+    border-width: 3px;
+    border-color: $green-primary transparent transparent transparent;
+  }
+}

@@ -1,0 +1,14 @@
+.grid {
+  flex-grow: 1;
+  margin-left: 32px;
+  .info {
+    padding-top: 16px;
+  }
+  .address {
+    @include padding(8, 0);
+  }
+}
+.btn {
+  margin-top: 32px;
+  border-radius: 8px;
+}

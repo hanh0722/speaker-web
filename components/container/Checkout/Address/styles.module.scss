@@ -1,0 +1,32 @@
+.button {
+  padding-top: 20px;
+  svg {
+    margin-right: 8px;
+  }
+}
+.loading {
+  height: 140px;
+  border-radius: 8px;
+  border: 1px solid $border;
+}
+.pagination {
+  padding-top: 0;
+  svg {
+    margin: 0;
+  }
+  :global {
+    .prev, .next, .element {
+      width: 35px;
+      height: 35px;
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+.empty {
+  p {
+    padding-top: 24px;
+  }
+}

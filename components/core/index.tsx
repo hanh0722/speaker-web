@@ -19,6 +19,8 @@ import Tabs from "./Tabs";
 import Dropzone from "./Dropzone";
 import Table from "./Table";
 import Menu from "./Menu";
+import Radio from "./Radio";
+import Select from './Select';
 
 export {
   Image,
@@ -41,5 +43,7 @@ export {
   Tabs,
   Dropzone,
   Table,
-  Menu
+  Menu,
+  Radio,
+  Select
 };

@@ -1,0 +1,11 @@
+.options {
+  @include padding(16);
+  .description {
+    padding-left: 16px;
+  }
+  border: 1px solid $border;
+  border-radius: 8px;
+}
+.active {
+  box-shadow: $shadow-secondary;
+}

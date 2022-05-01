@@ -1,7 +1,7 @@
 export const generateArray = (quantity: number) => {
     return [...Array.from(Array(quantity).keys())];
 }
-export const isArray = (value: any) => {
+export const isArray = (value: any): value is Array<any> => {
   return value instanceof Array;
 }
 
