@@ -115,4 +115,34 @@ export class SingleAddress implements SingleAddressProps {
     this.object_id = request.object_id;
     this._id = request._id;
   }
+};
+
+export interface PaymentInfoResponse extends BaseResponse {
+  client_secret: string
+};
+
+export interface PaymentCheckoutRequest {
+  payment_methods: string;
+  delivery_methods: string;
+  object_info_id: string;
+  success_url: string;
+  cancel_url: string;
+};
+
+export interface PaymentCheckoutResponse extends BaseResponse {
+  data?: {
+    redirect_url: string
+  };
+  order_id?: string;
+};
+
+export interface ParamsPaymentOrderRequest {
+  id: string;
+  typePayment: string;
+  callback?: (event: ProgressEvent) => void
+}
+export interface PaymentOrderResponse extends BaseResponse {
+  data: {
+    _id: string
+  }
 }

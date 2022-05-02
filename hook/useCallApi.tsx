@@ -34,7 +34,6 @@ const useCallApi = <T extends BaseResponse>({request, onSuccess, onError, isToas
         const error: ErrorProps = new Error(message);
         error.code = response?.status || response?.data?.code || 500;
         throw error;
-        
       };
       if (onSuccess) {
         onSuccess(response.data);

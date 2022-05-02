@@ -1,0 +1,44 @@
+.pointer {
+  pointer-events: none;
+}
+.main {
+  padding-top: 32px;
+  .img {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  h4 {
+    padding-bottom: 32px;
+  }
+}
+.content {
+  padding-top: 32px;
+  p {
+    padding-bottom: 12px;
+    font-size: 16px;
+    color: $dark-gray;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  .title {
+    color: $black;
+    span {
+      color: $green-primary;
+    }
+  }
+}
+.footer {
+  padding-top: 24px;
+  button {
+    svg {
+      margin-right: 6px;
+    }
+  }
+}
+.loading {
+  color: $dark-gray;
+}
+.loading-container {
+  min-height: 40vh;
+}

@@ -6,6 +6,7 @@ import { ClassNameProps } from "../../string";
 
 export interface PaymentCheckoutProps extends ClassNameProps {
   address?: SingleAddressProps | null;
+  isLoadingSubmit?: boolean
 }
 
 export interface BoxLayoutProps extends ClassNameProps {
@@ -26,3 +27,13 @@ export interface MethodsProps extends ClassNameProps {
   data?: SingleMethod;
   isActive?: boolean
 };
+
+export interface GetPaymentFunction<T extends string | number | undefined, U extends void> {
+  onGetPayment?: (value: T) => U;
+}
+
+export interface LeftPaymentCheckoutProps extends ClassNameProps, GetPaymentFunction<string | number | undefined, void> {
+}
+
+export interface BoxMethodsProps extends ClassNameProps, GetPaymentFunction<string | number | undefined, void> {
+}

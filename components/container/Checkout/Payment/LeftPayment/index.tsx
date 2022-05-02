@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import DeliverOptions from "./DeliverOptions";
 import styles from './styles.module.scss';
 import BoxMethods from "./BoxMethods";
-import { ClassNameProps } from "../../../../../types/string";
 import { classList } from "../../../../../utils/string";
+import { LeftPaymentCheckoutProps } from "../../../../../types/components/PaymentCheckout";
+import { isFunction } from "../../../../../types/type";
 
-const LeftPayment: FC<ClassNameProps> = (props) => {
-  const { className } = props;
+const LeftPayment: FC<LeftPaymentCheckoutProps> = (props) => {
+  const { className, onGetPayment, ...restProps } = props;
+
+  const onGetPaymentHandler = (payment: number | string | undefined) => {
+    if (isFunction(onGetPayment)) {
+      onGetPayment(payment);
+    }
+  }
   return (
-    <div className={classList(styles.block, className)}>
+    <div {...restProps} className={classList(styles.block, className)}>
       <DeliverOptions/>
-      <BoxMethods/>
+      <BoxMethods onGetPayment={onGetPaymentHandler}/>
     </div>
   )
 };

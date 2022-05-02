@@ -10,7 +10,8 @@ const nextConfig = {
     `
   },
   publicRuntimeConfig: {
-    BASE_URL: process.env['BASE_URL']
+    BASE_URL: process.env['BASE_URL'],
+    STRIPE_KEY: process.env['PUBLISH_KEY_STRIPE']
   },
   optimizeFonts: true,
   webpack(config) {

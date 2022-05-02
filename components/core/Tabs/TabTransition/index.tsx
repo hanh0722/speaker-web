@@ -7,7 +7,6 @@ const TabTransition = () => {
   if (!positionTab) {
     return null;
   }
-  console.log(positionTab)
   return <div style={{
     left: positionTab?.left,
     width: positionTab?.width

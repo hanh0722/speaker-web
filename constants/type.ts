@@ -22,3 +22,10 @@ export const TAB_DESCRIPTION = [
 ];
 
 export const KEY_UPLOAD = 'file_upload';
+
+export enum DELIVERY_OPTIONS {
+  STANDARD = 'standard'
+}
+
+export const CASH = 'cash';
+export const CARD = 'card';

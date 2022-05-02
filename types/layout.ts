@@ -8,7 +8,8 @@ export type NextPageWithLayout = NextPage & {
 }
 
 export type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
+  Component: NextPageWithLayout;
+  keySecret?: string
 }
 
 export interface FormAuthLayoutProps extends ClassNameProps {

@@ -6,11 +6,11 @@ export enum STEP_CHECKOUT {
 }
 
 export enum PAYMENT_METHODS_VALUE {
-  CREDIT_CARD = 'CREDIT_CARD', CASH = "CASH"
+  CREDIT_CARD = 'credit_card', CASH = "cash"
 }
 
 export enum RADIO_ADDRESS_VALUE {
-  HOME = 'HOME', OFFICE = 'OFFICE'
+  HOME = 'Home', OFFICE = 'Office'
 }
 export const STEP_BREADCRUMB = [
   {

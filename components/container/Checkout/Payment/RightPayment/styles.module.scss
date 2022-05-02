@@ -7,6 +7,10 @@
   .address {
     @include padding(8, 0);
   }
+  @include tablet {
+    margin-left: 0;
+    margin-top: 32px;
+  }
 }
 .btn {
   margin-top: 32px;

@@ -39,6 +39,7 @@ import IconThreeDot from "./IconThreeDot";
 import IconTrash from "./IconTrash";
 import IconVisa from "./IconVisa";
 import IconMasterCard from "./IconMastercard";
+import IconSuccessOrder from "./IconSuccessOrder";
 export {
   IconThreeDot,
   IconPlus,
@@ -80,5 +81,6 @@ export {
   IconOLList,
   IconTrash,
   IconVisa,
-  IconMasterCard
+  IconMasterCard,
+  IconSuccessOrder
 };

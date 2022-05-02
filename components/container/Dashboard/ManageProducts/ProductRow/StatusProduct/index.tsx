@@ -6,7 +6,6 @@ import styles from "./styles.module.scss";
 
 const StatusProduct: FC<StatusProducts> = (props) => {
   const { quantity, className, ...restProps } = props;
-  console.log(quantity);
   if (quantity === 0) {
     return (
       <div {...restProps} className={classList(styles.container, styles.out, className)}>

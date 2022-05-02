@@ -5,7 +5,11 @@ import {
   CartItemProps,
   CartItem,
 } from "../../types/api/page/cart";
-import { onChangeItemCart, updateTotalPrice, updateTotalQuantity } from "../../utils/cart";
+import {
+  onChangeItemCart,
+  updateTotalPrice,
+  updateTotalQuantity,
+} from "../../utils/cart";
 
 export interface CartStoreState {
   isOpenCart: boolean;
@@ -13,16 +17,17 @@ export interface CartStoreState {
   isLoadingCart: boolean;
   error: null | string;
   total: number;
-  totalProducts: number
+  totalProducts: number;
 }
+
 const initialState: CartStoreState = {
   isOpenCart: false,
   cart: [],
   isLoadingCart: false,
   error: null,
   total: 0,
-  totalProducts: 0
-};
+  totalProducts: 0,
+ };
 
 const cartSlice = createSlice({
   name: "cart-slice",
@@ -36,7 +41,6 @@ const cartSlice = createSlice({
       state.cart = data;
       state.total = updateTotalPrice(data);
       state.totalProducts = updateTotalQuantity(data);
-      
     },
     onChangeActiveCart(state) {
       state.isOpenCart = !state.isOpenCart;

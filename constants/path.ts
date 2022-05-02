@@ -24,6 +24,7 @@ export const CREATE_PRODUCT = '/dashboard/products/create';
 export const MANAGE_PRODUCT = `${DASH_BOARD}/products/manage`;
 
 export const CHECKOUT = '/checkout';
+export const SUCCESS_CHECKOUT = '/checkout/success';
 
 
 interface ManagementDashboard {
