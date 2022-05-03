@@ -3,3 +3,22 @@
     display: block;
   }
 }
+.select {
+  @include padding(14);
+  padding-right: 32px;
+}
+.filter {
+  button {
+    @include padding(12);
+    margin-right: 16px;
+  }
+  @include tablet {
+    padding-top: 0;
+  }
+}
+.row {
+  margin-left: 32px;
+}
+.line {
+  padding-bottom: 32px;
+}

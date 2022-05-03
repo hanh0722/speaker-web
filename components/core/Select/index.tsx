@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import { IconCaret } from "../Icons";
 import Element from './Element';
 import { isFunction } from "../../../types/type";
+import { ButtonBase } from "@mui/material";
 
 const Select: FC<SelectCoreProps> = (props) => {
   const { className, children,  initValue, onChangeValue, ...restProps } = props;
@@ -23,6 +24,7 @@ const Select: FC<SelectCoreProps> = (props) => {
 
   return (
     <div className={styles.container}>
+      <ButtonBase className={styles.btn}/>
       <select {...restProps} value={value} onChange={onChangeSelect} className={classList(styles.select, className)}>
         {children}
       </select>

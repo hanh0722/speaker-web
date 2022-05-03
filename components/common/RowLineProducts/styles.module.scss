@@ -3,13 +3,12 @@
   justify-content: flex-end;
   align-items: center;
   bottom: auto;
-  padding-bottom: 16px;
   & > div {
     border-radius: 4px;
     span {
       min-width: 70px;
       text-align: center;
-      top: -70%;
+      top: -100%;
     }
     @include tablet {
       width: 35px;

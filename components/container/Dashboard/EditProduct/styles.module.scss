@@ -1,0 +1,12 @@
+.container {
+  @include tablet {
+    display: block;
+    .left, .right {
+      width: 100%;
+    }
+    .right {
+      padding-left: 0;
+      padding-top: 32px;
+    }
+  }
+}

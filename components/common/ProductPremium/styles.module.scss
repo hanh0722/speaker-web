@@ -45,10 +45,11 @@
 .info {
   padding-top: 20px;
   .brand {
-    padding-bottom: 8px;
+    padding-bottom: 12px;
   }
   .name {
-    padding-bottom: 8px;
+    margin-bottom: 12px;
+    @include show-n-line(1);
   }
   .price {
     line-height: 24px;
@@ -61,7 +62,7 @@
       &:first-child {
         font-weight: 500;
         text-decoration: none;
-        font-size: 16px;
+        font-size: 14px;
         color: $black;
       }
     }

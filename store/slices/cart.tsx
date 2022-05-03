@@ -52,9 +52,11 @@ const cartSlice = createSlice({
       state.error = action.payload;
     },
     onReset(state) {
-      state = {
-        ...initialState,
-      };
+      state.cart = [];
+      state.isLoadingCart = false;
+      state.error = null;
+      state.total = 0;
+      state.totalProducts = 0;
     },
     onChangeCart(state, action) {
       const { data, quantity } = action.payload;

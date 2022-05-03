@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import React, { ReactElement, useEffect, useState } from "react";
 import { HeadGeneral } from "../../../components/common";
 import { Button, Container, LoadingCore } from "../../../components/core";
@@ -18,28 +19,24 @@ import {
   PaymentOrderResponse,
 } from "../../../types/request";
 import styles from "./styles.module.scss";
-import { getLoadingPercent } from "../../../utils/load";
+import { cartActions } from "../../../store/slices/cart";
 
 const Success: NextPageWithLayout = () => {
   const router = useRouter();
-  const [percent, setPercent] = useState<number>(0);
+  const dispatch = useDispatch();
   const [order, setOrder] = useState<string | null>(null);
   const redirectId = router.query["redirect_id"] as string;
   const orderId = router.query["order_id"] as string;
-
-  const onGetLoadingEvent = (event: ProgressEvent) => {
-    setPercent(getLoadingPercent(event));
-  };
   const onFetchOrder = ({ id, typePayment }: ParamsPaymentOrderRequest) => {
     return getTransactionResultPayment({
       id,
-      typePayment,
-      callback: onGetLoadingEvent,
+      typePayment
     });
   };
 
   const onHandleSuccess = (data: PaymentOrderResponse) => {
     const { _id } = data.data;
+    dispatch(cartActions.onReset());
     setOrder(_id);
   };
   const { isLoading, onSendRequest } = useCallApi<PaymentOrderResponse>({

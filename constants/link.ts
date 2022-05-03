@@ -18,4 +18,4 @@ export const SOCIAL = [
   }
 ]
 
-export const PRODUCT_DETAIL = (id: string) => `${PRODUCT}/${id}`;
+export const PRODUCT_DETAIL = (id?: string) => `${PRODUCT}/${id}`;

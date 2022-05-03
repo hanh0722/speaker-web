@@ -2,7 +2,14 @@ import React, { FC, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { toCurrency } from "../../../utils/string";
-import { Button, Grid, Link, Modal, SkeletonLoading } from "../../core";
+import {
+  Button,
+  Grid,
+  Link,
+  Modal,
+  ParserElement,
+  SkeletonLoading,
+} from "../../core";
 import { ImageTransition, ButtonQuantity } from "../../common";
 import styles from "./styles.module.scss";
 import { QuickViewProductProps } from "../../../types/components/QuickViewProduct";
@@ -11,18 +18,27 @@ import { generateArray } from "../../../utils/array";
 import { Alert } from "@mui/material";
 import { useAddCartService } from "../../../hook/useCart";
 import { RootState } from "../../../store";
+import { PRODUCT_DETAIL } from "../../../constants/link";
 
 const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
-  const isMobileScreen = useSelector<RootState>(state => state.ui.isMobileScreen);
-  const { isLoading: isLoadingAddCart, data: dataAddCart, error, onAddItemToCart, onResetAsync } = useAddCartService();
-  
+  const isMobileScreen = useSelector<RootState>(
+    (state) => state.ui.isMobileScreen
+  );
+  const {
+    isLoading: isLoadingAddCart,
+    data: dataAddCart,
+    error,
+    onAddItemToCart,
+    onResetAsync,
+  } = useAddCartService();
+
   const { show, onHide, className, data, isLoading, ...restProps } = props;
   const quantityRef = useRef<HTMLInputElement>(null);
 
   const onAddItem = () => {
     const quantity = +(quantityRef.current?.value || 1);
     onAddItemToCart(data!.data._id, quantity);
-  }
+  };
 
   useEffect(() => {
     if (!show) {
@@ -30,7 +46,7 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
     }
     return () => {
       onResetAsync();
-    }
+    };
   }, [onResetAsync, show]);
   return (
     <Modal scrollable {...restProps} variant="lg" show={show} onHide={onHide}>
@@ -66,13 +82,14 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
               </div>
             ) : (
               <>
-                <Link href={"/"}>
+                <Link href={PRODUCT_DETAIL(data?.data?._id)}>
                   <h3 className="f-28 weight-400 lh-36">{data?.data?.title}</h3>
                 </Link>
                 <p className={styles.price}>{toCurrency(38)}</p>
-                <p className={`lh-20 ${styles.description}`}>
-                  {data?.data?.description}
-                </p>
+                <ParserElement
+                  className={styles.description}
+                  content={data?.data?.description}
+                />
                 <Link className={styles.link} href={"/"}>
                   View Details
                 </Link>
@@ -87,7 +104,10 @@ const QuickViewProduct: FC<QuickViewProductProps> = (props) => {
                   Add To Cart
                 </Button>
                 {!isLoadingAddCart && (dataAddCart || error) && (
-                  <Alert className={styles.message} severity={(dataAddCart && !error) ? "success" : "error"}>
+                  <Alert
+                    className={styles.message}
+                    severity={dataAddCart && !error ? "success" : "error"}
+                  >
                     {error ? error : "Add to cart successfully"}
                   </Alert>
                 )}

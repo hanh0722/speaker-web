@@ -23,7 +23,7 @@ class RowLineProducts extends PureComponent<
   constructor(props: RowLineProductsProps) {
     super(props);
     this.state = {
-      activeId: this.props?.activeId || 3,
+      activeId: this.props?.activeId || 5,
     };
   }
   _onChange = (item: RowLineElement) => {

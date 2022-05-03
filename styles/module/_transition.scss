@@ -2,7 +2,7 @@
   opacity: $value;
 }
 @mixin translate($direction, $value) {
-  transform: translate#{$direction }($value);
+  transform: translate#{$direction}($value);
 }
 
 @mixin fade-right-enter {
@@ -34,6 +34,14 @@
   @include opacity(1);
   @include translate($direction-X, 0);
 }
+@mixin fade-up-enter {
+  @include opacity(0);
+  transform: scale(.65);
+};
+@mixin fade-up-active {
+  @include opacity(1);
+  transform: scale(1);
+}
 
 @mixin fade-image {
   @include opacity(0);
@@ -42,6 +50,20 @@
 @mixin fade-image-active {
   @include opacity(1);
   transform: scale(1);
+}
+.fade-up-enter {
+  @include fade-up-enter();
+}
+.fade-up-enter-active {
+  @include fade-up-active();
+  transition: all .23s ease-in-out;
+}
+.fade-up-exit {
+  @include fade-down-active();
+}
+.fade-up-exit-active {
+  @include fade-up-enter();
+  transition: all .23s ease-in-out;
 }
 .fade-left-enter {
   @include fade-left-enter();

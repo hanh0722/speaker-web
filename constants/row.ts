@@ -7,14 +7,14 @@ export const ROW_LINE_DEFAULT = [
     tooltip: '1 Line'
   },
   {
-    id: 2,
+    id: 3,
     icon: IconTwoLine,
-    tooltip: '2 Lines'
+    tooltip: '3 Lines'
   },
   {
-    id: 3,
+    id: 5,
     icon: IconThreeLine,
     isMobile: true,
-    tooltip: '3 Lines'
+    tooltip: '5 Lines'
   }
 ]

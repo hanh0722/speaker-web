@@ -1,7 +1,12 @@
 .navigation {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: calc(100% - $sidebar-width-primary);
+  left: auto;
+  padding-right: 32px;
+  @include tablet {
+    width: 100%;
+  }
 
   .search {
     min-width: 0;
@@ -18,6 +23,7 @@
   transition: all .15s ease-in-out;
   @include secondary-desktop {
     padding-left: 16px;
+    padding-right: 16px;
   }
 }
 .active {

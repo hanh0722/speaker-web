@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { PRODUCT } from "../../../constants/path";
 import { ProductPremiumProps } from "../../../types/components/ProductPremium";
 import { classList, toCurrency } from "../../../utils/string";
 import { Button, ParserElement, Link, ToastNotification } from "../../core";
@@ -59,9 +58,9 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
         <p className={`f-12 lh-20 text-uppercase color-gray ${styles.brand}`}>
           Minimog
         </p>
-        <Link href={PRODUCT_DETAIL(items._id)}><p className={`f-16 weight-400 ${styles.name}`}>{items?.title}</p></Link>
+        <Link href={PRODUCT_DETAIL(items._id)}><p className={`f-14 weight-400 ${styles.name}`}>{items?.title}</p></Link>
         <div
-          className={`gap-14 f-16 d-flex justify-center align-center price-item ${styles.price}`}
+          className={`gap-14 f-14 d-flex justify-center align-center price-item ${styles.price}`}
         >
           {items?.discount_price && (
             <span>{toCurrency(items?.discount_price)}</span>
@@ -83,8 +82,9 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
           variant="outlined"
           size="large"
           className={styles.btn}
+          disabled={items?.stock_quantity === 0}
         >
-          Quick Add
+          {items?.stock_quantity === 0 ? 'Out of stock' : 'Quick Add'}
         </Button>
       </div>
     </div>

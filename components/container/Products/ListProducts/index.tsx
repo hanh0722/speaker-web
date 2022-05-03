@@ -6,6 +6,7 @@ import { ProductPremium } from "../../../common";
 import { Grid, Pagination } from "../../../core";
 import styles from "./styles.module.scss";
 import LoadingProducts from "../../../common/LoadingProducts";
+import { PER_PAGE_DEFAULT } from "../../../../constants/sort";
 
 const ListProducts: FC<ListProductsProps> = (props) => {
   const { data, className, totalProducts, isLoading, rows, ...restProps } = props;
@@ -17,7 +18,7 @@ const ListProducts: FC<ListProductsProps> = (props) => {
           return <ProductPremium isShowDescription={rows === 1} className={styles.product} key={item?._id} items={item} />;
         })}
       </Grid>
-      {totalProducts && <Pagination totalItems={totalProducts} itemPerPage={1}/>}
+      {totalProducts && <Pagination totalItems={totalProducts} itemPerPage={PER_PAGE_DEFAULT}/>}
     </div>
   );
 };

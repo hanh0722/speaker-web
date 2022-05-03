@@ -11,11 +11,18 @@
   appearance: none;
   width: 100%;
   padding-right: 40px;
+  z-index: 100;
   @include show-n-line(1);
 }
 .container {
   position: relative;
   width: 100%;
+  .btn {
+    position: absolute;
+    inset: 0;
+    margin: 0 !important;
+    z-index: -1;
+  }
   svg {
     position: absolute;
     right: 10px;

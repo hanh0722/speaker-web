@@ -8,6 +8,7 @@ import BreadCrumbDirection from "../../components/core/BreadCrumbDirection";
 import { HOME, PRODUCTS } from "../../constants/path";
 import { onFetchProducts } from "../../service/class/products";
 import { HeadGeneral } from "../../components/common";
+import { PAGE_DEFAULT, PER_PAGE_DEFAULT } from "../../constants/sort";
 
 const Products: NextPageWithLayout = ({ products, total_products }: any) => {
   return (
@@ -39,8 +40,9 @@ export const getServerSideProps: GetServerSideProps = async ({
   const page = query['page'];
   try {
     const products = await onFetchProducts({
-      page: page ? +page : 1,
-      page_size: 1,
+      page: page ? +page : PAGE_DEFAULT,
+      page_size: PER_PAGE_DEFAULT,
+      ...query
     });
     if (products.status >= 400 || products?.data?.code >= 400) {
       return {

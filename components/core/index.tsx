@@ -21,6 +21,7 @@ import Table from "./Table";
 import Menu from "./Menu";
 import Radio from "./Radio";
 import Select from './Select';
+import Dropdown from "./Dropdown";
 
 export {
   Image,
@@ -45,5 +46,6 @@ export {
   Table,
   Menu,
   Radio,
-  Select
+  Select,
+  Dropdown
 };

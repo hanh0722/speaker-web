@@ -16,6 +16,7 @@ import { editProduct } from "../../../../service/class/products";
 import { BaseResponse } from "../../../../types/request";
 import { MANAGE_PRODUCT } from "../../../../constants/path";
 import { ToastNotification } from "../../../core";
+import styles from './styles.module.scss';
 
 const EditProduct: FC<EditProductProps> = (props) => {
   const { product, className, ...restProps } = props;
@@ -96,15 +97,17 @@ const EditProduct: FC<EditProductProps> = (props) => {
     <form
       onSubmit={onSubmitHandler}
       {...restProps}
-      className={classList("d-flex", className)}
+      className={classList("d-flex", styles.container, className)}
     >
       <LeftBlock
+        className={styles.left}
         onChangeDescription={onChangeDescription}
         onChangeTitle={onChangeTitle}
         product={product}
         onChangeImages={onChangeImages}
       />
       <RightBlock
+        className={styles.right}
         onChangeSalePrice={onChangeSalePrice}
         onChangeRegularPrice={onChangePrice}
         onChangeQuantity={onChangeQuantity}

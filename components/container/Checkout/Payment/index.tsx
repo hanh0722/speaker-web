@@ -12,7 +12,6 @@ import useCallApi from "../../../../hook/useCallApi";
 import { createTransactionPayment } from "../../../../service/payment";
 import { redirectErrorURLTransaction, redirectSuccessURLTransaction, urlRedirectSuccess } from "../../../../utils/url";
 import { PaymentCheckoutResponse } from "../../../../types/request";
-import { SUCCESS_CHECKOUT } from "../../../../constants/path";
 
 const Payment: FC<PaymentCheckoutProps> = (props) => {
   const router = useRouter();

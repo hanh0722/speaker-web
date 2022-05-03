@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import useDropdown from "../../../hook/useDropdown";
 import useMedia from "../../../hook/useMedia";
 import { ClassNameProps } from "../../../types/string";
 import { classList } from "../../../utils/string";
