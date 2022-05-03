@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 
 const useInterval = (time: number, defaultValue?: boolean, timeDecrement?: number) => {
-  const [isActive, setIsActive] = useState(defaultValue || false)
+  const [isActive, setIsActive] = useState(defaultValue ? defaultValue : false)
   const [timeValue, setTimeValue] = useState(time);
 
   useEffect(() => {
+    console.log(isActive, timeValue);
     if (!isActive || timeValue === 0) {
       setIsActive(false);
       return;

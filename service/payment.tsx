@@ -1,4 +1,5 @@
 import {
+  BaseResponse,
   ParamsPaymentOrderRequest,
   PaymentCheckoutRequest,
   PaymentCheckoutResponse,
@@ -43,3 +44,11 @@ export const getTransactionResultPayment = ({ id, typePayment, callback }: Param
     }
   });
 };
+
+export const deleteTransactionError = (redirectId: string) => {
+  return request.delete<BaseResponse>(`${PAYMENT_URI}/delete/${redirectId}`, {
+    headers: {
+      authorization: 'Bearer ' + getCookie('token')
+    }
+  })
+}
