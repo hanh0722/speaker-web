@@ -1,0 +1,10 @@
+.container {
+  width: 65%;
+  @include box-dashboard();
+}
+.label {
+  padding-bottom: 8px;
+}
+.editor {
+  padding-bottom: 20px;
+}

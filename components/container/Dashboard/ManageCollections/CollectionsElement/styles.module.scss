@@ -1,0 +1,30 @@
+.collection {
+  box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
+  border-radius: 12px;
+  overflow: hidden;
+  .image {
+    padding-top: 100%;
+    position: relative;
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .content {
+    @include padding(16);
+  }
+  .discount {
+    text-decoration: line-through;
+    color: $dark-gray;
+    padding-right: 12px;
+  }
+  a {
+    font-size: 16px;
+  }
+  .price {
+    padding-top: 16px;
+  }
+}

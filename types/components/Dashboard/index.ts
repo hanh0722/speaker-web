@@ -19,4 +19,8 @@ export interface ProductRowProps extends ClassNameProps {
 
 export interface StatusProducts extends ClassNameProps {
   quantity: number
+};
+
+export interface CreateBlogProps extends ClassNameProps {
+  onChange?: (value: string) => void;
 }

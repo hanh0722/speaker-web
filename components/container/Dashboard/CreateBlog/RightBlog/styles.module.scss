@@ -1,0 +1,14 @@
+.right {
+  flex-grow: 1;
+  width: 35%;
+  margin-left: 32px;
+  align-self: baseline;
+  @include box-dashboard();
+}
+.normal {
+  width: auto;
+}
+.comments {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

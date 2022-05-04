@@ -1,5 +1,5 @@
 import { ElementType } from "react";
-import { IconList, IconOLList } from "../components/core/Icons";
+import { IconList, IconOLList, IconPlus, IconThreeDot } from "../components/core/Icons";
 import IconEdit from "../components/core/Icons/IconEdit";
 
 export const HOME = '/';
@@ -25,6 +25,10 @@ export const MANAGE_PRODUCT = `${DASH_BOARD}/products/manage`;
 
 export const CHECKOUT = '/checkout';
 export const SUCCESS_CHECKOUT = '/checkout/success';
+export const COLLECTIONS = `${DASH_BOARD}/collections/manage`;
+export const CREATE_BLOGS = `${DASH_BOARD}/blogs/create`;
+
+export const EDIT_COLLECTION = (id: string) => `${DASH_BOARD}/collections/edit/${id}`;
 
 
 interface ManagementDashboard {
@@ -32,6 +36,7 @@ interface ManagementDashboard {
   title: string,
   icon: ElementType
 }
+
 export const MANAGEMENT: Array<ManagementDashboard> = [
   {
     href: CREATE_PRODUCT,
@@ -42,6 +47,16 @@ export const MANAGEMENT: Array<ManagementDashboard> = [
     href: MANAGE_PRODUCT,
     title: 'List Products',
     icon: IconOLList
+  },
+  {
+    href: COLLECTIONS,
+    title: 'Collections',
+    icon: IconThreeDot
+  },
+  {
+    href: CREATE_BLOGS,
+    title: 'Create Blogs',
+    icon: IconPlus
   }
 ]
 

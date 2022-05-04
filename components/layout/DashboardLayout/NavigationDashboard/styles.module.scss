@@ -4,9 +4,6 @@
   width: calc(100% - $sidebar-width-primary);
   left: auto;
   padding-right: 32px;
-  @include tablet {
-    width: 100%;
-  }
 
   .search {
     min-width: 0;
@@ -24,6 +21,7 @@
   @include secondary-desktop {
     padding-left: 16px;
     padding-right: 16px;
+    width: 100%;
   }
 }
 .active {

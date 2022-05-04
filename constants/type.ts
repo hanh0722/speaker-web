@@ -29,3 +29,7 @@ export enum DELIVERY_OPTIONS {
 
 export const CASH = 'cash';
 export const CARD = 'card';
+
+export const COLLECTIONS = 'collections';
+export const PRODUCTS = 'products';
+export const MANAGE = ['']

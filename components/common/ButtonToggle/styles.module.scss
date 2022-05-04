@@ -1,5 +1,5 @@
 .button {
-  width: 40px;
+  width: 36px;
   height: 14px;
   border-radius: 12px;
   position: relative;
@@ -21,11 +21,11 @@
 }
 .active {
   .stroke {
-    transform: translateX(115%) translateY(-50%);
+    transform: translateX(110%) translateY(-50%);
     background: $green-primary;
     border-color: $green-primary;
   }
-  background: $light-green-primary;
+  background: $green-secondary;
 }
 .container {
   width: 100%;
