@@ -17,6 +17,7 @@ import ListElement from "./ListElement";
 import ButtonQuantitySystem from "./ButtonQuantitySystemAPI";
 import LoadingProducts from "./LoadingProducts";
 import ButtonToggle from "./ButtonToggle";
+import LoadingBlogGrid from "./LoadingBlogGrid";
 
 const Editor = dynamic(() => import('./Editor'), {
   ssr: false
@@ -41,5 +42,6 @@ export {
   ButtonQuantitySystem,
   LoadingProducts,
   Editor,
-  ButtonToggle
+  ButtonToggle,
+  LoadingBlogGrid
 };

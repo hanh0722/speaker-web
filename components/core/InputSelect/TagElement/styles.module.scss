@@ -1,0 +1,17 @@
+.element {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(145, 158, 171, 0.16);
+  padding: 0 10px;
+  border-radius: 16px;
+  border: 1px solid $light-gray;
+  font-size: 12px;
+  .close {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: $gray;
+    @include flex(center, center);
+    margin-left: 6px;
+  }
+}

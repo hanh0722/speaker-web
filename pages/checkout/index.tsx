@@ -43,10 +43,10 @@ const Checkout: NextPageWithLayout = () => {
     <>
       <HeadGeneral title="Checkout" />
       <Container>
-        <BreadCrumb.Steps className={styles.breadcrumb}>
+        <BreadCrumb.Steps step={step} className={styles.breadcrumb}>
           {STEP_BREADCRUMB.map((item) => {
             return (
-              <BreadCrumb.Steps.Element key={item.step}>
+              <BreadCrumb.Steps.Element step={item.step} key={item.step}>
                 {item.label}
               </BreadCrumb.Steps.Element>
             );

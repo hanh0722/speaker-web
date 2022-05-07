@@ -1,4 +1,4 @@
-import {
+import React, {
   ChangeEvent,
   ElementType,
   KeyboardEventHandler,
@@ -120,9 +120,13 @@ export interface InputOTPProps extends ClassNameProps {
   onGet?: (value: Array<number | null>) => void;
 }
 
-export interface GridProps extends ClassNameProps {
+export interface GridProps extends ClassNameProps, React.HTMLAttributes<HTMLElement> {
   cols?: number;
   prefix?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+}
+
+export interface LoadingBlogGridProps extends GridProps {
+  numElement?: number;
 }
 
 export interface SwiperCoreProps extends ClassNameProps, SwiperProps {

@@ -6,9 +6,9 @@ import BreadCrumbStepsElement from "./BreadCrumbStepsElement";
 import styles from "./styles.module.scss";
 
 const BreadCrumbSteps: FC<BreadCrumbStepsProps> = (props) => {
-  const { className, children } = props;
+  const { className, children, step } = props;
   return (
-    <BreadCrumbStepsProvider>
+    <BreadCrumbStepsProvider step={step}>
       <div className={classList("d-flex align-center", className)}>
         {React.Children.map(children, (child, index) => {
           if (index + 1 < React.Children.count(children)) {

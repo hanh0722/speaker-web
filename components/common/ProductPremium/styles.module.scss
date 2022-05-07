@@ -84,3 +84,15 @@
   color: $color-secondary;
   @include show-n-line(1);
 }
+.sale {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #ff4842;
+  z-index: 20;
+  color: $white;
+  height: 22px;
+  @include padding(0, 8);
+  border-radius: 6px;
+  text-transform: uppercase;
+}

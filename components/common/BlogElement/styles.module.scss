@@ -1,0 +1,73 @@
+.element {
+  border-radius: 8px;
+  box-shadow: $shadow-secondary;
+  overflow: hidden;
+  position: relative;
+}
+.image {
+  padding-top: $device-md;
+  position: relative;
+  height: 100%;
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 28, 36, 0.6);
+    z-index: 1;
+  }
+}
+.bottom {
+  &::before {
+    content: none
+  };
+  height: auto;
+}
+.description {
+  @include padding(24);
+  .date {
+    opacity: .64;
+  }
+  position: absolute;
+  bottom: 0;
+  .title {
+    color: $white;
+    font-weight: 500;
+    @include show-n-line(1);
+  }
+  z-index: 10;
+}
+.main-desc {
+  position: relative;
+  .title, p{
+    color: $black;
+  }
+}
+.user {
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    z-index: 100;
+  }
+  position: absolute;
+  top: -22px;
+  left: 0;
+  width: 80px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 50px;
+  color: $white;
+  background-image: url('/image/mask.svg');
+  background-size: cover;
+  background-position: center;
+}

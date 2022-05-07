@@ -23,4 +23,16 @@ export interface StatusProducts extends ClassNameProps {
 
 export interface CreateBlogProps extends ClassNameProps {
   onChange?: (value: string) => void;
+  onGetTitle?: (value: string) => void;
+  onGetShortDesc?: (value: string) => void;
+  onGetImage?: (value: string) => void;
 }
+
+export interface RightBlogProps extends ClassNameProps {
+  onChangePublishStatus?: (status: boolean) => void;
+  onChangeCommentStatus?: (status: boolean) => void;
+  onChangeTitleMeta?: (value: string) => void;
+  onChangeTags?: (tags: Array<string>) => void;
+  isValid?: boolean;
+  isLoading?: boolean
+};

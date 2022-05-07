@@ -13,4 +13,8 @@ export const getFullTimeAfterDays = (days: number, prefix?: DurationInputArg2) =
   const time = moment().add(days, prefix || 'days');
   const date = time.day();
   return `${daysOfWeek[date]}, ${time.format('DD-MM-YYYY')}`;
+};
+
+export const getTimeWithMonthName = (milliseconds?: number) => {
+  return moment(milliseconds).format('DD MMMM YYYY');
 }

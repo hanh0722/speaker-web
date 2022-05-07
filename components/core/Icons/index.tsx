@@ -41,6 +41,7 @@ import IconVisa from "./IconVisa";
 import IconMasterCard from "./IconMastercard";
 import IconSuccessOrder from "./IconSuccessOrder";
 import IconFilter from "./IconFilter";
+import IconMask from "./IconMask";
 export {
   IconThreeDot,
   IconPlus,
@@ -84,5 +85,6 @@ export {
   IconVisa,
   IconMasterCard,
   IconSuccessOrder,
-  IconFilter
+  IconFilter,
+  IconMask
 };

@@ -1,0 +1,13 @@
+.element {
+  @include padding(20);
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+  &:hover {
+    background: $light-gray;
+  }
+  width: 100%;
+  justify-content: flex-start;
+}
+.existed {
+  background: $light-green-primary;
+}

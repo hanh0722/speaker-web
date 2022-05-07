@@ -27,8 +27,10 @@ export const CHECKOUT = '/checkout';
 export const SUCCESS_CHECKOUT = '/checkout/success';
 export const COLLECTIONS = `${DASH_BOARD}/collections/manage`;
 export const CREATE_BLOGS = `${DASH_BOARD}/blogs/create`;
-
+export const MANAGE_BLOGS = `${DASH_BOARD}/blogs/manage`;
 export const EDIT_COLLECTION = (id: string) => `${DASH_BOARD}/collections/edit/${id}`;
+
+export const EDIT_BLOG = (id: string) => `${DASH_BOARD}/blogs/edit/${id}`;
 
 
 interface ManagementDashboard {
@@ -38,9 +40,10 @@ interface ManagementDashboard {
 }
 
 export const MANAGEMENT: Array<ManagementDashboard> = [
+
   {
     href: CREATE_PRODUCT,
-    title: 'Create',
+    title: 'Create Product',
     icon: IconEdit
   },
   {
@@ -57,6 +60,11 @@ export const MANAGEMENT: Array<ManagementDashboard> = [
     href: CREATE_BLOGS,
     title: 'Create Blogs',
     icon: IconPlus
+  },
+  {
+    href: MANAGE_BLOGS,
+    title: 'Manage Blogs',
+    icon: IconOLList
   }
 ]
 

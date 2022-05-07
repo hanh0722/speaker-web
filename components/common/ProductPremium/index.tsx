@@ -47,6 +47,7 @@ const ProductPremium: FC<ProductPremiumProps> = (props) => {
         onMouseLeave={onLeave}
         className={`${styles.image} image-product`}
       >
+        {items?.discount_price && <span className={`f-12 lh-20 weight-500 d-flex justify-center align-center ${styles.sale}`}>Sale</span>}
         <Link href={PRODUCT_DETAIL(items._id)}>
           <ImageTransition images={items.images} />
         </Link>

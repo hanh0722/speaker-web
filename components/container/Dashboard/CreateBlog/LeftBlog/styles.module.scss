@@ -1,6 +1,9 @@
 .container {
   width: 65%;
   @include box-dashboard();
+  @include tablet {
+    width: 100%;
+  }
 }
 .label {
   padding-bottom: 8px;

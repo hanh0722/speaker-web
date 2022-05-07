@@ -1,21 +1,20 @@
 import { createContext, FC } from "react";
-import useBreadCrumbSteps from "./useBreadCrumbSteps";
 
-interface BreadCrumbStepsContextState {
-  keyActive: string | number | undefined,
-  onSetKey: (key: string | number) => void
+interface BreadCrumbProviderProps {
+  step?: any
 }
-const BreadCrumbStepsContext = createContext<BreadCrumbStepsContextState>({
+interface BreadCrumbStepsContextState {
+  keyActive: string | number | undefined
+}
+export const BreadCrumbStepsContext = createContext<BreadCrumbStepsContextState>({
   keyActive: undefined,
-  onSetKey: (key) => {}
 });
 
-export const BreadCrumbStepsProvider: FC = (props) => {
-  const {step, onChangeStep} = useBreadCrumbSteps()
+export const BreadCrumbStepsProvider: FC<BreadCrumbProviderProps> = (props) => {
+  const { step } = props;
   return (
     <BreadCrumbStepsContext.Provider value={{
-      keyActive: step,
-      onSetKey: onChangeStep
+      keyActive: step
     }}>
       {props.children}
     </BreadCrumbStepsContext.Provider>

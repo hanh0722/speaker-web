@@ -5,13 +5,14 @@ import { useSelector } from "react-redux";
 import { ADMIN } from "../../../../constants/roles";
 import { RootState } from "../../../../store";
 import { User } from "../../../../types/redux";
-import { Image } from "../../../core";
+import { Image, Link } from "../../../core";
 import { IconDoubleArrow } from "../../../core/Icons";
 import BoxUser from "./BoxUser";
 import ListManagement from "./ListManagement";
 import styles from "./styles.module.scss";
 import { SideBarProps } from "../../../../types/components/Dashboard";
 import { Modal } from "../../../common";
+import { HOME } from "../../../../constants/path";
 
 const SideBar: FC<SideBarProps> = (props) => {
   const { in: when, isMobileScreen, className, onHide, ...restProps } = props;
@@ -27,7 +28,9 @@ const SideBar: FC<SideBarProps> = (props) => {
           <div
             className={`d-flex align-center justify-between ${styles.header}`}
           >
-            <Image src="/logo.webp" alt="" />
+            <Link href={HOME}>
+              <Image src="/logo.webp" alt="" />
+            </Link>
             <IconDoubleArrow onClick={onHidden} />
           </div>
           <BoxUser className={styles.box} />

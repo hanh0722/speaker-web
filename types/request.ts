@@ -10,7 +10,7 @@ export interface BaseProductProps {
   creation_time: number;
   discount_price?: number;
   _id: string;
-  is_compared?: boolean
+  is_compared?: boolean;
 }
 
 export interface BasePaginationResponse {
@@ -38,7 +38,7 @@ export interface ProductResponse extends BaseResponse, BasePaginationResponse {
 
 export interface BaseQueryRequest {
   value?: string;
-  query?: string
+  query?: string;
 }
 
 export interface BaseSortRequest extends BaseQueryRequest {
@@ -52,13 +52,13 @@ export interface CollectionResponse extends BaseResponse, PaginationResponse {
   data: Array<Collection>;
 }
 
-export type FileReponseBasic = Array<string>
+export type FileReponseBasic = Array<string>;
 export interface FileResponse extends BaseResponse {
-  urls: Array<string>
+  urls: Array<string>;
 }
 
 export interface ProductCreationResponse extends BaseResponse {
-  data: BaseProductProps
+  data: BaseProductProps;
 }
 
 export interface DeleteProductsResponse extends BaseResponse {
@@ -74,10 +74,10 @@ export interface SingleCountryProps {
   name: string;
   iso3: string;
   iso2: string;
-  states: Array<CountryState>
+  states: Array<CountryState>;
 }
 export interface CountryResponse extends BaseResponse {
-  data: Array<SingleCountryProps>
+  data: Array<SingleCountryProps>;
 }
 
 export interface InfoAddressProps {
@@ -88,7 +88,7 @@ export interface InfoAddressProps {
   city: string;
   zip_code: string;
   country: string;
-  is_default: boolean
+  is_default: boolean;
 }
 
 export interface SingleAddressProps {
@@ -98,12 +98,12 @@ export interface SingleAddressProps {
 }
 
 export interface AddressResponse extends BaseResponse {
-  total_documents: number,
-  data: Array<SingleAddressProps>
+  total_documents: number;
+  data: Array<SingleAddressProps>;
 }
 
 export interface AddressCreateResponse extends BaseResponse {
-  data: SingleAddressProps
+  data: SingleAddressProps;
 }
 
 export class SingleAddress implements SingleAddressProps {
@@ -115,11 +115,11 @@ export class SingleAddress implements SingleAddressProps {
     this.object_id = request.object_id;
     this._id = request._id;
   }
-};
+}
 
 export interface PaymentInfoResponse extends BaseResponse {
-  client_secret: string
-};
+  client_secret: string;
+}
 
 export interface PaymentCheckoutRequest {
   payment_methods: string;
@@ -127,22 +127,49 @@ export interface PaymentCheckoutRequest {
   object_info_id: string;
   success_url: string;
   cancel_url: string;
-};
+}
 
 export interface PaymentCheckoutResponse extends BaseResponse {
   data?: {
-    redirect_url: string
+    redirect_url: string;
   };
   order_id?: string;
-};
+}
 
 export interface ParamsPaymentOrderRequest {
   id: string;
   typePayment: string;
-  callback?: (event: ProgressEvent) => void
+  callback?: (event: ProgressEvent) => void;
 }
 export interface PaymentOrderResponse extends BaseResponse {
   data: {
-    _id: string
-  }
+    _id: string;
+  };
+}
+
+export interface GetSuggestCreateResponse extends BaseResponse {
+  data: Array<string>;
+}
+export class CreateBlogRequest {
+  constructor(
+    public title: string,
+    public short_description: string,
+    public description: string,
+    public cover_url: string,
+    public is_comments = true,
+    public is_publish: boolean = true,
+    public meta_title: string | undefined = undefined,
+    public tags: Array<string> | undefined = undefined
+  ) {}
+}
+
+export interface BlogDetailResponse extends CreateBlogRequest {
+  creation_time: number;
+  createdAt: string;
+  updatedAt: string;
+  _id: string;
+}
+export interface BlogResponse extends BaseResponse {
+  data: Array<BlogDetailResponse>;
+  total: number
 }

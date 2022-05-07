@@ -9,11 +9,12 @@ const SkeletonLoading: FC<SkeletonLoadingProps> = (props) => {
     variant = "line",
     tagName: Component = "div",
     rounded,
+    ...restProps
   } = props;
 
   return (
     <Component
-      {...props}
+      {...restProps}
       className={classList(
         styles.skeleton,
         styles[`skeleton-${variant}`],

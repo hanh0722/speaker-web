@@ -17,7 +17,9 @@ export interface BreadCrumbDirection extends ClassNameProps {
 }
 
 export interface BreadCrumbStepsProps extends ClassNameProps {
-
+  step?: any;
 }
 
-export interface BreadCrumbStepsElementProps extends ClassNameProps {}
+export interface BreadCrumbStepsElementProps extends ClassNameProps {
+  step?: any
+}
