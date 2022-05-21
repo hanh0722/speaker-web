@@ -1,3 +1,6 @@
+import { CartItemGeneral } from "./components/Cart";
+import { SingleAddressProps } from "./request";
+
 export interface User {
   _id: string;
   username: string;
@@ -5,7 +8,13 @@ export interface User {
   role: string;
   is_validation: boolean;
   createdAt: string;
-  updatedAt: string
+  updatedAt: string;
+  avatar_url?: string;
+  info: string;
+  orders: Array<string>;
+  compare_list: Array<string>;
+  cart: Array<CartItemGeneral>;
+  address: Array<SingleAddressProps>
 }
 export interface UserState {
   isLoading: boolean;

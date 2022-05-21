@@ -35,13 +35,13 @@ const LeftBlog: FC<CreateBlogProps> = (props) => {
   const onChangeTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
     onChangeTitle(event);
     if (isFunction(onGetTitle)) {
-      onGetTitle(valueTitle);
+      onGetTitle(event.target.value);
     }
   };
   const onChangeDesc = (event: ChangeEvent<HTMLInputElement>) => {
     onChangeShortDescription(event);
     if (isFunction(onGetShortDesc)) {
-      onGetShortDesc(valueShortDesc);
+      onGetShortDesc(event.target.value);
     }
   };
   const onGetFileHandler = (file: Array<string>) => {

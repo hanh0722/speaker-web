@@ -1,0 +1,5 @@
+.description {
+  @include editor();
+  @include padding(20);
+  border-radius: 8px;
+}

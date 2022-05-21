@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import PropTypes from 'prop-types';
 import { BreadCrumbDirection } from "../../../types/components/BreadCrumb";
 import { classList } from "../../../utils/string";
 import BreadCrumbElement from "./BreadCrumbElement";
@@ -14,6 +15,18 @@ const BreadCrumbDirection: FC<BreadCrumbDirection> = (props) => {
       </div>
     </>
   );
+};
+
+BreadCrumbDirection.defaultProps = {
+  left: false,
+  className: '',
+  title: '',
+};
+
+BreadCrumbDirection.propTypes = {
+  left: PropTypes.bool,
+  title: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Object.assign(BreadCrumbDirection, {

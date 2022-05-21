@@ -1,4 +1,4 @@
-import { createSlice, Dispatch } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, Dispatch } from "@reduxjs/toolkit";
 import { onLogin } from "../../service/class/auth";
 import { User, UserPayload, UserState } from "../../types/redux";
 import { deleteCookie, getCookie } from "../../utils/cookies";
@@ -12,6 +12,11 @@ const initialState: UserState = {
   timeout: null,
   expiration: false
 };
+
+export const getUserThunk = createAsyncThunk('user-slice/getUser', async () => {
+  const response = await onLogin(undefined, undefined, getCookie('token'));
+  return response.data
+})
 
 const userSlice = createSlice({
   name: "user-slice",
@@ -55,6 +60,21 @@ const userSlice = createSlice({
       state.timeout = action.payload
     }
   },
+  extraReducers: (builder) => {
+    builder.addCase(getUserThunk.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getUserThunk.rejected, (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(getUserThunk.fulfilled, (state, action) => {
+      const { user, token } = action.payload;
+      state.user = user;
+      state.isLoading = false;
+      state.token = token;
+    })
+  }
 });
 
 export const userActions = userSlice.actions;

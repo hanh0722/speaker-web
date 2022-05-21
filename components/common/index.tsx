@@ -18,6 +18,7 @@ import ButtonQuantitySystem from "./ButtonQuantitySystemAPI";
 import LoadingProducts from "./LoadingProducts";
 import ButtonToggle from "./ButtonToggle";
 import LoadingBlogGrid from "./LoadingBlogGrid";
+import UploadFile from './UploadFile';
 
 const Editor = dynamic(() => import('./Editor'), {
   ssr: false
@@ -43,5 +44,6 @@ export {
   LoadingProducts,
   Editor,
   ButtonToggle,
-  LoadingBlogGrid
+  LoadingBlogGrid,
+  UploadFile
 };

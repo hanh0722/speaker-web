@@ -49,6 +49,7 @@ const CreateBlog: FC<ClassNameProps> = (props) => {
   };
 
   const onChangeTitle = (value: string) => {
+    console.log(value);
     setTitle(value);
   };
 

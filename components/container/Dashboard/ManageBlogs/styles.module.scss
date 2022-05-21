@@ -5,3 +5,11 @@
     }
   }
 }
+.container {
+  min-height: 50vh;
+  @include flex(center, center);
+  flex-direction: column;
+  button {
+    margin-top: 20px;
+  }
+}

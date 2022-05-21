@@ -1,4 +1,4 @@
-import React, { FC, useState, forwardRef } from "react";
+import React, { useState, forwardRef } from "react";
 import ReactQuill from "react-quill";
 import PropTypes from "prop-types";
 import EditorToolbar, { modules, formats } from "./Toolbar";

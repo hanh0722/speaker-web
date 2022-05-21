@@ -42,7 +42,10 @@ import IconMasterCard from "./IconMastercard";
 import IconSuccessOrder from "./IconSuccessOrder";
 import IconFilter from "./IconFilter";
 import IconMask from "./IconMask";
+import IconChat from "./IconChat";
+import IconPhoto from "./IconPhoto";
 export {
+  IconPhoto,
   IconThreeDot,
   IconPlus,
   IconNav,
@@ -86,5 +89,6 @@ export {
   IconMasterCard,
   IconSuccessOrder,
   IconFilter,
-  IconMask
+  IconMask,
+  IconChat
 };

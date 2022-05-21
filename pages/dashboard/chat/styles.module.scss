@@ -1,0 +1,8 @@
+.breadcrumb {
+  p {
+    font-size: 14px;
+  }
+}
+.container {
+  @include dashboard-layout();
+}

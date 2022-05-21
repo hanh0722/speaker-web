@@ -13,6 +13,8 @@ import styles from "./styles.module.scss";
 import { SideBarProps } from "../../../../types/components/Dashboard";
 import { Modal } from "../../../common";
 import { HOME } from "../../../../constants/path";
+import ListUtils from "./ListUtils";
+import ListAccount from "./ListAccount";
 
 const SideBar: FC<SideBarProps> = (props) => {
   const { in: when, isMobileScreen, className, onHide, ...restProps } = props;
@@ -34,7 +36,9 @@ const SideBar: FC<SideBarProps> = (props) => {
             <IconDoubleArrow onClick={onHidden} />
           </div>
           <BoxUser className={styles.box} />
+          <ListAccount/>
           {user?.role === ADMIN && <ListManagement />}
+          <ListUtils/>
         </div>
       </div>
     );

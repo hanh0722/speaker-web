@@ -23,6 +23,19 @@
     color: $red-primary;
     word-break: break-all;
   }
+  .btn {
+    width: auto;
+    margin-left: 4px;
+    background: $light-gray;
+    border-radius: 16px;
+    font-size: 14px;
+    padding: 0 10px;
+    @include show-n-line(1);
+    max-width: calc(100% - 120px);
+  }
+  .new {
+    padding-top: 16px;
+  }
 }
 .submit {
   margin-top: 20px;

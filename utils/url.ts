@@ -27,4 +27,4 @@ export const redirectErrorURLTransaction = () => {
 
 export const urlRedirectSuccess = (orderId: string) => {
   return `${SUCCESS_CHECKOUT}?order_id=${orderId}`;
-}
+};

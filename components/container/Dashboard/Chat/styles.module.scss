@@ -1,0 +1,5 @@
+.chat {
+  @include box-dashboard();
+  padding: 0;
+  height: 70vh;
+}

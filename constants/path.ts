@@ -1,5 +1,5 @@
 import { ElementType } from "react";
-import { IconList, IconOLList, IconPlus, IconThreeDot } from "../components/core/Icons";
+import { IconChat, IconList, IconOLList, IconPlus, IconThreeDot } from "../components/core/Icons";
 import IconEdit from "../components/core/Icons/IconEdit";
 
 export const HOME = '/';
@@ -28,9 +28,14 @@ export const SUCCESS_CHECKOUT = '/checkout/success';
 export const COLLECTIONS = `${DASH_BOARD}/collections/manage`;
 export const CREATE_BLOGS = `${DASH_BOARD}/blogs/create`;
 export const MANAGE_BLOGS = `${DASH_BOARD}/blogs/manage`;
+export const CHAT = `${DASH_BOARD}/chat`;
+
+export const EDIT_ACCOUNT = `${DASH_BOARD}/accounts/edit`;
 export const EDIT_COLLECTION = (id: string) => `${DASH_BOARD}/collections/edit/${id}`;
 
 export const EDIT_BLOG = (id: string) => `${DASH_BOARD}/blogs/edit/${id}`;
+
+export const DETAIL_BLOG = (id: string) => `${BLOGS}/${id}`;
 
 
 interface ManagementDashboard {
@@ -65,6 +70,22 @@ export const MANAGEMENT: Array<ManagementDashboard> = [
     href: MANAGE_BLOGS,
     title: 'Manage Blogs',
     icon: IconOLList
+  }
+];
+
+export const APPLICATION: Array<ManagementDashboard> = [
+  {
+    href: CHAT,
+    title: 'Chat',
+    icon: IconChat
+  }
+];
+
+export const ACCOUNTS: Array<ManagementDashboard> = [
+  {
+    href: EDIT_ACCOUNT,
+    title: 'Edit Account',
+    icon: IconEdit
   }
 ]
 

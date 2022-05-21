@@ -18,7 +18,7 @@ const ListProducts: FC<ListProductsProps> = (props) => {
           return <ProductPremium isShowDescription={rows === 1} className={styles.product} key={item?._id} items={item} />;
         })}
       </Grid>
-      {totalProducts && <Pagination totalItems={totalProducts} itemPerPage={PER_PAGE_DEFAULT}/>}
+      {totalProducts && <Pagination totalItems={totalProducts} itemPerPage={1}/>}
     </div>
   );
 };

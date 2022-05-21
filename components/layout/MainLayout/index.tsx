@@ -30,7 +30,7 @@ const MainLayout: FC<{}> = (props) => {
   return (
     <>
       <Navigation isActive={isActive} />
-      <div className="app-container">{props.children}</div>
+        <div className="app-container">{props.children}</div>
       <Footer />
     </>
   );

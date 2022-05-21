@@ -117,9 +117,13 @@ const RightBlog: FC<RightBlogProps> = (props) => {
               return <InputSelect.Item text={item} key={item} />;
             })}
           {!isLoading && !isTyping && tags?.length === 0 && (
-            <p className={styles["no-match"]}>
+            <div className={styles["no-match"]}>
               No suggest match with <span>{`"${value}"`}</span>
-            </p>
+              {value && <div className={`d-flex align-center ${styles.new}`}>
+                <p>Add new: </p>
+                <InputSelect.Item className={styles.btn} text={value} />
+              </div>}
+            </div>
           )}
           {!isLoading && !isTyping && error && (
             <Alert severity="error">{error}</Alert>
@@ -150,7 +154,7 @@ RightBlog.defaultProps = {
   isValid: false,
   onChangeTags: (tags) => {},
   onChangeTitleMeta: (value) => {},
-  isLoading: false
+  isLoading: false,
 };
 
 RightBlog.propTypes = {
@@ -160,7 +164,7 @@ RightBlog.propTypes = {
   isValid: PropTypes.bool,
   onChangeTags: PropTypes.func,
   onChangeTitleMeta: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
 };
 
 export default RightBlog;

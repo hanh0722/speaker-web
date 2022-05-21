@@ -52,3 +52,8 @@ body[data-active]{
 .icon-append-left {
   margin-right: 6px;
 }
+@each $p in $position {
+  .ql-align-#{$p} {
+    text-align: $p;
+  }
+}

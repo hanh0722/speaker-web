@@ -4,6 +4,7 @@ import { FC } from "react";
 import { IconWrapperProps } from "../../../types/component";
 
 const IconEdit: FC<IconWrapperProps> = (props) => {
+  console.log(props);
   return <IconWrapper {...props} icon={EditSvg} />;
 };
 

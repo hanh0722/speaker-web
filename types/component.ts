@@ -29,7 +29,9 @@ export interface InputProps extends ClassNameProps {
   value?: string;
   inputProps?: ObjectProps;
   onKeyDown?: (event: any) => void;
-  maxLength?: number
+  maxLength?: number;
+  multiline?: boolean;
+  maxRows?: number
 }
 
 export interface ImageProps extends ClassNameProps {

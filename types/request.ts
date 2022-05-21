@@ -168,6 +168,10 @@ export interface BlogDetailResponse extends CreateBlogRequest {
   createdAt: string;
   updatedAt: string;
   _id: string;
+};
+
+export interface BlogDetailDataProps extends BaseResponse {
+  data: BlogDetailResponse,
 }
 export interface BlogResponse extends BaseResponse {
   data: Array<BlogDetailResponse>;

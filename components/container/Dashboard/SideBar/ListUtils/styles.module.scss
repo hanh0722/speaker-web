@@ -1,0 +1,19 @@
+.list {
+  p {
+    @include padding(8, 16);
+  }
+  button {
+    justify-content: flex-start !important;
+    padding: 8px 16px !important;
+    span {
+      min-width: 56px;
+    }
+    text-transform: none !important;
+  }
+}
+.active {
+  button {
+    background: #00ab5514 !important;
+    color: #00ab55 !important;
+  }
+}

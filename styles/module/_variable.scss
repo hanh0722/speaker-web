@@ -66,6 +66,10 @@ $toast: (
   error: #fdeded
 ) !default;
 
+$position-element: (
+  left, center, right, justify
+) !default;
+
 @each $c, $value in $color {
   .color-#{$c} {
     color: $c;
@@ -80,3 +84,9 @@ $toast: (
     font-weight: $var;
   }
 }
+
+@each $var in $position-element {
+  .ql-align-#{$var} {
+    text-align: $var;
+  }
+};

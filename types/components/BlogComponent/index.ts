@@ -4,8 +4,10 @@ import { ClassNameProps } from "../../string";
 
 export interface BlogOverlayProps extends ClassNameProps, React.HTMLAttributes<HTMLElement> {
   data: BlogDetailResponse;
+  url?: string;
 };
 
 export interface BlogBottomBarProps extends ClassNameProps, React.HTMLAttributes<HTMLElement> {
-  data: BlogDetailResponse
+  data: BlogDetailResponse;
+  url?: string;
 };

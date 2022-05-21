@@ -1,0 +1,23 @@
+.active {
+  .btn {
+    background: #00ab5514 !important;
+    color: $green-primary;
+  }
+  svg {
+    fill: $green-primary;
+  }
+}
+
+.list {
+  a {
+    margin-top: 8px;
+    display: block;
+  }
+}
+.caret {
+  transition: all .15s ease-in-out;
+  transform: rotate(-90deg);
+}
+.active-caret {
+  transform: rotate(0);
+}

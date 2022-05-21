@@ -8,10 +8,10 @@ import { EDIT_BLOG } from "../../../../constants/path";
 import { getTimeWithMonthName } from "../../../../utils/time";
 
 const BlogBottomBar: FC<BlogBottomBarProps> = (props) => {
-  const { className, data } = props;
+  const { className, data, url, ...restProps } = props;
   return (
-    <div className={classList(styles.element, className)}>
-      <Link href={EDIT_BLOG(data?._id)}>
+    <div {...restProps} className={classList(styles.element, className)}>
+      <Link href={url || EDIT_BLOG(data?._id)}>
         <div className={`${styles.image} ${styles.bottom}`}>
           <Image src={data?.cover_url} alt="" />
         </div>

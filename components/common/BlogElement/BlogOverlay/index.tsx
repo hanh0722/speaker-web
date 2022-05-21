@@ -8,10 +8,10 @@ import { getTimeWithMonthName } from "../../../../utils/time";
 import { EDIT_BLOG, HOME } from "../../../../constants/path";
 
 const BlogOverlay: FC<BlogOverlayProps> = (props) => {
-  const { className, data, ...restProps } = props;
+  const { className, data, url,  ...restProps } = props;
   return (
     <div {...restProps} className={classList(styles.element, className)}>
-      <Link href={EDIT_BLOG(data._id)}>
+      <Link href={url || EDIT_BLOG(data._id)}>
         <div className={styles.image}>
           <Image src={data?.cover_url || ''} alt=""/>
         </div>
