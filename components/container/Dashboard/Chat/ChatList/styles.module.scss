@@ -2,3 +2,10 @@
   width: 300px;
   border-right: 1px solid $border;
 }
+.chat {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.search {
+  border-bottom: 1px solid $border;
+}

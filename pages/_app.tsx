@@ -11,6 +11,7 @@ import { AppPropsWithLayout } from "../types/layout";
 import UserWrapper from "../components/helper/UserWrapper";
 import { isClient } from "../utils/server";
 import CartWrapper from "../components/helper/CartWrapper";
+import SocketProvider from "../context/SocketContext";
 
 const persistor = persistStore(store);
 
@@ -22,9 +23,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       <UserWrapper>
         <CartWrapper>
           <WrapperOptions>
-            {/* <WrapperTransition> */}
             {getLayout(<Component {...pageProps} />)}
-            {/* </WrapperTransition> */}
           </WrapperOptions>
         </CartWrapper>
       </UserWrapper>
@@ -36,9 +35,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
       <Provider store={store}>
         {isClient() ? (
           <PersistGate loading={null} persistor={persistor}>
-            {/* <StripeWrapper keySecret={keySecret} stripe={stripePromise}> */}
-              {renderComponentClient()}
-            {/* </StripeWrapper> */}
+            <SocketProvider>{renderComponentClient()}</SocketProvider>
           </PersistGate>
         ) : (
           renderComponentClient()

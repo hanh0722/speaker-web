@@ -24,7 +24,7 @@
   @include padding(16);
 }
 .footer {
-  @include padding(16, 0);
+  @include padding(16);
   border-top: 1px solid $border;
   button {
     margin-left: 16px;

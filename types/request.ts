@@ -176,4 +176,9 @@ export interface BlogDetailDataProps extends BaseResponse {
 export interface BlogResponse extends BaseResponse {
   data: Array<BlogDetailResponse>;
   total: number
+};
+
+export interface SearchUserResponse extends BaseResponse {
+  data: Array<User>;
+  total_users: number
 }

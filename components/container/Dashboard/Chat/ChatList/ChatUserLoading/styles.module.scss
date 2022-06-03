@@ -1,0 +1,19 @@
+.chat {
+  @include padding(12, 24);
+  .img {
+    width: 45px;
+    height: 45px;
+  }
+  .right {
+    flex-grow: 1;
+    padding-left: 16px;
+    div {
+      margin-bottom: 8px;
+      height: 8px;
+      border-radius: 8px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
