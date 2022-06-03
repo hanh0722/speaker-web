@@ -29,6 +29,7 @@ const EditProduct: FC<EditProductProps> = (props) => {
     return editProduct(product._id, params);
   };
   const { isLoading, onSendRequest } = useCallApi({
+    // @ts-ignore
     request: onHandleRequest,
     onSuccess: onHandleSuccess,
     isToastNotification: true,
