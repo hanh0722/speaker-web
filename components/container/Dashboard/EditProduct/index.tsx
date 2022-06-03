@@ -25,11 +25,13 @@ const EditProduct: FC<EditProductProps> = (props) => {
     router.push(MANAGE_PRODUCT);
     ToastNotification.success('Edit Product Successfully');
   };
-  const onHandleRequest = (params: CreateProductState) => {
+  const onHandleRequest = (params?: CreateProductState) => {
+    if (!params) {
+      return;
+    }
     return editProduct(product._id, params);
   };
   const { isLoading, onSendRequest } = useCallApi({
-    // @ts-ignore
     request: onHandleRequest,
     onSuccess: onHandleSuccess,
     isToastNotification: true,
